@@ -1,0 +1,58 @@
+{
+  "component": "Input",
+  "figma_page": "02.02 Input",
+  "figma_page_id": "50861:272718",
+  "description": "输入框组件，支持单行文本、下拉选择三种形态。内容社区中用于搜索、评论、表单填写场景。",
+  "usage_rules": [
+    "InputLine 用于嵌入表单行内，没有外部容器边框",
+    "InputFrame 用于独立输入区域，有背景和边框",
+    "InputSelect 用于下拉选择（城市、类别等）",
+    "Error 状态需同时展示错误提示文字",
+    "Read Only 状态用于展示不可编辑的已填信息"
+  ],
+  "variants": {
+    "InputLine": {
+      "figma_name": "💙 02.03_Input_Line",
+      "desc": "线条型输入框，无背景，嵌入表单行使用",
+      "props": {
+        "State": {
+          "options": ["Default", "Completed", "Error", "Read Only"],
+          "desc": {
+            "Default": "空状态，显示 Placeholder",
+            "Completed": "已填写内容",
+            "Error": "校验失败，显示红色提示",
+            "Read Only": "只读，不可编辑"
+          }
+        }
+      }
+    },
+    "InputFrame": {
+      "figma_name": "💙 02.03_Input_Frame",
+      "desc": "框型输入框，有背景和边框，独立使用",
+      "props": {
+        "Type": { "options": ["Input"] },
+        "State": { "options": ["Default", "Completed", "Error", "Read Only"] },
+        "WhiteBG": {
+          "options": ["True", "false"],
+          "desc": { "True": "白色背景（bg/2）", "false": "默认背景" }
+        },
+        "Size": {
+          "options": ["small (28)", "Normal(32)", "Medium(36）", "Large(40)", "ExLarge(48)"],
+          "heights_px": { "small": 28, "Normal": 32, "Medium": 36, "Large": 40, "ExLarge": 48 }
+        }
+      },
+      "tokens_used": {
+        "color": ["bg/2", "border/2", "text/1"],
+        "spacing": ["Spacing/Normal(8px)"],
+        "radius": ["Radius/Normal(8px)"]
+      }
+    },
+    "InputSelect": {
+      "figma_name": "💙 02.03_Input_Select",
+      "desc": "下拉选择型输入框，点击后弹出选择面板",
+      "props": {
+        "State": { "options": ["Default", "Completed", "Error", "Read Only", "State5"] }
+      }
+    }
+  }
+}

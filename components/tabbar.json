@@ -1,0 +1,31 @@
+{
+  "component": "Tab Bar",
+  "figma_page": "01.06 Tab Bar",
+  "figma_page_id": "50861:163874",
+  "description": "底部导航栏，固定在页面底部，用于 App 一级导航切换。内容社区标准配置为 5 个 Tab。",
+  "usage_rules": [
+    "仅用于 App 最顶层一级页面切换，不用于二级页面",
+    "Tab 激活态用 text/3（强调色），未激活用 icon/disabled",
+    "Badge 角标叠加在 Tab 图标右上角，用 error/solidBg",
+    "底部需处理 Home Indicator 安全区域（iOS 底部 34px）"
+  ],
+  "variants": {
+    "5Tabs": {
+      "figma_name": "💙 01.05 Tab Bar / APP / 5Tabs",
+      "desc": "5 个 Tab 的标准底部导航，内容社区标配（首页/发现/发布/消息/我的）",
+      "props": {},
+      "tokens_used": {
+        "color": ["bg/3", "text/3", "icon/disabled", "error/solidBg", "white/border", "white/textColor", "border/1"],
+        "spacing": [],
+        "radius": []
+      },
+      "tab_items": [
+        { "label": "首页", "icon": "home", "active_token": "text/3", "inactive_token": "icon/disabled" },
+        { "label": "发现", "icon": "discovery", "active_token": "text/3", "inactive_token": "icon/disabled" },
+        { "label": "发布", "icon": "publish", "note": "中间发布按钮，通常用 FAB 或特殊样式" },
+        { "label": "消息", "icon": "message", "active_token": "text/3", "inactive_token": "icon/disabled" },
+        { "label": "我的", "icon": "profile", "active_token": "text/3", "inactive_token": "icon/disabled" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "component": "Avatar",
+  "figma_page": "03.05 Avatar",
+  "figma_page_id": "50861:237696",
+  "description": "用户头像组件，支持单个头像、头像组和带状态徽标的 Echo 形态。内容社区中用于作者信息、评论列表、用户主页。",
+  "usage_rules": [
+    "内容卡片作者信息用 Normal(40px) 尺寸",
+    "评论列表用 Small(32px) 尺寸",
+    "用户主页大头像用 Large(64px)",
+    "Echo/AvatarLive 用于直播状态展示",
+    "Grouped 用于多人参与的场景（共同关注、群组等）"
+  ],
+  "variants": {
+    "Basic": {
+      "figma_name": "💙 03.05_Avatar / Basic",
+      "desc": "基础头像，支持多种尺寸和颜色状态",
+      "props": {
+        "Size": {
+          "options": ["Large", "Medium", "Normal", "Small", "Mini"],
+          "sizes_px": { "Large": 64, "Medium": 48, "Normal": 40, "Small": 32, "Mini": 24 }
+        },
+        "Color": {
+          "options": ["Primary", "Online", "Error", "Default", "Trade", "White"],
+          "desc": {
+            "Primary": "主品牌色边框",
+            "Online": "在线状态（绿色边框）",
+            "Error": "异常状态（红色边框）",
+            "Default": "默认无边框",
+            "Trade": "交易场景强调",
+            "White": "白色边框（深色背景上使用）"
+          }
+        }
+      }
+    },
+    "Grouped": {
+      "figma_name": "💙 03.05_Avatar / Grouped",
+      "desc": "头像组，展示多个用户（如共同关注）",
+      "props": {
+        "Size": { "options": ["Large", "Medium", "Normal", "Small", "Mini"] },
+        "Count": { "options": ["1", "2", "3", "4", "5"], "desc": "显示的头像数量" },
+        "Spacing": {
+          "options": ["Large", "Small", "--"],
+          "desc": { "Large": "头像间距大", "Small": "头像叠加", "--": "自定义" }
+        },
+        "Sequence": {
+          "options": ["PositiveOrder", "ReverseOrder", "--"],
+          "desc": { "PositiveOrder": "正序叠加", "ReverseOrder": "逆序叠加" }
+        }
+      }
+    },
+    "Echo": {
+      "figma_name": "💙 03.05_Avatar / Echo",
+      "desc": "带状态徽标的头像，综合入口",
+      "props": {
+        "Size": { "options": ["Large", "Medium", "Normal", "Small", "Mini"] },
+        "className": {
+          "options": ["AvatarReddot", "AvatarNumberReddot", "AvatarGender", "AvatarOnline", "AvatarLive"],
+          "desc": {
+            "AvatarReddot": "红点未读提示",
+            "AvatarNumberReddot": "数字角标",
+            "AvatarGender": "性别标识",
+            "AvatarOnline": "在线状态",
+            "AvatarLive": "直播中状态"
+          }
+        }
+      }
+    }
+  }
+}

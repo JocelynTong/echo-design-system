@@ -1,0 +1,31 @@
+{
+  "component": "Popup",
+  "figma_page": "04.05 Popup",
+  "figma_page_id": "63053:125647",
+  "description": "底部弹出面板，从屏幕底部滑入。用于需要展示较多内容但不想跳页的场景（评论列表、分享面板、筛选项等）。",
+  "usage_rules": [
+    "评论区、分享面板、筛选器是内容社区最常见的 Popup 场景",
+    "高度不超过屏幕高度的 3/4",
+    "顶部必须有拖拽条（Drag Handle），支持手势下滑关闭",
+    "背景有 mask/2 蒙层，点击蒙层关闭 Popup",
+    "内部内容区需设置最大高度并支持滚动"
+  ],
+  "variants": {
+    "Popup": {
+      "figma_name": "💙 04.05_Popup",
+      "desc": "底部弹出面板，在 Figma 中为固定设计帧，无 Variant 切换",
+      "props": {},
+      "tokens_used": {
+        "color": ["bg/1", "mask/2"],
+        "spacing": [],
+        "radius": []
+      },
+      "common_scenarios": [
+        { "scene": "评论列表", "height": "70vh", "note": "内部列表可滚动" },
+        { "scene": "分享面板", "height": "auto", "note": "固定高度，展示分享渠道" },
+        { "scene": "筛选器", "height": "50vh", "note": "底部固定确认按钮" }
+      ],
+      "note": "Popup 在 Figma 中为非 ComponentSet，设计时直接使用页面中的 Popup 帧"
+    }
+  }
+}

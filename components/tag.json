@@ -1,0 +1,91 @@
+{
+  "component": "Tag",
+  "figma_page": "03.02 Tag",
+  "figma_page_id": "40015:80576",
+  "description": "标签组件，用于内容分类、状态标注、商品属性展示。内容社区中高频使用。",
+  "usage_rules": [
+    "Basic 用于通用分类标签（话题、类型）",
+    "SPU 专用于商品发售状态，不可用于其他场景",
+    "Post 用于帖子内容角标（置顶、热门、审核中等）",
+    "Echo 是综合入口，可按 className 切换为 Spec/SPU/Tag/Post 四种形态",
+    "Shelf 用于货架/列表场景，支持圆角和直角两种形态"
+  ],
+  "variants": {
+    "Basic": {
+      "figma_name": "💙 03.02_Tag / Basic",
+      "desc": "基础标签，用于话题、分类等通用场景",
+      "props": {
+        "Color": { "options": ["Primary"], "desc": { "Primary": "主品牌色" } },
+        "Type": { "options": ["Soft"], "desc": { "Soft": "淡底样式" } },
+        "Size": {
+          "options": ["Mini(15)", "Small(20)", "Normal(24)"],
+          "heights_px": { "Mini": 15, "Small": 20, "Normal": 24 }
+        },
+        "Variant": { "options": ["Square"], "desc": { "Square": "方形圆角" } }
+      },
+      "tokens_used": {
+        "color": ["Main/primarypurple_01", "Main/primarypurple_05"],
+        "spacing": ["Spacing/Small(4px)"],
+        "radius": []
+      }
+    },
+    "Spec": {
+      "figma_name": "💙 03.02_Tag / Spec",
+      "desc": "规格标签，用于商品规格标注（如颜色/尺寸分级）",
+      "props": {
+        "Type": { "options": ["A", "B", "C", "D", "S"], "desc": { "S": "Special", "A~D": "普通规格等级" } },
+        "Size": { "options": ["True", "False"] }
+      }
+    },
+    "SPU": {
+      "figma_name": "💙 03.02_Tag / SPU",
+      "desc": "商品发售状态专用标签，标注商品当前状态",
+      "props": {
+        "Type": {
+          "options": ["预定", "资讯", "补货", "延期", "绝版", "公开", "掉落", "再贩", "CTS发售", "合作款", "联名款", "OFF款", "独家", "城限", "上新", "奇货", "柜台"]
+        }
+      }
+    },
+    "Post": {
+      "figma_name": "💙 03.02_Tag / Post",
+      "desc": "帖子角标，叠加在帖子封面左上角",
+      "props": {
+        "角标": {
+          "options": ["Top", "Hot", "Checlist", "Label", "Review", "Badge"],
+          "desc": {
+            "Top": "置顶",
+            "Hot": "热门",
+            "Checlist": "清单",
+            "Label": "自定义标签",
+            "Review": "审核中",
+            "Badge": "徽标"
+          }
+        }
+      }
+    },
+    "Shelf": {
+      "figma_name": "💙 03.02_Tag / Shelf",
+      "desc": "货架标签，用于列表/货架场景",
+      "props": {
+        "Radius": { "options": ["Ellipse", "Rec"], "desc": { "Ellipse": "椭圆/全圆角", "Rec": "矩形/直角" } },
+        "Size": { "options": ["Large", "Medium", "Small"] }
+      }
+    },
+    "Echo": {
+      "figma_name": "💙 03.02_Tag / Echo",
+      "desc": "综合 Tag 组件，通过 className 切换不同形态，是标准使用入口",
+      "props": {
+        "className": { "options": ["Spec", "SPU", "Tag", "Post"] },
+        "Size": { "options": ["Mini", "Small", "Normal"] },
+        "Type": { "options": ["D", "C", "B", "S", "A", "CTS发售", "OFF款", "上新", "公开", "再贩", "合作款", "城限", "奇货", "延期", "掉落", "柜台", "独家", "绝版", "联名款", "补货", "资讯", "预定", "Tag", "Label", "Top", "Hot", "Checlist", "Badge", "Review"] },
+        "Icon Leading": { "options": ["False", "True"] },
+        "Icon Trailing": { "options": ["False", "True"] }
+      },
+      "tokens_used": {
+        "color": ["Semantics/blue_01", "Semantics/grape_05"],
+        "spacing": [],
+        "radius": []
+      }
+    }
+  }
+}

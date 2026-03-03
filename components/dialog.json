@@ -1,0 +1,63 @@
+{
+  "component": "Dialog",
+  "figma_page": "04.04 Dialog",
+  "figma_page_id": "50861:230789",
+  "description": "对话框组件，需要用户明确确认或选择时使用。阻断当前操作流程，要求用户做出决策。",
+  "usage_rules": [
+    "仅用于不可撤销操作的二次确认（删除、取消订单等）",
+    "有 2 个按钮时：左侧取消（Outline）+ 右侧确认（Solid）",
+    "只有 1 个按钮时：居中确认（Solid）",
+    "尽量避免在 Dialog 中展示过多内容，保持简洁",
+    "有图片时（Image=top/middle）用于引导型场景，非确认型"
+  ],
+  "variants": {
+    "Dialog": {
+      "figma_name": "💙 04.04_Dialog",
+      "desc": "主对话框容器，支持顶部/中部图片装饰",
+      "props": {
+        "Image": {
+          "options": ["-", "top", "middle"],
+          "desc": {
+            "-": "无图片，纯文字确认",
+            "top": "顶部图片（插画/icon），引导类场景",
+            "middle": "中部图片，强调类场景"
+          }
+        }
+      },
+      "tokens_used": {
+        "color": ["bg/1", "bg/3"],
+        "spacing": ["Spacing/Small(4px)"],
+        "radius": []
+      }
+    },
+    "DialogTitle": {
+      "figma_name": "💙 04.04_Dialog / Title",
+      "desc": "对话框标题区域",
+      "props": {
+        "Title": { "options": ["2 lines Max"] }
+      }
+    },
+    "DialogButtonGroup": {
+      "figma_name": "💙 04.04_Dialog / ButtonGroup",
+      "desc": "对话框按钮区域",
+      "props": {
+        "Button Direction": {
+          "options": ["Horizontal", "Vertical"],
+          "desc": {
+            "Horizontal": "按钮横排（2 个按钮标配）",
+            "Vertical": "按钮竖排（文字较长时使用）"
+          }
+        },
+        "Button Count": { "options": ["1", "2"] }
+      }
+    },
+    "DialogDescription": {
+      "figma_name": "💙 04.04_Dialog / Description",
+      "desc": "对话框正文描述区域，有高度限制",
+      "props": {
+        "Button Direction": { "options": ["Vertical", "Horizontal"] },
+        "高度限制": { "options": ["297", "224"], "desc": { "297": "最大高度 297px", "224": "最大高度 224px" } }
+      }
+    }
+  }
+}

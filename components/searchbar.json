@@ -1,0 +1,26 @@
+{
+  "component": "Search Bar",
+  "figma_page": "01.03 Search Bar",
+  "figma_page_id": "50861:162387",
+  "description": "搜索栏组件，用于内容/商品搜索入口。可作为独立页面顶部，也可嵌入 Navigation Bar。",
+  "usage_rules": [
+    "首页常用：Nav Bar 中部嵌入 Search Bar 作为搜索入口",
+    "搜索结果页：全宽 Search Bar + 返回按钮",
+    "背景使用 white/softBg（半透明白色），适配各种背景",
+    "未聚焦态显示搜索图标 + Placeholder，聚焦后显示取消按钮"
+  ],
+  "variants": {
+    "SearchBar": {
+      "figma_name": "💙 01.04_Search Bar",
+      "desc": "搜索栏，支持嵌入导航栏或独立展示",
+      "props": {},
+      "tokens_used": {
+        "color": ["white/softBg"],
+        "spacing": [],
+        "radius": []
+      },
+      "states": ["默认（未聚焦）", "聚焦中（键盘弹起）", "有内容"],
+      "note": "Search Bar 在 Figma 中为固定样式，非 ComponentSet，无 Variant 切换"
+    }
+  }
+}

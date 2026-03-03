@@ -1,0 +1,24 @@
+{
+  "component": "Badge",
+  "figma_page": "03.01 Badge",
+  "figma_page_id": "50861:230795",
+  "description": "角标/徽标组件，用于展示未读数量或状态提示。叠加在图标、Tab、头像右上角。",
+  "usage_rules": [
+    "数字 ≤99 显示具体数字，>99 显示 99+",
+    "纯红点（无数字）用于有新消息但无需精确数字的场景",
+    "Tab Bar 上的角标用 error/solidBg 底色、white/textColor 文字",
+    "角标不能单独使用，必须叠加在其他组件上"
+  ],
+  "variants": {
+    "BadgeShopNormal": {
+      "figma_name": "💙  03.01_Badge/Shop/Normal",
+      "desc": "商城/店铺场景角标，标准数字角标",
+      "props": {},
+      "tokens_used": {
+        "color": ["error/solidBg", "white/textColor"],
+        "spacing": [],
+        "radius": []
+      }
+    }
+  }
+}

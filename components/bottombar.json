@@ -1,0 +1,28 @@
+{
+  "component": "Bottom Bar",
+  "figma_page": "01.07 Bottom Bar",
+  "figma_page_id": "50861:164314",
+  "description": "页面底部操作栏，固定在页面底部（安全区上方）。内容社区中用于内容详情页底部（评论输入 + 互动按钮）。",
+  "usage_rules": [
+    "内容详情页标配：左侧评论输入框 + 右侧点赞/收藏/分享",
+    "评论输入框点击后键盘弹起，Bottom Bar 跟随键盘上移",
+    "需处理 iOS 底部 Home Indicator 安全区（34px padding-bottom）",
+    "购物场景可在右侧放加购/立即购买按钮"
+  ],
+  "variants": {
+    "BottomBar": {
+      "figma_name": "💙 01.07_Bottom Bar",
+      "desc": "内容页底部互动操作栏",
+      "props": {},
+      "tokens_used": {
+        "color": ["bg/1", "border/1", "default/bt/border", "primary/bt/solidBg", "error/solidBg", "Main/white_09"],
+        "spacing": ["Spacing/Normal(8px)", "Spacing/Small(4px)", "Spacing/Mini(2px)"],
+        "radius": ["Radius/Small(4px)"]
+      },
+      "typical_layout": {
+        "left": "评论输入框（Input_Frame，State=Default）",
+        "right": "图标按钮组（点赞 / 收藏 / 分享，使用 Icon Button）"
+      }
+    }
+  }
+}

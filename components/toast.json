@@ -1,0 +1,32 @@
+{
+  "component": "Toast",
+  "figma_page": "04.03 Toast",
+  "figma_page_id": "50861:230788",
+  "description": "轻提示组件，操作反馈用，短暂出现后自动消失。浮于页面中央，不阻断操作。",
+  "usage_rules": [
+    "仅用于操作成功/失败的轻量反馈，不用于重要信息传达",
+    "文字简短，不超过 14 字",
+    "2 秒后自动消失，不需要用户手动关闭",
+    "背景使用 mask/2（半透明黑色蒙层色），自适应亮/暗模式"
+  ],
+  "variants": {
+    "Toast": {
+      "figma_name": "💙 04.03_Toast",
+      "desc": "轻提示，支持纯文字和带图标两种类型",
+      "props": {
+        "Type": {
+          "options": ["Text", "icon"],
+          "desc": {
+            "Text": "纯文字提示（最常用）",
+            "icon": "带状态图标（成功/失败/加载）"
+          }
+        }
+      },
+      "tokens_used": {
+        "color": ["mask/2"],
+        "spacing": [],
+        "radius": []
+      }
+    }
+  }
+}

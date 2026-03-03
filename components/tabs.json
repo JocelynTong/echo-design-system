@@ -1,0 +1,41 @@
+{
+  "component": "Tabs",
+  "figma_page": "01.03 Tabs",
+  "figma_page_id": "50861:155849",
+  "description": "内容分类标签页组件，用于同一页面内切换不同内容集合。内容社区中用于首页内容分类、用户主页内容/点赞/收藏切换。",
+  "usage_rules": [
+    "Tabs 用于内容分类切换，不用于页面级导航（页面级用 Tab Bar）",
+    "激活 Tab 使用实线下划线，非激活使用 text/disabled",
+    "Tab 数量建议 3-6 个，超出后支持左右滑动",
+    "CardTab/Basic 适用于卡片样式分类（如首页顶部 feed 分类）"
+  ],
+  "variants": {
+    "CardTabBasic": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "desc": "卡片式 Tab 单项，组合使用构成 TabBar",
+      "props": {
+        "Select": {
+          "options": ["off", "on"],
+          "desc": { "on": "激活态", "off": "非激活态" }
+        },
+        "Position": {
+          "options": ["First", "Middle"],
+          "desc": { "First": "第一个 Tab", "Middle": "中间 Tab" }
+        },
+        "Size": { "options": ["Normal"] }
+      }
+    },
+    "TabsEcho": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "desc": "Tabs 综合容器，自动处理多个 Tab 的排列和选中状态",
+      "props": {
+        "className": { "options": ["CardDefault"], "desc": { "CardDefault": "默认卡片样式" } },
+        "Size": { "options": ["Normal"] },
+        "Amount": {
+          "options": [">3"],
+          "desc": { ">3": "超过 3 个 Tab 时启用横向滚动" }
+        }
+      }
+    }
+  }
+}

@@ -66,35 +66,55 @@ L3 Tokens（组件层）
 
 ## 二、组件规范（已录入）
 
+> 详细参数见 `components/` 目录下各 JSON 文件。以下为 PM 画原型时的速查表。
+
+### 页面骨架组件
+
+| 组件 | Figma 名称 | 关键 Variant | 适用场景 |
+|------|-----------|-------------|---------|
+| Navigation Bar | `💙 01.01_Navigation Bar` | Terminal=App/小程序, Ghost=False/True | 几乎所有页面顶部 |
+| Tab Bar | `💙 01.05 Tab Bar / APP / 5Tabs` | 无 Variant | App 底部一级导航 |
+| Search Bar | `💙 01.04_Search Bar` | 无 Variant | 首页导航嵌入或独立搜索页 |
+| Tabs | `💙 01.02_Tabs / Echo` | className=CardDefault, Amount=>3 | 内容分类切换（首页/用户主页） |
+| Bottom Bar | `💙 01.07_Bottom Bar` | 无 Variant | 内容详情页底部互动区 |
+
+### 内容展示组件
+
+| 组件 | Figma 名称 | 关键 Variant | 适用场景 |
+|------|-----------|-------------|---------|
+| Tag | `💙 03.02_Tag / Echo` | className=Tag/SPU/Post/Spec | 内容标签、商品状态、帖子角标 |
+| Avatar | `💙 03.05_Avatar / Basic` | Size=Normal/Small, Color=Default | 作者头像、评论列表 |
+| Avatar Echo | `💙 03.05_Avatar / Echo` | className=AvatarLive/AvatarReddot | 直播状态、未读提示 |
+| Badge | `💙  03.01_Badge/Shop/Normal` | 无 Variant | Tab 角标、消息未读数 |
+
+### 交互输入组件
+
+| 组件 | Figma 名称 | 关键 Variant | 适用场景 |
+|------|-----------|-------------|---------|
+| Input Frame | `💙 02.03_Input_Frame` | State=Default/Completed/Error, Size=Normal | 评论输入、表单填写 |
+| Input Line | `💙 02.03_Input_Line` | State=Default/Completed | 嵌入表单行内 |
+| Input Select | `💙 02.03_Input_Select` | State=Default/Completed | 下拉选择（城市/类别） |
+
 ### Button 按钮
 
-详细规范见 `components/button.json`，核心速查：
+| 场景 | 使用组件 | 关键参数 |
+|------|---------|---------|
+| 主操作（唯一 CTA） | `💙 00.05_Button / MH` | Color=Primary, Type=Solid, Size=Large(40) |
+| 次要操作 | `💙 00.05_Button / MH` | Color=Primary, Type=Soft 或 Outline |
+| 单品牌色 | `💙 00.05_Button / QH` | Type=Solid/Soft/Outline/Text |
+| 全局浮动 | `💙 00.05_Button / FAB` | Normal=True |
+| 购物车 | `💙 00.05_Button / FloatCart` | 场景=home published |
+| 纯图标 | `💙 00.05_Button / Icon` | Size=Normal |
 
-#### 选哪种 Button？
+Button 尺寸：Large(40px) 主CTA · Medium(36px) 弹窗 · Normal(32px) 卡片内 · Small(28px) 紧凑区
 
-| 场景 | 使用组件 |
-|------|---------|
-| 主操作（唯一 CTA） | `MH` Color=Primary, Type=Solid |
-| 次要操作 | `MH` Color=Primary, Type=Soft 或 Outline |
-| 仅需主品牌色 | `QH` Type=Solid/Soft/Outline/Text |
-| 双品牌色场景 | `MH` Color=Primary 或 Secondary |
-| 全局浮动操作 | `FAB` |
-| 购物车场景 | `FloatCart` |
-| 纯图标按钮 | `Icon` |
+### 反馈组件
 
-#### 尺寸选择
-
-| Size | 高度 | 适用场景 |
-|------|------|---------|
-| Large(40) | 40px | 页面主 CTA，底部固定操作区 |
-| Medium(36) | 36px | 表单提交，弹窗确认 |
-| Normal(32) | 32px | 列表行内操作，卡片内操作 |
-| Small(28) | 28px | 紧凑型操作区 |
-| Mini(24) | 24px | 角标、Tag 内操作 |
-
-#### 禁用规则
-- `Disable Temp`：表单未填完、条件未满足等**临时**状态
-- `Disable`：权限不足、功能不可用等**永久**状态
+| 组件 | Figma 名称 | 关键 Variant | 使用时机 |
+|------|-----------|-------------|---------|
+| Toast | `💙 04.03_Toast` | Type=Text/icon | 操作成功/失败，2秒自动消失 |
+| Dialog | `💙 04.04_Dialog` | Image=-/top/middle, Button Count=1/2 | 不可逆操作二次确认 |
+| Popup | `💙 04.05_Popup` | 无 Variant | 评论列表、分享面板、筛选器 |
 
 ---
 
@@ -160,14 +180,14 @@ L3 Tokens（组件层）
 
 ## 五、暂未录入的组件
 
-以下组件页面存在于 Figma 文件中，但尚未整理成结构化文档，在帮 PM 设计时需谨慎使用，建议先确认组件可用性：
+以下组件页面存在于 Figma 文件中，但尚未整理成结构化文档，在帮 PM 设计时需谨慎使用：
 
-**Bar 系列**：Status Bar, Navigation Bar, Search Bar, Tabs, SegmentedControl, Tab Bar, Bottom Bar, Menu, Steps
+**Bar 系列**：Status Bar, SegmentedControl, Menu, Steps, Home Indicator
 
-**Form 系列**：FormItem, Input, Textarea, Radio, Checkbox, Switch, Stepper, Upload, DateTimePicker
+**Form 系列**：FormItem, Textarea, Radio, Checkbox, Switch, Stepper, Upload, DateTimePicker, Rate
 
-**Data 系列**：Badge, Tag, Avatar, Feed, Spu, Price
+**Data 系列**：Feed（内容卡片）, Spu, Price, Empty, Swipe, Checklist, List, Grid
 
-**Feedback 系列**：NoticeBar, SnackBar, Toast, Dialog, Popup, Dropdown
+**Feedback 系列**：NoticeBar, SnackBar, Dropdown, Popover, ShareSheet, Result Page, Skeleton
 
 > 如需使用以上组件，请告知设计师补充录入对应 `components/*.json` 文件。
