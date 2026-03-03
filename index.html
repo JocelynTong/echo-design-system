@@ -213,6 +213,87 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','PingFang SC','H
 }
 .searchbar input::placeholder{color:var(--text-3)}
 
+/* Principle card */
+.principle-wrap{
+  background:var(--bg-card);border-bottom:1px solid var(--border-c);
+  overflow:hidden;transition:max-height 0.35s cubic-bezier(.4,0,.2,1);
+  max-height:320px;
+}
+.principle-wrap.collapsed{max-height:0}
+.principle{padding:16px 16px 14px;}
+.principle-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.principle-title{font-size:12px;font-weight:700;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;}
+.principle-toggle{
+  display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text-3);
+  background:none;border:none;cursor:pointer;font-family:inherit;padding:2px 6px;
+  border-radius:6px;transition:all 0.2s;
+}
+.principle-toggle:hover{background:var(--bg-card2)}
+.ptoggle-icon{transition:transform 0.3s;display:inline-block;}
+.principle-wrap.collapsed .ptoggle-icon{transform:rotate(180deg)}
+
+/* Three levels */
+.levels-row{display:flex;gap:6px;align-items:stretch;margin-bottom:12px;}
+.level-card{
+  flex:1;border-radius:10px;padding:10px 8px;display:flex;flex-direction:column;gap:4px;
+}
+.level-card.l1{background:#F2F0FF;}
+.level-card.l2{background:#E9F7EA;}
+.level-card.l3{background:#FFF3E0;}
+[data-theme="dark"] .level-card.l1{background:rgba(124,102,255,0.12);}
+[data-theme="dark"] .level-card.l2{background:rgba(82,186,92,0.1);}
+[data-theme="dark"] .level-card.l3{background:rgba(252,126,34,0.1);}
+.level-badge{
+  font-size:9px;font-weight:800;letter-spacing:0.8px;padding:2px 5px;
+  border-radius:4px;display:inline-flex;align-items:center;gap:3px;width:fit-content;
+}
+.level-card.l1 .level-badge{background:#7C66FF;color:#fff;}
+.level-card.l2 .level-badge{background:#52BA5C;color:#fff;}
+.level-card.l3 .level-badge{background:#FC7E22;color:#fff;}
+.level-name{font-size:12px;font-weight:700;color:var(--text-1);}
+.level-desc{font-size:10px;color:var(--text-2);line-height:1.4;}
+.level-example{
+  font-size:9px;font-family:'SF Mono','Fira Code',monospace;
+  color:var(--text-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.levels-arrow{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-3);font-size:14px;flex-shrink:0;padding-bottom:4px;
+}
+
+/* Chain example */
+.chain-example{
+  background:var(--bg-card2);border-radius:10px;padding:10px 12px;
+}
+.chain-example-label{font-size:10px;color:var(--text-3);margin-bottom:7px;}
+.chain-example-label span{color:var(--accent);font-weight:600;}
+.chain-flow{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.chain-step{
+  display:flex;align-items:center;gap:5px;
+  background:var(--bg-card);border-radius:7px;padding:5px 8px;
+  border:1px solid var(--border-c);
+}
+.chain-step-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.chain-step-info{display:flex;flex-direction:column;gap:1px;}
+.chain-step-key{font-size:9px;font-weight:700;color:var(--text-1);font-family:'SF Mono',monospace;}
+.chain-step-level{font-size:8px;color:var(--text-3);}
+.chain-flow-arrow{color:var(--text-3);font-size:11px;flex-shrink:0;}
+
+/* Collapse bar at bottom of page */
+.principle-collapsed-bar{
+  display:none;padding:6px 16px;background:var(--bg-card);
+  border-bottom:1px solid var(--border-c);cursor:pointer;
+}
+.principle-wrap.collapsed + .principle-collapsed-bar{display:flex;align-items:center;gap:6px;}
+.pcbar-text{font-size:11px;color:var(--text-3);}
+.pcbar-badge{
+  display:flex;gap:4px;
+}
+.pcbar-dot{width:6px;height:6px;border-radius:50%;}
+
 /* Toast */
 .toast{
   position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);
@@ -249,6 +330,86 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','PingFang SC','H
     <button class="tab active" onclick="switchTab('l1')">L1 · 原子</button>
     <button class="tab" onclick="switchTab('l2')">L2 · 语义</button>
     <button class="tab" onclick="switchTab('l3')">L3 · 组件</button>
+  </div>
+
+  <!-- Principle banner -->
+  <div class="principle-wrap" id="principle-wrap">
+    <div class="principle">
+      <div class="principle-head">
+        <div class="principle-title">Token 三级映射原理</div>
+        <button class="principle-toggle" onclick="togglePrinciple()">
+          收起 <span class="ptoggle-icon">∧</span>
+        </button>
+      </div>
+
+      <div class="levels-row">
+        <div class="level-card l1">
+          <div class="level-badge">L1 原子</div>
+          <div class="level-name">原始值</div>
+          <div class="level-desc">色板里的原始颜色，不含语义，设计师不直接使用</div>
+          <div class="level-example">primarypurple_05</div>
+        </div>
+        <div class="levels-arrow">→</div>
+        <div class="level-card l2">
+          <div class="level-badge">L2 语义</div>
+          <div class="level-name">语义角色</div>
+          <div class="level-desc">赋予含义，描述"这是什么用途的颜色"，支持亮暗切换</div>
+          <div class="level-example">primary/solidBg</div>
+        </div>
+        <div class="levels-arrow">→</div>
+        <div class="level-card l3">
+          <div class="level-badge">L3 组件</div>
+          <div class="level-name">组件专属</div>
+          <div class="level-desc">绑定到具体组件的具体状态，开发直接取用</div>
+          <div class="level-example">primary/bt/solidBg</div>
+        </div>
+      </div>
+
+      <div class="chain-example">
+        <div class="chain-example-label">示例：<span>Button 主色实色背景</span> 的颜色从哪来？</div>
+        <div class="chain-flow">
+          <div class="chain-step">
+            <div class="chain-step-dot" style="background:#FC7E22"></div>
+            <div class="chain-step-info">
+              <div class="chain-step-key">primary/bt/solidBg</div>
+              <div class="chain-step-level">L3 · Button 组件 token</div>
+            </div>
+          </div>
+          <div class="chain-flow-arrow">→</div>
+          <div class="chain-step">
+            <div class="chain-step-dot" style="background:#52BA5C"></div>
+            <div class="chain-step-info">
+              <div class="chain-step-key">primary/solidBg</div>
+              <div class="chain-step-level">L2 · 语义角色 token</div>
+            </div>
+          </div>
+          <div class="chain-flow-arrow">→</div>
+          <div class="chain-step">
+            <div class="chain-step-dot" style="background:#52BA5C"></div>
+            <div class="chain-step-info">
+              <div class="chain-step-key">primary/5</div>
+              <div class="chain-step-level">L2 · 色阶 token</div>
+            </div>
+          </div>
+          <div class="chain-flow-arrow">→</div>
+          <div class="chain-step">
+            <div class="chain-step-dot" style="background:#7C66FF;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="chain-step-info">
+              <div class="chain-step-key">#7C66FF</div>
+              <div class="chain-step-level">L1 · 原子值</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="principle-collapsed-bar" onclick="togglePrinciple()">
+    <div class="pcbar-badge">
+      <div class="pcbar-dot" style="background:#7C66FF"></div>
+      <div class="pcbar-dot" style="background:#52BA5C"></div>
+      <div class="pcbar-dot" style="background:#FC7E22"></div>
+    </div>
+    <div class="pcbar-text">L1 原子 → L2 语义 → L3 组件 · 点击展开原理说明</div>
   </div>
 
   <div class="content">
@@ -306,6 +467,18 @@ let currentL2Cat = 'all';
 let currentComp = 'bt';
 let currentL3Variant = 'all';
 let l2SearchTerm = '';
+
+// ---- Principle toggle ----
+function togglePrinciple() {
+  const wrap = document.getElementById('principle-wrap');
+  const isCollapsed = wrap.classList.toggle('collapsed');
+  localStorage.setItem('principle-collapsed', isCollapsed ? '1' : '');
+}
+(function initPrinciple() {
+  if (localStorage.getItem('principle-collapsed')) {
+    document.getElementById('principle-wrap').classList.add('collapsed');
+  }
+})();
 
 // ---- Load data ----
 async function loadData() {
