@@ -110,13 +110,6 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text'
 .pl-block-title{font-size:12px;font-weight:700;color:var(--text-1)}
 
 /* Tokens wrapper — L2 + L3 共同容器 */
-.pl-tokens-wrap{border-radius:10px;padding:8px;gap:0;
-  background:var(--bg-card2);border:1px solid var(--border-c);
-  display:flex;flex-direction:column;gap:0}
-/* Inner blocks inside the wrapper */
-.pl-inner-block{border-radius:10px;padding:10px;
-  background:var(--bg-card2);border:1px solid var(--border-c)}
-
 /* Token rows */
 .pl-row{display:flex;align-items:center;gap:8px;background:var(--bg-card);
   border-radius:8px;padding:7px 8px;margin-bottom:4px}
@@ -430,73 +423,68 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text'
 
           <div class="pl-arrow">↓</div>
 
-          <!-- TOKENS wrapper：L2 + L3 -->
-          <div class="pl-tokens-wrap">
+          <!-- L2 Tokens -->
+          <div class="pl-block">
+            <div class="pl-block-head">
+              <span class="pl-badge l2">Tokens</span>
+              <span class="pl-block-title">二级映射</span>
+            </div>
 
-            <!-- L2 -->
-            <div class="pl-inner-block">
-              <div class="pl-block-head">
-                <span class="pl-badge l2">L2</span>
-                <span class="pl-block-title">二级映射</span>
-              </div>
-
-              <div class="pl-sublabel">色阶层 · 引用原始值</div>
-              <div class="pl-row">
-                <div class="pl-swatch" style="background:#7C66FF"></div>
-                <div class="pl-info">
-                  <div class="pl-name">primary/5</div>
-                  <div class="pl-ref">→ primarypurple_05</div>
-                </div>
-              </div>
-
-              <div class="pl-inner-arrow">↓</div>
-
-              <div class="pl-sublabel">语义角色层 · 引用色阶</div>
-              <div class="pl-row">
-                <div class="pl-swatch" style="background:#7C66FF"></div>
-                <div class="pl-info">
-                  <div class="pl-name">primary/solidBg</div>
-                  <div class="pl-ref">→ primary/5</div>
-                </div>
-              </div>
-
-              <div class="pl-usage">
-                <div class="pl-usage-item">两层独立映射，换色时只改原始值，<br>角色关系不受影响</div>
-                <div class="pl-usage-tags">
-                  <span class="pl-tag">业务设计中其他部组件化的设计</span>
-                  <span class="pl-tag">文字颜色</span>
-                  <span class="pl-tag">图标颜色</span>
-                </div>
+            <div class="pl-sublabel">色阶层 · 引用原始值</div>
+            <div class="pl-row">
+              <div class="pl-swatch" style="background:#7C66FF"></div>
+              <div class="pl-info">
+                <div class="pl-name">primary/5</div>
+                <div class="pl-ref">→ primarypurple_05</div>
               </div>
             </div>
 
-            <div class="pl-arrow" style="padding:6px 0">↓</div>
+            <div class="pl-inner-arrow">↓</div>
 
-            <!-- L3 -->
-            <div class="pl-inner-block">
-              <div class="pl-block-head">
-                <span class="pl-badge l3">L3</span>
-                <span class="pl-block-title">三级映射</span>
-              </div>
-              <div class="pl-row">
-                <div class="pl-swatch" style="background:#7C66FF"></div>
-                <div class="pl-info">
-                  <div class="pl-name">primary/bt/solidBg</div>
-                  <div class="pl-ref">→ primary/solidBg</div>
-                </div>
-              </div>
-              <div class="pl-usage">
-                <div class="pl-usage-item">常用组件库 · 分子部分</div>
-                <div class="pl-usage-tags">
-                  <span class="pl-tag">按钮</span>
-                  <span class="pl-tag">输入表单</span>
-                  <span class="pl-tag">输出表单</span>
-                  <span class="pl-tag">反馈</span>
-                </div>
+            <div class="pl-sublabel">语义角色层 · 引用色阶</div>
+            <div class="pl-row">
+              <div class="pl-swatch" style="background:#7C66FF"></div>
+              <div class="pl-info">
+                <div class="pl-name">primary/solidBg</div>
+                <div class="pl-ref">→ primary/5</div>
               </div>
             </div>
 
-          </div><!-- /pl-tokens-wrap -->
+            <div class="pl-usage">
+              <div class="pl-usage-item">两层独立映射，换色时只改原始值，<br>角色关系不受影响</div>
+              <div class="pl-usage-tags">
+                <span class="pl-tag">业务设计中其他部组件化的设计</span>
+                <span class="pl-tag">文字颜色</span>
+                <span class="pl-tag">图标颜色</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-arrow">↓</div>
+
+          <!-- L3 Tokens -->
+          <div class="pl-block">
+            <div class="pl-block-head">
+              <span class="pl-badge l3">Tokens</span>
+              <span class="pl-block-title">三级映射</span>
+            </div>
+            <div class="pl-row">
+              <div class="pl-swatch" style="background:#7C66FF"></div>
+              <div class="pl-info">
+                <div class="pl-name">primary/bt/solidBg</div>
+                <div class="pl-ref">→ primary/solidBg</div>
+              </div>
+            </div>
+            <div class="pl-usage">
+              <div class="pl-usage-item">常用组件库 · 分子部分</div>
+              <div class="pl-usage-tags">
+                <span class="pl-tag">按钮</span>
+                <span class="pl-tag">输入表单</span>
+                <span class="pl-tag">输出表单</span>
+                <span class="pl-tag">反馈</span>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
