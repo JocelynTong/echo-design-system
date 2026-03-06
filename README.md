@@ -10,6 +10,79 @@
 
 ---
 
+## 指令与话术
+
+> 各角色与 AI 交互时的标准指令和建议沟通方式，持续更新。
+
+### 🛠 常用 npm 指令
+
+```bash
+npm run new-demo <需求名>          # 初始化新需求文件夹（复制冻结 CSS + 显示候选警告）
+npm run figma-sync <需求名>        # 将需求的 figma-config.json 同步到 Figma
+npm run notify-feishu              # 手动触发飞书候选池周报
+bash preview.sh                    # 本地预览默认页面
+bash preview.sh demos/xxx/yyy.html # 本地预览指定页面
+```
+
+---
+
+### 💬 PM → AI 话术
+
+**发起新需求**
+> 「我要在帖子详情页增加 XX 功能，用户可以 YY，点击后 ZZ」
+
+不需要说明用哪个组件，AI 会读 `business/community.md` 和规范稿自行判断。
+
+**跨业务需求**
+> 「这是社区内容变现需求，用户在帖子里看到商品标签，点击跳转到 C2C 商品详情页」
+
+跨业务时说清楚起点和终点，AI 会同时读两个业务的规范。
+
+**在已有页面上改**
+> 「在帖子详情页的评论区上方加一个 XX 模块，参考 YY 的样式」
+
+AI 会从 `business/community/content-detail.html` 作为基线开始改，不从头搭。
+
+**迭代修改**
+> 「第三稿的 XX 改成 YY，其他不动」
+
+在同一需求文件夹内改，不新建文件夹。
+
+---
+
+### 🎨 设计师 → AI 话术
+
+**精调完成，回写规范稿**
+> 「精调完了，这是导出的 JSON：[粘贴插件导出内容]，请更新 community 的规范稿」
+
+AI 会对比差异，回写 `business/community/*.html`，并标注候选池 warning。
+
+**新增了自定义设计元素**
+> 「我在首页新加了一个渐变 banner，用的是 #7C66FF 到 #A594FF，高度 120px」
+
+AI 会生成对应 CSS 并追加到候选池，等待收口人决策是否 token 化。
+
+---
+
+### ✅ 收口人 → AI 话术（候选池决策）
+
+**Token 化**
+> 「渐变紫色背景这个 token 化，命名为 `--brand-gradient-primary`」
+
+AI 会将新 token 加入 `business/_styles.css` 并从候选池移除。
+
+**做成业务组件**
+> 「这个虚线分割线做成社区的业务组件，叫 community-divider」
+
+AI 会在 `business/community/` 里建对应的 HTML 片段。
+
+**忽略**
+> 「这个手绘插画忽略，一次性的不用沉淀」
+
+AI 会从候选池移除该条目。
+
+---
+
 ## 完整工作流程
 
 ```
