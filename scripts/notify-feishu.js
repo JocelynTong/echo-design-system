@@ -9,6 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const crypto = require('crypto');
 const { URL } = require('url');
 
 const root = path.join(__dirname, '..');
@@ -92,7 +93,20 @@ const card = {
   }
 };
 
+// ── 飞书签名（如机器人开启了签名校验则必须）────────────────────
+function genSign(secret, timestamp) {
+  const str = timestamp + '\n' + secret;
+  return crypto.createHmac('sha256', str).update('').digest('base64');
+}
+
 // ── POST 到飞书 webhook ───────────────────────────────────────
+const timestamp = String(Math.floor(Date.now() / 1000));
+const webhookSecret = process.env.FEISHU_WEBHOOK_SECRET;
+
+if (webhookSecret) {
+  card.sign = genSign(webhookSecret, timestamp);
+  card.timestamp = timestamp;
+}
 const body = JSON.stringify(card);
 const url = new URL(webhook);
 
