@@ -2,31 +2,61 @@
 
 基于 Figma Variables 三级映射 Token 的 H5 设计系统浏览器。
 
-## 目录结构
+## 项目结构
 
 ```
-├── index.html                  # 设计系统浏览器页面
-├── generate.py                 # Token 处理脚本
+├── CLAUDE.md                              # AI 工作指令（全局组件规范、页面尺寸安全区）
+├── README.md                              # 本文件：新人指南 + 完整工作流
+├── index.html                             # 设计系统 Token 浏览器（GitHub Pages 展示）
+├── generate.py                            # Figma 导出 JSON → CSS 变量转换脚本
+├── package.json                           # npm 脚本入口
+├── preview.sh                             # 本地预览脚本，自动打开/刷新浏览器
 │
-├── tokens/                     # 设计 token 源头（Figma 导出）
-│   ├── Primitives-QD.json      # L1 原子 token
-│   ├── 千岛.tokens.json         # L2/L3 亮色 token
-│   ├── 千岛暗黑.tokens.json     # L2/L3 暗色 token
-│   └── processed.json          # 自动生成，无需手动编辑
+├── tokens/                                # 设计 Token 源头（Figma 导出，不手动编辑）
+│   ├── 千岛.tokens.json                   # 亮色主题 L2/L3 Token
+│   ├── 千岛暗黑.tokens.json               # 暗色主题 L2/L3 Token
+│   ├── Primitives-QD.json                 # L1 原始色板
+│   └── processed.json                     # generate.py 产物，自动生成
 │
-├── components/                 # 原子组件规范文档（JSON）
-│   └── button.json / navbar.json / ...
+├── components/                            # 原子组件规范文档（AI 读，16 个组件）
+│   └── button/navbar/tabs...json          # 各组件的变体、尺寸、用法说明
 │
-├── business/                   # 各业务模块的页面规范（给 AI 读）
-│   ├── community.md            # 社区：页面组件顺序、结构标准
-│   └── c2c.md                  # C2C：同上
+├── business/                              # 各业务模块的完整规范（source of truth）
+│   ├── _rules.md                          # 全局规则：命名约定、token铁律、安全区、候选池机制
+│   ├── _styles.css                        # CSS 母版：token 变量 + reset + 通用组件（新需求从这里复制）
+│   ├── _candidates.md                     # 设计候选池：非 token 新创意的追踪与决策记录
+│   ├── community.md                       # 社区业务规则：组件 Key 表、variant 选择指引
+│   ├── community/                         # 社区规范页面（设计师精调后回写至此）
+│   │   ├── home-feed.html                 # 社区首页 Feed 最新规范稿
+│   │   └── content-detail.html            # 帖子详情页最新规范稿
+│   └── c2c.md                             # C2C 业务规则（待完善）
 │
-└── demos/                      # HTML 原型（一个需求一个文件夹）
-    ├── [需求名]/
-    │   ├── styles.css          # 全局 token + reset（从母版复制，冻结）
-    │   ├── [页面].html         # 该需求涉及的每个页面
-    │   └── figma-config.json   # 该需求的页面流转配置
-    └── styles.css              # 母版，新建需求时从这里复制
+├── demos/                                 # 需求原型存档（一需求一文件夹，历史快照）
+│   ├── styles.css                         # CSS 母版备份，不直接引用
+│   └── community-default/                 # 社区基线需求（初始版本）
+│       ├── styles.css                     # 冻结的 token 版本（创建时从 business/ 复制）
+│       ├── home-feed.html                 # 该需求的首页 Feed 原型
+│       ├── content-detail.html            # 该需求的帖子详情页原型
+│       └── figma-config.json              # 该需求的页面流转配置
+│
+├── figma-plugin/                          # Figma 建稿插件（HTML → Figma 同步）
+│   ├── code.js                            # 插件主逻辑：生成页面帧 + 可视化连线 + 导出结构
+│   ├── ui.html                            # 插件操作界面
+│   └── manifest.json                      # 插件配置
+│
+├── figma-plugin-keyfinder/                # Figma 辅助插件（查找组件 Key）
+│   └── code.js                            # 按组件名搜索并输出 Figma Key
+│
+├── scripts/                               # 自动化脚本
+│   ├── new-demo.js                        # 新需求初始化：建文件夹 + 复制冻结 CSS + 显示候选警告
+│   ├── figma-sync-server.js               # 读需求 figma-config.json → 复制到剪贴板供插件使用
+│   ├── notify-feishu.js                   # 读候选池 → 格式化飞书卡片 → POST webhook
+│   ├── build-demo.js                      # 构建打包 demo HTML
+│   └── parse-html-to-config.js            # 解析 HTML 生成 Figma 配置
+│
+└── .github/workflows/                     # GitHub Actions 自动化
+    ├── build.yml                           # Token 更新时自动构建部署
+    └── design-review.yml                  # 每周一 11:00 推送候选池周报到飞书群
 ```
 
 ---
