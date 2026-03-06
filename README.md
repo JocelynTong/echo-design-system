@@ -62,11 +62,15 @@ cd echo-design-system
 
 **新增了自定义设计元素：** 直接描述给 AI，AI 会写入规范并追加到候选池，等候收口人每周决策是否 token 化。
 
+**精调时查阅 Token：** 运行 `npm run dev`，访问 `http://localhost:8081` 打开 Token 浏览器，可按 APP 切换、按分类筛选、点击色块复制色值。
+
 ---
 
 ### 开发 · 拿还原基准
 
 还原基准在 `demos/{需求文件夹}/`，直接打开对应 HTML 文件对照还原。样式已冻结，不受后续 token 升级影响。
+
+**查阅 Token 值：** 运行 `npm run dev`，访问 `http://localhost:8081` 打开 Token 浏览器，可按 APP 切换、搜索 token 名称或色值。
 
 有疑问时问 Claude Code：
 
@@ -386,8 +390,8 @@ MD 管「怎么做」，HTML 管「现在是什么」，两者不重叠。
 ## 本地预览
 
 ```bash
-python3 -m http.server 8080
-# 访问 http://localhost:8080
+npm run dev      # Token 浏览器（index.html）→ http://localhost:8081
+npm run preview  # 需求原型（demos/）        → http://localhost:8080
 ```
 
 > 直接双击 HTML 文件因浏览器 CORS 限制无法加载数据，需通过 HTTP 服务访问。
