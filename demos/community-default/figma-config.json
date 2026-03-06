@@ -1,0 +1,41 @@
+{
+  "name": "用户用例 #1 · 首页 Feed → 内容详情页",
+  "pages": [
+    {
+      "name": "01 首页 Feed",
+      "bg": "secondary-solidBg",
+      "components": [
+        { "key": "StatusBarGhost" },
+        { "key": "IslandsHeader" },
+        { "key": "IslandsPin" },
+        {
+          "key": "__group",
+          "bg": "bg-1",
+          "gap": 8,
+          "topRadius": 12,
+          "children": [
+            { "key": "IslandsGrid" },
+            { "key": "IslandsSlide" },
+            { "key": "FeedCard" },
+            { "key": "FeedCard" }
+          ]
+        },
+        { "key": "TabBar" }
+      ]
+    },
+    {
+      "name": "02 内容详情页",
+      "bg": "bg-1",
+      "components": [
+        { "key": "StatusBarGhost" },
+        { "key": "PostHeader" },
+        { "key": "PostContents" },
+        { "key": "PostActionBar" }
+      ]
+    }
+  ],
+  "connections": [
+    { "from": "01 首页 Feed", "to": "02 内容详情页", "trigger": "FeedCard" },
+    { "from": "02 内容详情页", "to": "01 首页 Feed", "trigger": "PostHeader" }
+  ]
+}

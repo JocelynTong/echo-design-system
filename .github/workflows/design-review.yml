@@ -1,0 +1,24 @@
+name: 设计系统候选池提醒
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'   # 每周一 03:00 UTC = 北京时间 11:00
+  push:
+    paths:
+      - 'business/_candidates.md'   # 候选池有新增时也触发
+  workflow_dispatch:                 # 支持手动触发
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 发送飞书候选池周报
+        run: node scripts/notify-feishu.js
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
