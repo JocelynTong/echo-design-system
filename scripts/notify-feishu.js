@@ -76,7 +76,7 @@ const card = {
         text: {
           tag: 'lark_md',
           content: highFreq.length > 0
-            ? `⚠️ 本周有 **${highFreq.length}** 项待拍板，决策三选一：token化 / 业务组件 / 忽略`
+            ? `⚠️ 本周有 **${highFreq.length}** 项待拍板，决策三选一：token化 / 业务组件 / 忽略 <at user_id="all"></at>`
             : '✅ 本周无需决策，继续保持'
         }
       },
