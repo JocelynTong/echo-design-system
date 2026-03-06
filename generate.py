@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 """
-千岛 Design System - Token 处理脚本
-用法：python generate.py
-将 tokens/ 目录的原始 Figma JSON 处理为 tokens/processed.json
-每次从 Figma 重新导出 JSON 后运行一次即可更新页面数据。
+Echo Design System - Token 处理脚本
+用法：
+  python generate.py             # 生成所有 APP
+  python generate.py qiandao     # 只生成千岛
+  python generate.py linji       # 只生成临界
+  python generate.py qihuo       # 只生成奇货
 """
 
 import json
 import re
 import os
+import sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 
-with open(os.path.join(BASE, 'tokens/Primitives-QD.json'), encoding='utf-8') as f:
-    primitives = json.load(f)
-with open(os.path.join(BASE, 'tokens/千岛.tokens.json'), encoding='utf-8') as f:
-    light_raw = json.load(f)
-with open(os.path.join(BASE, 'tokens/千岛暗黑.tokens.json'), encoding='utf-8') as f:
-    dark_raw = json.load(f)
+APPS = {
+    'qiandao': {'name': '千岛',  'primitives': 'Primitives-QD.json', 'light': '千岛.tokens.json',   'dark': '千岛暗黑.tokens.json'},
+    'linji':   {'name': '临界',  'primitives': 'Primitives-QD.json', 'light': '千岛.tokens.json',   'dark': '千岛暗黑.tokens.json'},
+    'qihuo':   {'name': '奇货',  'primitives': 'Primitives-QD.json', 'light': '千岛.tokens.json',   'dark': '千岛暗黑.tokens.json'},
+}
 
 
 def flatten_tokens(data, prefix=''):
@@ -74,76 +76,80 @@ def group_by_prefix(tokens_dict):
     return groups
 
 
-prim_flat = flatten_tokens(primitives)
-light_flat = flatten_tokens(light_raw)
-dark_flat = flatten_tokens(dark_raw)
+def generate(app_id):
+    cfg = APPS[app_id]
+    token_dir = os.path.join(BASE, 'tokens', app_id)
 
-# L1
-main_groups = group_by_prefix(primitives.get('Main', {}))
-sem_groups = group_by_prefix(primitives.get('Semantics', {}))
-radius = {k: v.get('$value') for k, v in primitives.get('Radius', {}).items() if '$type' in v}
-spacing = {k: v.get('$value') for k, v in primitives.get('Spacing', {}).items() if '$type' in v}
+    with open(os.path.join(token_dir, cfg['primitives']), encoding='utf-8') as f:
+        primitives = json.load(f)
+    with open(os.path.join(token_dir, cfg['light']), encoding='utf-8') as f:
+        light_raw = json.load(f)
+    with open(os.path.join(token_dir, cfg['dark']), encoding='utf-8') as f:
+        dark_raw = json.load(f)
 
-# L2
-l2_cats = {}
-for cat_key, cat_val in light_raw.items():
-    if cat_key == '$extensions' or not isinstance(cat_val, dict):
-        continue
-    tokens = []
-    for tk, tv in cat_val.items():
-        if isinstance(tv, dict) and '$type' in tv:
-            full_key = f"{cat_key}/{tk}"
-            hex_v, alpha, chain = resolve_chain(full_key, light_flat, prim_flat)
-            dark_hex, dark_alpha, _ = resolve_chain(full_key, dark_flat, prim_flat)
-            tokens.append({
-                'key': full_key, 'name': tk,
-                'hex': hex_v, 'alpha': alpha,
-                'darkHex': dark_hex, 'darkAlpha': dark_alpha,
-                'chain': chain
-            })
-    if tokens:
-        l2_cats[cat_key] = tokens
+    prim_flat = flatten_tokens(primitives)
+    light_flat = flatten_tokens(light_raw)
+    dark_flat = flatten_tokens(dark_raw)
 
-# L3
-l3_data = {}
-for comp in ['bt', 'tag']:
-    l3_data[comp] = {}
+    main_groups = group_by_prefix(primitives.get('Main', {}))
+    sem_groups = group_by_prefix(primitives.get('Semantics', {}))
+    radius = {k: v.get('$value') for k, v in primitives.get('Radius', {}).items() if '$type' in v}
+    spacing = {k: v.get('$value') for k, v in primitives.get('Spacing', {}).items() if '$type' in v}
+
+    l2_cats = {}
     for cat_key, cat_val in light_raw.items():
         if cat_key == '$extensions' or not isinstance(cat_val, dict):
             continue
-        comp_data = cat_val.get(comp)
-        if not comp_data or not isinstance(comp_data, dict):
-            continue
         tokens = []
-        for tk, tv in comp_data.items():
+        for tk, tv in cat_val.items():
             if isinstance(tv, dict) and '$type' in tv:
-                full_key = f"{cat_key}/{comp}/{tk}"
+                full_key = f"{cat_key}/{tk}"
                 hex_v, alpha, chain = resolve_chain(full_key, light_flat, prim_flat)
                 dark_hex, dark_alpha, _ = resolve_chain(full_key, dark_flat, prim_flat)
-                tokens.append({
-                    'key': full_key, 'name': tk,
-                    'hex': hex_v, 'alpha': alpha,
-                    'darkHex': dark_hex, 'darkAlpha': dark_alpha,
-                    'chain': chain
-                })
+                tokens.append({'key': full_key, 'name': tk, 'hex': hex_v, 'alpha': alpha,
+                                'darkHex': dark_hex, 'darkAlpha': dark_alpha, 'chain': chain})
         if tokens:
-            l3_data[comp][cat_key] = tokens
+            l2_cats[cat_key] = tokens
 
-processed = {
-    'main_groups': main_groups,
-    'sem_groups': sem_groups,
-    'radius': radius,
-    'spacing': spacing,
-    'l2_cats': l2_cats,
-    'l3_data': l3_data
-}
+    l3_data = {}
+    for comp in ['bt', 'tag']:
+        l3_data[comp] = {}
+        for cat_key, cat_val in light_raw.items():
+            if cat_key == '$extensions' or not isinstance(cat_val, dict):
+                continue
+            comp_data = cat_val.get(comp)
+            if not comp_data or not isinstance(comp_data, dict):
+                continue
+            tokens = []
+            for tk, tv in comp_data.items():
+                if isinstance(tv, dict) and '$type' in tv:
+                    full_key = f"{cat_key}/{comp}/{tk}"
+                    hex_v, alpha, chain = resolve_chain(full_key, light_flat, prim_flat)
+                    dark_hex, dark_alpha, _ = resolve_chain(full_key, dark_flat, prim_flat)
+                    tokens.append({'key': full_key, 'name': tk, 'hex': hex_v, 'alpha': alpha,
+                                   'darkHex': dark_hex, 'darkAlpha': dark_alpha, 'chain': chain})
+            if tokens:
+                l3_data[comp][cat_key] = tokens
 
-out_path = os.path.join(BASE, 'tokens/processed.json')
-with open(out_path, 'w', encoding='utf-8') as f:
-    json.dump(processed, f, ensure_ascii=False, separators=(',', ':'))
+    processed = {'main_groups': main_groups, 'sem_groups': sem_groups,
+                 'radius': radius, 'spacing': spacing, 'l2_cats': l2_cats, 'l3_data': l3_data}
 
-size_kb = os.path.getsize(out_path) / 1024
-print(f"✓ 生成完成: tokens/processed.json ({size_kb:.1f} KB)")
-print(f"  L1: {len(main_groups)} 主色组, {len(sem_groups)} 功能色组")
-print(f"  L2: {len(l2_cats)} 语义分类, {sum(len(v) for v in l2_cats.values())} tokens")
-print(f"  L3: bt={sum(len(v) for v in l3_data['bt'].values())} tokens, tag={sum(len(v) for v in l3_data['tag'].values())} tokens")
+    out_path = os.path.join(token_dir, 'processed.json')
+    with open(out_path, 'w', encoding='utf-8') as f:
+        json.dump(processed, f, ensure_ascii=False, separators=(',', ':'))
+
+    size_kb = os.path.getsize(out_path) / 1024
+    print(f"✓ [{cfg['name']}] tokens/{app_id}/processed.json ({size_kb:.1f} KB)")
+    print(f"  L2: {len(l2_cats)} 类, {sum(len(v) for v in l2_cats.values())} tokens")
+
+
+target = sys.argv[1] if len(sys.argv) > 1 else None
+if target:
+    if target not in APPS:
+        print(f"❌ 未知 APP: {target}，可用: {', '.join(APPS.keys())}")
+        sys.exit(1)
+    generate(target)
+else:
+    for app_id in APPS:
+        generate(app_id)
+    print(f"\n✓ 全部 {len(APPS)} 个 APP 生成完成")

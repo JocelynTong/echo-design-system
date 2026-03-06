@@ -53,6 +53,11 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text'
 .header-name{font-size:17px;font-weight:700;letter-spacing:-.3px}
 .header-sub{font-size:11px;color:var(--text-3);letter-spacing:.2px}
 .header-right{display:flex;align-items:center;gap:8px}
+.app-switcher{display:flex;gap:2px;background:var(--bg-card2);border-radius:20px;padding:2px}
+.app-btn{padding:4px 12px;border-radius:16px;font-size:12px;font-weight:500;
+  border:none;background:none;cursor:pointer;color:var(--text-2);font-family:inherit;
+  transition:all .2s;white-space:nowrap}
+.app-btn.active{background:var(--bg-card);color:var(--accent);font-weight:700;box-shadow:var(--shadow)}
 .updated-dot{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--text-3)}
 .dot{width:6px;height:6px;border-radius:50%;background:#52BA5C}
 .theme-toggle{
@@ -365,6 +370,11 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text'
       <div class="header-sub">Figma Variables · 三级映射 Token</div>
     </div>
     <div class="header-right">
+      <div class="app-switcher">
+        <button class="app-btn active" onclick="switchApp('qiandao')">千岛</button>
+        <button class="app-btn" onclick="switchApp('linji')">临界</button>
+        <button class="app-btn" onclick="switchApp('qihuo')">奇货</button>
+      </div>
       <div class="updated-dot" id="updated-info"></div>
       <button class="theme-toggle" onclick="toggleTheme()">
         <span id="themeIcon">🌙</span>
@@ -556,7 +566,16 @@ const ROLE_LABELS={"solidColor":"实色文字","solidBg":"实色背景","color":
 const MAIN_LABELS={"primarypurple":"主紫色 Primary Purple","purplegray":"紫灰色 Purple Gray","neutral":"中性色 Neutral","white":"纯白 White"};
 const SEM_LABELS={"green":"成功绿 Green","turquoise":"青绿 Turquoise","zimablue":"天蓝 Zima Blue","blue":"蓝色 Blue","grape":"葡萄紫 Grape","pink":"粉色 Pink","red":"错误红 Red","orange":"警告橙 Orange","yellow":"黄色 Yellow","tendershoots":"嫩芽 Tender Shoots"};
 
-let DATA=null,isDark=false,currentTab='l1',currentL2Cat='all',currentComp='bt',currentL3Variant='all',l2SearchTerm='';
+let DATA=null,isDark=false,currentApp='qiandao',currentTab='l1',currentL2Cat='all',currentComp='bt',currentL3Variant='all',l2SearchTerm='';
+
+// ── App switcher ──
+function switchApp(app){
+  currentApp=app;
+  document.querySelectorAll('.app-btn').forEach(b=>b.classList.toggle('active',b.textContent==={'qiandao':'千岛','linji':'临界','qihuo':'奇货'}[app]));
+  currentL2Cat='all';l2SearchTerm='';currentL3Variant='all';
+  document.getElementById('loading').classList.remove('hide');
+  loadData();
+}
 
 // ── Principle toggle ──
 function togglePrinciple(){
@@ -568,7 +587,7 @@ function togglePrinciple(){
 
 // ── Load data ──
 async function loadData(){
-  const res=await fetch('tokens/processed.json?v='+Date.now());
+  const res=await fetch(`tokens/${currentApp}/processed.json?v=`+Date.now());
   if(!res.ok)throw new Error('load failed');
   DATA=await res.json();
   const lastMod=res.headers.get('last-modified');
