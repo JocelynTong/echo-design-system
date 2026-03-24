@@ -224,7 +224,7 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         if fkmap and tree.get('key'):
             vdata = fkmap.get(tree['key'])
             if vdata:
-                embed = vdata.get('embed_html')
+                embed = vdata.get('embed_html') or _css_to_embed(vdata.get('css'))
         ref = tree.get('ref', '')
         s = f' style="{style}"' if style else ''
         if embed:
@@ -285,6 +285,21 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
     return f'<div{s}>{children_html}</div>'
 
 
+def _css_to_embed(css):
+    """从 variant.css 字段派生简单的 embed_html（fallback，无手写 embed_html 时使用）。
+    只取 width / height / border-radius / background 生成占位 div。"""
+    if not css or not isinstance(css, dict):
+        return ''
+    props = {}
+    for k in ('width', 'height', 'border-radius', 'background'):
+        if k in css:
+            props[k] = css[k]
+    if not props:
+        return ''
+    style = ';'.join(f'{k}:{v}' for k, v in props.items())
+    return f'<div style="{style};flex-shrink:0"></div>'
+
+
 def auto_generate_tree_previews(components):
     """对有 _tree 但缺 preview_html 的 variant（非 _hidden），
     用 _tree_to_html 生成 _tree_preview_html（存入 components dict，不写 JSON）。
@@ -296,7 +311,7 @@ def auto_generate_tree_previews(components):
     for cdata in components.values():
         for vdata in (cdata.get('variants') or {}).values():
             fk = vdata.get('figma_key')
-            if fk and vdata.get('embed_html'):
+            if fk and (vdata.get('embed_html') or vdata.get('css')):
                 fkmap[fk] = vdata
 
     count = 0
