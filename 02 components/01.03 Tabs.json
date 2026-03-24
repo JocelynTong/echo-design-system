@@ -86,7 +86,8 @@
           "default": "False"
         }
       },
-      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+      "embed_html": "<div style=\"display:inline-flex;height:44px;padding:7px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
     },
     "CardTab": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -123,7 +124,8 @@
             "Unselected": "<div data-card-tabs style=\"display:inline-flex;align-items:flex-end;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) var(--Radius-Large,16px) 0 0\"><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">选项</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">选项</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">选项</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
           }
         }
-      }
+      },
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:16px;align-self:stretch\"><div style=\"width:16px;height:50px;border-radius:var(--Radius-Medium,12px) 0 0 0;background:var(--bg-1,#fff)\"></div></div><div style=\"display:flex;min-width:60px;min-height:40px;padding:4px 8px;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"width:28px;align-self:stretch;background:var(--bg-4,#ededf2)\"></div></div>"
     },
     "Echo": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -178,7 +180,8 @@
           ],
           "default": "Default"
         }
-      }
+      },
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">发现</span></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>"
     },
     "Basic_Large_on": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -238,7 +241,8 @@
         }
       },
       "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;height:44px;padding:7px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
     },
     "Basic_Large_on_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -285,7 +289,8 @@
         }
       ],
       "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;height:44px;padding:7px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
     },
     "Basic_Large_off": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -369,7 +374,8 @@
         }
       },
       "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;height:44px;padding:7px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Large_off_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -397,7 +403,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;height:44px;padding:7px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Normal_on": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -466,7 +473,8 @@
         }
       },
       "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;padding:4px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
     },
     "Basic_Normal_on_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -493,7 +501,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:4px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
     },
     "Basic_Normal_off": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -520,7 +529,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:4px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Normal_off_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -547,7 +557,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:4px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Small_on": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -607,7 +618,8 @@
         }
       },
       "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;padding:3px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
     },
     "Basic_Small_on_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -634,7 +646,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:3px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
     },
     "Basic_Small_off": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -661,7 +674,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:3px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Small_off_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -688,7 +702,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:3px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Mini_on": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -748,7 +763,8 @@
         }
       },
       "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;padding:2px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
     },
     "Basic_Mini_on_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -775,7 +791,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:2px 10px;justify-content:center;align-items:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">选中</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
     },
     "Basic_Mini_off": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -802,7 +819,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:2px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div>"
     },
     "Basic_Mini_off_Ghost": {
       "figma_name": "💙 01.02_Tabs / Basic",
@@ -829,7 +847,8 @@
         }
       ],
       "_hidden": true,
-      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>",
+      "embed_html": "<div style=\"display:inline-flex;padding:2px 10px;justify-content:center;align-items:center;gap:2px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">未选</span></div>"
     },
     "CardTab_on_First_Normal": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -853,7 +872,8 @@
         }
       ],
       "preview_html": "<div style=\"display:inline-flex;align-items:flex-start;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) var(--Radius-Large,16px) 0 0\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box;min-width:80px\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;padding-top:4px\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);box-sizing:border-box;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;padding-top:4px\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:16px;align-self:stretch\"><div style=\"width:16px;height:50px;border-radius:var(--Radius-Medium,12px) 0 0 0;background:var(--bg-1,#fff)\"></div></div><div style=\"display:flex;min-width:60px;min-height:40px;padding:4px 8px;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"width:28px;align-self:stretch;background:var(--bg-4,#ededf2)\"></div></div>"
     },
     "CardTab_on_Middle_Normal": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -876,7 +896,8 @@
           }
         }
       ],
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:28px;align-self:stretch;background:var(--bg-4,#ededf2)\"></div><div style=\"display:flex;min-width:60px;min-height:40px;padding:4px 8px;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"width:28px;align-self:stretch;background:var(--bg-4,#ededf2)\"></div></div>"
     },
     "CardTab_on_Last_Normal": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -899,7 +920,8 @@
           }
         }
       ],
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:28px;align-self:stretch;background:var(--bg-4,#ededf2)\"></div><div style=\"display:flex;min-width:60px;min-height:40px;padding:4px 8px;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"width:16px;align-self:stretch\"><div style=\"width:16px;height:50px;border-radius:0 var(--Radius-Medium,12px) 0 0;background:var(--bg-1,#fff)\"></div></div></div>"
     },
     "CardTab_off_First_Normal": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -923,7 +945,8 @@
         }
       ],
       "preview_html": "<div style=\"display:inline-flex;flex-direction:column;align-items:center;padding-top:4px\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px var(--Spacing-Large,16px);background:var(--bg-4,#ededf2);border-radius:var(--Radius-Large,16px) var(--Radius-Large,16px) 0 0;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;padding-top:4px;align-items:center\"><div style=\"display:flex;min-width:60px;min-height:36px;padding:3px 16px;flex-direction:column;justify-content:center;align-items:center;border-radius:var(--Radius-Large,16px) 0 0 0;background:var(--bg-4,#ededf2)\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
     },
     "CardTab_off_Middle_Normal": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -946,7 +969,8 @@
           }
         }
       ],
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;padding-top:4px;align-items:center\"><div style=\"display:flex;min-width:60px;min-height:36px;padding:3px 16px;flex-direction:column;justify-content:center;align-items:center;border-radius:0 0 0 0;background:var(--bg-4,#ededf2)\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
     },
     "CardTab_off_Last_Normal": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -969,7 +993,8 @@
           }
         }
       ],
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;padding-top:4px;align-items:center\"><div style=\"display:flex;min-width:60px;min-height:36px;padding:3px 16px;flex-direction:column;justify-content:center;align-items:center;border-radius:0 var(--Radius-Large,16px) 0 0;background:var(--bg-4,#ededf2)\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
     },
     "CardTab_on_First_Mini": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -980,7 +1005,8 @@
         "align-items": "center",
         "backdrop-filter": "blur(4px)"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:10px;align-self:stretch\"><div style=\"width:10px;height:32px;border-radius:var(--Radius-Normal,8px) 0 0 0;background:var(--bg-1,#fff)\"></div></div><div style=\"display:flex;min-width:24px;min-height:32px;padding:4px 0;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 12px/18px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span></div><div style=\"width:16px;align-self:stretch;background:var(--bg-1,#fff)\"></div></div>"
     },
     "CardTab_on_Middle_Mini": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -991,7 +1017,8 @@
         "align-items": "center",
         "backdrop-filter": "blur(4px)"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:16px;align-self:stretch;background:var(--bg-1,#fff)\"></div><div style=\"display:flex;min-width:24px;min-height:32px;padding:4px 0;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 12px/18px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span></div><div style=\"width:16px;align-self:stretch;background:var(--bg-1,#fff)\"></div></div>"
     },
     "CardTab_on_Last_Mini": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -1002,7 +1029,8 @@
         "align-items": "center",
         "backdrop-filter": "blur(4px)"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;align-items:center\"><div style=\"width:16px;align-self:stretch;background:var(--bg-1,#fff)\"></div><div style=\"display:flex;min-width:24px;min-height:32px;padding:4px 0;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 12px/18px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span></div><div style=\"width:10px;align-self:stretch\"><div style=\"width:10px;height:32px;border-radius:0 var(--Radius-Normal,8px) 0 0;background:var(--bg-1,#fff)\"></div></div></div>"
     },
     "CardTab_off_First_Mini": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -1016,7 +1044,8 @@
         "align-items": "center",
         "border-radius": "8px 8px 0 0"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;height:32px;padding:0 12px;justify-content:center;align-items:center;border-radius:8px 8px 0 0\"><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span></div>"
     },
     "CardTab_off_Middle_Mini": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -1030,7 +1059,8 @@
         "align-items": "center",
         "border-radius": "8px 8px 0 0"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;height:32px;padding:0 12px;justify-content:center;align-items:center;border-radius:8px 8px 0 0\"><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span></div>"
     },
     "CardTab_off_Last_Mini": {
       "figma_name": "💙 01.02_CardTab/Basic",
@@ -1044,7 +1074,8 @@
         "align-items": "center",
         "border-radius": "8px 8px 0 0"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:inline-flex;height:32px;padding:0 12px;justify-content:center;align-items:center;border-radius:8px 8px 0 0\"><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span></div>"
     },
     "Echo_DefaultDark_Large_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1085,14 +1116,16 @@
           "default": "False"
         }
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">发现</span></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>"
     },
     "Echo_DefaultDark_Large_none_Ghost": {
       "figma_name": "💙 01.02_Tabs / Echo",
       "figma_key": "3ad1b17ce59fda5e48761582c84d60607104d117",
       "desc": "className=DefaultGhost, Size=Large — Ghost 版（深色背景）",
       "_hidden": true,
-      "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span></div></div></div>"
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span></div></div></div>",
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">发现</span></div></div></div>"
     },
     "Echo_DefaultDark_Normal_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1122,7 +1155,8 @@
           }
         }
       ],
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">发现</span></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>"
     },
     "Echo_DefaultDark_Small_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1135,7 +1169,8 @@
         "justify-content": "flex-end",
         "align-items": "flex-start"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">发现</span></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>"
     },
     "Echo_DefaultDark_Mini_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1148,7 +1183,8 @@
         "justify-content": "flex-end",
         "align-items": "flex-start"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:rgba(0,0,0,.4);white-space:nowrap\">发现</span></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>"
     },
     "Echo_DefaultGhost_Large_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1163,7 +1199,8 @@
         "background": "var(--warning-solidBg, #FC7E22)"
       },
       "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end;background:var(--secondary-solid-bg,#2b263b)\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span></div></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">发现</span></div></div></div>"
     },
     "Echo_DefaultGhost_Normal_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1177,7 +1214,8 @@
         "align-items": "flex-start",
         "background": "var(--warning-solidBg, #FC7E22)"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">发现</span></div></div></div>"
     },
     "Echo_DefaultGhost_Small_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1191,7 +1229,8 @@
         "align-items": "flex-start",
         "background": "var(--warning-solidBg, #FC7E22)"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">发现</span></div></div></div>"
     },
     "Echo_DefaultGhost_Mini_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1205,7 +1244,8 @@
         "align-items": "flex-start",
         "background": "var(--warning-solidBg, #FC7E22)"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:rgba(255,255,255,.64);white-space:nowrap\">发现</span></div></div></div>"
     },
     "Echo_Tag_Mini_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1231,7 +1271,8 @@
           }
         }
       ],
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;width:375px;padding:0 10px;align-items:center\"><div style=\"display:flex;align-items:flex-start;gap:8px;flex-shrink:0\"><span style=\"display:inline-flex;height:24px;padding:3px 6px;align-items:center;border-radius:4px;background:var(--primary-tag-soft-bg,#F2F0FF);font:500 12px/18px 'PingFang SC',sans-serif;color:var(--primary-tag-color,#7C66FF);white-space:nowrap\">最近结拍</span><span style=\"display:inline-flex;height:24px;padding:3px 6px;align-items:center;border-radius:4px;background:var(--default-tag-soft-bg,rgba(0,0,0,.04));font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">最新发布</span><span style=\"display:inline-flex;height:24px;padding:3px 6px;align-items:center;border-radius:4px;background:var(--default-tag-soft-bg,rgba(0,0,0,.04));font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">最低价格</span></div></div>"
     },
     "Echo_Text_Mini_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1244,7 +1285,8 @@
         "align-items": "center",
         "gap": "12px"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;width:375px;padding:0 10px;align-items:center;gap:12px\"><span style=\"font:500 12px/18px 'PingFang SC',sans-serif;color:var(--primary-text-color,#7C66FF);white-space:nowrap\">最近结拍</span><div style=\"width:1px;height:12px;background:var(--border-1,rgba(0,0,0,.08));flex-shrink:0\"></div><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">最新发布</span><div style=\"width:1px;height:12px;background:var(--border-1,rgba(0,0,0,.08));flex-shrink:0\"></div><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">最低价格</span></div>"
     },
     "Echo_CardDefault_Normal_2": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1256,7 +1298,8 @@
         "align-items": "center"
       },
       "preview_html": "<div style=\"display:flex;align-items:center;width:375px\"><div style=\"display:flex;flex:1;align-items:center;backdrop-filter:blur(4px);overflow:hidden\"><div style=\"width:16px;height:50px;border-radius:var(--Radius-Medium,12px) 0 0 0;background:var(--bg-1,#fff);flex-shrink:0\"></div><div style=\"flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:var(--Spacing-Small,4px) var(--Spacing-Normal,8px);background:var(--bg-1,#fff);box-sizing:border-box\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">为啥选这个</span></div><div style=\"width:28px;height:50px;background:var(--bg-4,#ededf2);flex-shrink:0\"></div></div><div style=\"display:flex;flex:1;align-items:center;padding-top:4px\"><div style=\"flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px var(--Spacing-Large,16px);background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">为啥选这个</span></div></div></div>",
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;width:375px;align-items:flex-end\"><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;margin-top:4px;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
     },
     "Echo_CardDefault_Normal_3": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1267,7 +1310,8 @@
         "width": "375px",
         "align-items": "center"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;width:375px;align-items:flex-end\"><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;margin-top:4px;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;margin-top:4px;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
     },
     "Echo_CardDefault_Normal_gt3": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1278,7 +1322,8 @@
         "width": "375px",
         "align-items": "center"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;width:375px;align-items:flex-end\"><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;margin-top:4px;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;margin-top:4px;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;margin-top:4px;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
     },
     "Echo_CardDefault_Mini_none": {
       "figma_name": "💙 01.02_Tabs / Echo",
@@ -1289,7 +1334,8 @@
         "width": "375px",
         "align-items": "center"
       },
-      "_hidden": true
+      "_hidden": true,
+      "embed_html": "<div style=\"display:flex;width:375px;align-items:flex-end\"><div style=\"display:inline-flex;align-items:center\"><div style=\"width:10px;align-self:stretch\"><div style=\"width:10px;height:32px;border-radius:8px 0 0 0;background:var(--bg-1,#fff)\"></div></div><div style=\"display:flex;min-width:24px;min-height:32px;padding:4px 0;flex-direction:column;justify-content:center;align-items:center;background:var(--bg-1,#fff)\"><span style=\"font:500 12px/18px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span></div></div><div style=\"display:inline-flex;height:32px;padding:0 12px;justify-content:center;align-items:center;border-radius:8px 8px 0 0\"><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span></div><div style=\"display:inline-flex;height:32px;padding:0 12px;justify-content:center;align-items:center;border-radius:8px 8px 0 0\"><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span></div></div>"
     }
   }
 }
