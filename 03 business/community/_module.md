@@ -8,7 +8,9 @@
 ## 组件索引
 
 <!-- AUTO-GENERATED FROM JSON - DO NOT EDIT -->
-_暂无组件 JSON（等待 Figma 插件导出）_
+- `islands.json` — 千岛社区业务组件集合，包含 Island 详情页布局组件、格子/滑动/固钉入口组件、广告卡片等。👻 前缀表示业务级组件。 · key: `b73b34e01e12a1637a206752cb7fad018de6349f`
+- `mark-20260127.json` — Mark 展示组件（发布侧），展示 SPU 标记信息行，含评分、数量、重量、价格、渠道等结构化属性及编辑入口 · key: `f7237a1690352d70ab75b96d3268cb2a07006488`
+- `post-published.json` — 帖子发布页业务组件集合，包含分区选择、商品标记、图片上传、正文编辑等发布流程组件。 · key: `f439ddc032c2b117bd6a311c1deceb214c16092b`
 <!-- END AUTO-GENERATED -->
 
 ---
@@ -123,6 +125,38 @@ _暂无组件 JSON（等待 Figma 插件导出）_
 | `👻 Post / Comments · Default` | `5b3fe9d88dd39248b843fb8635dbc642b3d572ff` |
 | `👻 Post / Comments · Empty` | `3a7f143be35176e5f0fae92ec31acf62add9b059` |
 | `CommentInfo20260118`（底部互动栏） | `ad544c67ed0ecc59e1879c3a1176ce9e689af85e` |
+
+### 帖子发布页（post-published）
+
+> Key 表来源：Figma「02_业务组件_👻_社区」页面，2026-03-23 录入。
+> 对应文件：`03 business/community/post-published.json`
+
+| 组件名 | Figma Key | 说明 |
+|--------|-----------|------|
+| `👻 Post Published / Islands` | `f439ddc032c2b117bd6a311c1deceb214c16092b` | 分区选择行，展示当前选中分区 Tag 和可切换的其他分区 |
+| `👻 Post Published / Mark` | `f82d8fcf45ec186c80c82a32a9442bcdb0ebfaf9` | 商品标记行，展示已关联商品的标记摘要（SPU 缩图 + 属性统计 + 编辑入口） |
+| `👻 Post Published / Rating` | `4df546927d62bb3749c7058afe4869b3e116a8cf` | 评分输入行，在支持评分的分区（如演出、室内娱乐）下展示 |
+| `👻 Post Published / Attachments` | `ba498f1f9aac854f0fe2f24a0191df475aa5ae4a` | 图片/视频上传区，展示已上传缩略图（96×96）和添加按钮 |
+| `👻 Post Published / Topic` | `dc454af04d1e0caced45201ba92e2063e9752d31` | 标题输入框（选填），Input_Line 样式，底部下划线，高度 44px |
+| `👻 Post Published / Contents` | `e92961889aa5e469eaa4fb4080afeee55048e272` | 正文输入区，固定高度 208px，左侧带紫色光标线 |
+| `👻 01.05 Tab Bar / APP / Tab / 3Tabs` | `3760b867389f7ddf6e614d254d65e6f32eb1820b` | 发布页底部 3 Tab 栏（👻 业务级），对应图片/视频/投票发布模式切换 |
+| `👻 Post / Header` | `cb0eab1b81a0a45d20a3bb1bb935dc5a78149dce` | 发布页 NavBar：返回键 + 发布目的地（Island 缩图 + 名称）+ 发布按钮 |
+| `👻 Post Published / Tools251127` | `527383e3d84041c1f92c706096623e1cd8064173` | 底部工具栏：字数统计、权限按钮、关联 SPU 行、地点标签、键盘快捷操作行 |
+
+---
+
+### Mark 20260127（发布侧标记组件）
+
+> Key 表来源：Figma「02_业务组件_👻_社区」页面，2026-03-23 录入。
+> 对应文件：`03 business/community/mark-20260127.json`
+
+| 组件名 | Figma Key | 说明 |
+|--------|-----------|------|
+| `👻 Mark 20260127` [COMPONENT_SET] | `f7237a1690352d70ab75b96d3268cb2a07006488` | 发布侧 Mark 组件集合 |
+| `👻 Mark 20260127` · Type=SingleMark | `23b5c7b8dd644848722be90c5355b61a2f3a4e54` | 单 SPU 标记行：缩图 + 名称 + 评分/数量/重量/价格/渠道等属性 + 编辑按钮 |
+| `👻 Mark 20260127` · Type=MultipleMarks | `ffeec7bae9c1a5c6402f03ef8c95bbc3e717735a` | 多 SPU 缩图列表行：横向展示多个 SPU 缩图（≤3），后接省略标记 |
+
+---
 
 ### 首页 Feed
 

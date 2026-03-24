@@ -1,0 +1,374 @@
+{
+  "component": "👻 Post Published",
+  "figma_page": "02_业务组件_👻_社区",
+  "figma_file": "uXywt7Ca6AR4dNm7f3zR7d",
+  "figma_key": "f439ddc032c2b117bd6a311c1deceb214c16092b",
+  "status_bar": "normal",
+  "description": "帖子发布页业务组件集合，包含分区选择、商品标记、图片上传、正文编辑等发布流程组件。",
+  "usage_rules": [
+    "Islands 为分区选择行，使用 FormItem + Tag 列表展示可选分区",
+    "Mark 展示已关联商品的标记摘要，点击可跳转填写详细标记信息",
+    "Rating 为评分行，仅在支持评分的分区下显示",
+    "Attachments 为图片/视频上传区，展示已上传缩略图（96×96）和添加占位格",
+    "Topic 为标题输入框（选填），Input_Line 样式，高度 44px",
+    "Contents 为正文输入区，固定高度 208px，带紫色光标线",
+    "Tab3Tabs 为发布页 3 Tab 栏（👻 业务级，非系统 💙 TabBar）",
+    "Tools251127 为底部工具栏复合组件，包含字数统计、权限、SPU 关联、地点、键盘快捷操作"
+  ],
+  "variants": {
+    "Islands": {
+      "figma_name": "👻 Post Published / Islands",
+      "desc": "分区选择行，展示当前选中分区 Tag 和可切换的其他分区",
+      "figma_key": "f439ddc032c2b117bd6a311c1deceb214c16092b",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "padding": "0 10px",
+          "flex-direction": "column",
+          "align-items": "flex-start",
+          "align-self": "stretch"
+        },
+        "children": [
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "align-items": "center",
+              "gap": "16px",
+              "align-self": "stretch"
+            },
+            "ref": "💙 02.01_FormItem",
+            "key": "05acafaf7dee30ac55beb545f1d8fb963d789a14"
+          },
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "width": "355px",
+              "flex-direction": "column",
+              "align-items": "flex-end"
+            },
+            "ref": "💙 02.11_Tips",
+            "key": "fd001818ae5d6788cbc8f2c6ae927a1e1ef2890b"
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;align-items:flex-start;padding:0 10px;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:flex;gap:16px;align-items:center;width:100%;height:44px\"><div style=\"width:28px;display:flex;align-items:center;flex-shrink:0\"><span style=\"font:var(--font-b5,400 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#2B263B)\">分区</span></div><div style=\"display:flex;flex:1;gap:8px;align-items:flex-start;height:44px;padding:8px 0;overflow:hidden\"><span style=\"display:inline-flex;align-items:center;height:28px;padding:0 8px;border-radius:6px;background:#f2f0ff;font:var(--font-h6,500 12px/18px 'PingFang SC',sans-serif);color:#7c66ff;white-space:nowrap;flex-shrink:0\">卡面讨论</span><span style=\"display:inline-flex;align-items:center;height:28px;padding:0 8px;border-radius:6px;background:rgba(0,0,0,.04);font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:rgba(0,0,0,.64);white-space:nowrap;flex-shrink:0\">新品速递</span><span style=\"display:inline-flex;align-items:center;height:28px;padding:0 8px;border-radius:6px;background:rgba(0,0,0,.04);font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:rgba(0,0,0,.64);white-space:nowrap;flex-shrink:0\">现货晒图</span></div></div><div style=\"width:355px\"><p style=\"font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:rgba(0,0,0,.4);margin:0\"><span style=\"font-weight:500;color:var(--text-1,#2B263B)\">Tips</span>｜推荐视频比例为9:16或3:4，获得出色观看体验</p></div></div>"
+    },
+    "Mark": {
+      "figma_name": "👻 Post Published / Mark",
+      "desc": "商品标记行，展示已关联商品的标记摘要（SPU 缩图 + 属性统计 + 编辑入口）",
+      "figma_key": "f82d8fcf45ec186c80c82a32a9442bcdb0ebfaf9",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "gap": "10px",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "padding": "0 10px",
+          "flex-direction": "column",
+          "align-items": "flex-start",
+          "gap": "10px",
+          "align-self": "stretch"
+        },
+        "children": [
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "padding": "var(--Spacing-Normal, 8px)",
+              "align-items": "center",
+              "gap": "4px",
+              "align-self": "stretch",
+              "border-radius": "var(--Radius-Normal, 8px)",
+              "background": "var(--bg-2, #F7F7F9)"
+            },
+            "ref": "👻 Mark 20260127",
+            "key": "23b5c7b8dd644848722be90c5355b61a2f3a4e54"
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;align-items:flex-start;padding:0 10px;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:flex;gap:4px;align-items:center;padding:8px;background:var(--bg-2,#f7f7f9);border-radius:8px;width:100%;box-sizing:border-box\"><div style=\"display:flex;flex:1;gap:4px;align-items:center;overflow:hidden;min-width:0\"><span style=\"font:var(--font-h6,500 12px/18px 'PingFang SC',sans-serif);color:var(--text-1,#2B263B);white-space:nowrap;flex-shrink:0\">拥有</span><div style=\"width:24px;height:32px;background:var(--bg-3,#eee);border-radius:4px;flex-shrink:0\"></div><div style=\"display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;min-width:0\"><p style=\"font:500 10px/11px 'PingFang SC',sans-serif;color:var(--text-1,#2B263B);margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap\">SPUSPUSPUSPUSPUSPU</p><div style=\"display:flex;gap:6px;align-items:center;overflow:hidden\"><span style=\"font:400 10px/11px 'PingFang SC',sans-serif;color:rgba(0,0,0,.64);white-space:nowrap\">数量 <b style=\"color:var(--text-1,#2B263B);font-weight:500\">9个</b></span><span style=\"font:400 10px/11px 'PingFang SC',sans-serif;color:rgba(0,0,0,.64);white-space:nowrap\">价格 <b style=\"color:var(--text-1,#2B263B);font-weight:500\">¥9</b></span><span style=\"font:400 10px/11px 'PingFang SC',sans-serif;color:rgba(0,0,0,.64);white-space:nowrap\">渠道 <b style=\"color:var(--text-1,#2B263B);font-weight:500\">淘宝</b></span></div></div></div><div style=\"width:28px;height:28px;background:rgba(217,74,78,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0\"><i class=\"KurilIcons kuril-edit\" style=\"font-size:12px;color:rgba(217,74,78,1)\"></i></div></div></div>"
+    },
+    "Rating": {
+      "figma_name": "👻 Post Published / Rating",
+      "desc": "评分输入行，在支持评分的分区（如演出、室内娱乐）下展示",
+      "figma_key": "4df546927d62bb3749c7058afe4869b3e116a8cf",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "padding": "0 10px",
+          "flex-direction": "column",
+          "align-items": "flex-start",
+          "align-self": "stretch"
+        },
+        "children": [
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "width": "274px",
+              "align-items": "center",
+              "gap": "8px"
+            },
+            "ref": "💙 02.13_Rate / Large Size",
+            "key": "be41a0d016b9594075ac71de296d771de92a845e"
+          },
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "padding": "var(--Spacing-Normal, 8px)",
+              "align-items": "center",
+              "gap": "var(--Spacing-Small, 4px)",
+              "align-self": "stretch",
+              "border-radius": "var(--Radius-Normal, 8px)",
+              "background": "var(--bg-2, #F7F7F9)"
+            },
+            "ref": "👻 Mark 20251222",
+            "key": "d3f8a5e4c314b97af75f9e515e14f7db7859a7d2"
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;padding:0 10px;flex-direction:column;align-items:flex-start;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"font:var(--font-b5,400 14px/22px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40));white-space:nowrap;flex-shrink:0\">轻点评分：</span><div style=\"display:flex;flex-direction:column;align-items:center;gap:var(--Spacing-Mini,2px)\"><div style=\"display:flex;align-items:flex-start;gap:8px\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i></div><div style=\"display:flex;align-items:flex-start;gap:var(--Spacing-Small,4px)\"><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">避雷</span><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">差</span><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">一般</span><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">推荐</span><span style=\"width:36px;text-align:center;font:var(--font-h6,500 12px/18px 'PingFang SC',sans-serif);color:var(--warning-text-color,#FC7E22)\">力荐</span></div></div></div><div style=\"display:flex;padding:8px;align-items:center;gap:4px;align-self:stretch;border-radius:8px;background:var(--bg-2,#F7F7F9)\"><div style=\"display:flex;flex:1;gap:4px;align-items:center;overflow:hidden;min-width:0\"><span style=\"font:var(--font-h6,500 12px/18px 'PingFang SC',sans-serif);color:var(--text-1,#2B263B);white-space:nowrap;flex-shrink:0\">拥有</span><div style=\"width:24px;height:32px;background:var(--bg-3,#eee);border-radius:4px;flex-shrink:0\"></div><div style=\"display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;min-width:0\"><p style=\"font:500 10px/11px 'PingFang SC',sans-serif;color:var(--text-1,#2B263B);margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap\">SPUSPUSPUSPUSPUSPU</p><div style=\"display:flex;gap:6px;align-items:center\"><span style=\"font:400 10px/11px 'PingFang SC',sans-serif;color:rgba(0,0,0,.64);white-space:nowrap\">数量 <b style=\"color:var(--text-1,#2B263B)\">9个</b></span><span style=\"font:400 10px/11px 'PingFang SC',sans-serif;color:rgba(0,0,0,.64);white-space:nowrap\">价格 <b style=\"color:var(--text-1,#2B263B)\">¥9</b></span></div></div></div><div style=\"width:28px;height:28px;background:rgba(217,74,78,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0\"><i class=\"KurilIcons kuril-edit\" style=\"font-size:12px;color:rgba(217,74,78,1)\"></i></div></div></div>"
+    },
+    "Attachments": {
+      "figma_name": "👻 Post Published / Attachments",
+      "desc": "图片/视频上传区，展示已上传缩略图（96×96）和添加按钮",
+      "figma_key": "ba498f1f9aac854f0fe2f24a0191df475aa5ae4a",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "align-items": "flex-start",
+        "gap": "8px",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "padding": "0 10px",
+          "align-items": "flex-start",
+          "gap": "8px",
+          "align-self": "stretch"
+        },
+        "children": [
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "align-items": "flex-start",
+              "gap": "8px",
+              "flex": "1 0 0"
+            },
+            "ref": "💙 02.12_Upload / Cover",
+            "key": "14f81cf404c92d16e4a0d61afe8f3b1402ba3735"
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;align-items:flex-start;padding:0 10px;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:flex;gap:8px;align-items:flex-start\"><div style=\"width:96px;height:96px;border-radius:8px;background:var(--bg-3,#e8e8ee);border:0.5px solid rgba(0,0,0,.08);position:relative;flex-shrink:0;overflow:hidden\"><div style=\"position:absolute;top:0;right:0;width:36px;height:36px;background:rgba(0,0,0,.64);border-radius:0 8px 0 8px;display:flex;align-items:center;justify-content:center\"><i class=\"KurilIcons kuril-close\" style=\"font-size:14px;color:#fff\"></i></div></div><div style=\"width:96px;height:96px;border-radius:8px;background:var(--bg-3,#e8e8ee);border:0.5px solid rgba(0,0,0,.08);position:relative;flex-shrink:0;overflow:hidden\"><div style=\"position:absolute;top:0;right:0;width:36px;height:36px;background:rgba(0,0,0,.64);border-radius:0 8px 0 8px;display:flex;align-items:center;justify-content:center\"><i class=\"KurilIcons kuril-close\" style=\"font-size:14px;color:#fff\"></i></div></div><div style=\"width:96px;height:96px;border-radius:8px;border:1px dashed rgba(0,0,0,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0\"><i class=\"KurilIcons kuril-plus_circle\" style=\"font-size:24px;color:rgba(0,0,0,.4)\"></i><span style=\"font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:rgba(0,0,0,.4)\">上传图片</span></div></div></div>"
+    },
+    "Topic": {
+      "figma_name": "👻 Post Published / Topic",
+      "desc": "标题输入框（选填），Input_Line 样式，底部下划线，高度 44px",
+      "figma_key": "dc454af04d1e0caced45201ba92e2063e9752d31",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "align-items": "flex-start",
+        "gap": "8px",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "padding": "0 10px",
+          "align-items": "flex-start",
+          "gap": "8px",
+          "align-self": "stretch"
+        },
+        "children": [
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "flex-direction": "column",
+              "align-items": "center",
+              "gap": "2px",
+              "flex": "1 0 0"
+            },
+            "ref": "💙 02.03_Input_Line",
+            "key": "f69d0e289ff5bbc72d1f96a6775da43d477be599"
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;align-items:flex-start;padding:0 10px;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:flex;flex-direction:column;flex:1;gap:2px;align-items:stretch\"><div style=\"display:flex;gap:8px;height:44px;align-items:center;padding:11px 0;width:100%;position:relative\"><p style=\"flex:1;font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:rgba(0,0,0,.4);margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap\">填写标题（选填）</p><div style=\"position:absolute;bottom:2px;left:0;right:0;height:1px;background:rgba(0,0,0,.08)\"></div></div></div></div>"
+    },
+    "Contents": {
+      "figma_name": "👻 Post Published / Contents",
+      "desc": "正文输入区，固定高度 208px，左侧带紫色光标线",
+      "figma_key": "e92961889aa5e469eaa4fb4080afeee55048e272",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "align-items": "flex-start",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "padding": "0 10px",
+          "align-items": "flex-start",
+          "align-self": "stretch"
+        },
+        "children": [
+          {
+            "type": "FRAME",
+            "css": {
+              "display": "flex",
+              "flex-direction": "column",
+              "align-items": "flex-start",
+              "flex": "1 0 0",
+              "align-self": "stretch"
+            },
+            "children": [
+              {
+                "type": "TEXT",
+                "css": {
+                  "height": "208px",
+                  "align-self": "stretch",
+                  "color": "var(--text-3, rgba(0, 0, 0, 0.40))",
+                  "font-family": "\"PingFang SC\"",
+                  "font-size": "16px",
+                  "font-weight": "400",
+                  "line-height": "26px"
+                },
+                "text": "这一刻，想说点什么…"
+              }
+            ]
+          },
+          {
+            "type": "RECTANGLE",
+            "css": {
+              "width": "2px",
+              "height": "24px",
+              "position": "absolute",
+              "left": "10px",
+              "background": "var(--primary-solidBg, #7C66FF)"
+            }
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;align-items:flex-start;padding:0 10px;width:375px;box-sizing:border-box;background:var(--bg-1,#fff);overflow:hidden;position:relative\"><div style=\"flex:1;position:relative\"><p style=\"font:var(--font-b4,400 16px/26px 'PingFang SC',sans-serif);color:rgba(0,0,0,.4);height:208px;margin:0;width:100%\">这一刻，想说点什么…</p></div><div style=\"position:absolute;left:10px;top:0;width:2px;height:24px;background:var(--primary-solidbg,#7c66ff)\"></div></div>"
+    },
+    "Tab3Tabs": {
+      "figma_name": "👻 01.05 Tab Bar / APP / Tab / 3Tabs",
+      "desc": "发布页底部 3 Tab 栏（👻 业务级），对应图片/视频/投票发布模式切换",
+      "figma_key": "3760b867389f7ddf6e614d254d65e6f32eb1820b",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "height": "48px",
+        "padding-bottom": "9px",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "8px"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "width": "375px",
+          "height": "48px",
+          "padding-bottom": "9px",
+          "flex-direction": "column",
+          "align-items": "center",
+          "gap": "8px"
+        },
+        "children": [
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "width": "375px",
+              "height": "1px",
+              "padding-top": "0.5px",
+              "flex-direction": "column",
+              "align-items": "flex-start",
+              "gap": "10px",
+              "flex-shrink": "0"
+            },
+            "ref": "💙 00.06_Divider / 0.5px",
+            "key": "586dc76f209fcb0ee184ec315b7830c9432fde1c"
+          },
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "width": "355px",
+              "flex-direction": "column",
+              "justify-content": "flex-end",
+              "align-items": "center"
+            },
+            "ref": "💙 01.02_Tabs / Echo",
+            "key": "1aa866b3dcf60c27913f6b01a34c0f28f6cae456"
+          }
+        ]
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;height:48px;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"width:100%;height:0.5px;background:rgba(0,0,0,.08);flex-shrink:0\"></div><div style=\"flex:1;display:flex;justify-content:center;align-items:center;gap:40px\"><div style=\"padding:3px 10px\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:rgba(0,0,0,.4)\">出售</span></div><div style=\"padding:3px 10px;position:relative\"><div style=\"position:absolute;top:0;left:50%;transform:translateX(-50%);width:4px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7c66ff)\"></div><span style=\"font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:var(--text-1,#2B263B)\">发帖</span></div><div style=\"padding:3px 10px\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:rgba(0,0,0,.4)\">模板</span></div></div></div>"
+    },
+    "Header": {
+      "figma_name": "👻 Post / Header",
+      "_hidden": true,
+      "desc": "发布页 NavBar：返回键 + 发布目的地（Island 缩图 + 名称）+ 发布按钮",
+      "figma_key": "cb0eab1b81a0a45d20a3bb1bb935dc5a78149dce",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "height": "44px",
+        "flex-direction": "column",
+        "align-items": "flex-start"
+      },
+      "props": {}
+    },
+    "Tools251127": {
+      "figma_name": "👻 Post Published / Tools251127",
+      "_hidden": true,
+      "desc": "底部工具栏：字数统计、权限按钮、关联 SPU 行、地点标签、键盘快捷操作行",
+      "figma_key": "527383e3d84041c1f92c706096623e1cd8064173",
+      "css": {},
+      "props": {}
+    }
+  }
+}

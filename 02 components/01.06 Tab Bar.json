@@ -1,0 +1,32 @@
+{
+  "component": "Tab Bar",
+  "figma_page": "01.06 Tab Bar",
+  "figma_page_id": "50861:163874",
+  "description": "底部导航栏，固定在页面底部，用于 App 一级导航切换。内容社区标准配置为 5 个 Tab。",
+  "usage_rules": [
+    "仅用于 App 最顶层一级页面切换，不用于二级页面",
+    "Tab 激活态用 text/3（强调色），未激活用 icon/disabled",
+    "Badge 角标叠加在 Tab 图标右上角，用 error/solidBg",
+    "底部需处理 Home Indicator 安全区域（iOS 底部 34px）"
+  ],
+  "variants": {
+    "5Tabs": {
+      "figma_name": "💙 01.05 Tab Bar / APP / 5Tabs",
+      "desc": "5 个 Tab 的标准底部导航，内容社区标配（首页/发现/发布/消息/我的）",
+      "props": {},
+      "tokens_used": {
+        "color": ["bg/3", "text/3", "icon/disabled", "error/solidBg", "white/border", "white/textColor", "border/1"],
+        "spacing": [],
+        "radius": []
+      },
+      "tab_items": [
+        { "label": "首页", "icon": "home", "kuril": "kuril-discover", "active_token": "text/3", "inactive_token": "icon/disabled" },
+        { "label": "发现", "icon": "discovery", "kuril": "kuril-all", "active_token": "text/3", "inactive_token": "icon/disabled" },
+        { "label": "发布", "icon": "publish", "kuril": "kuril-plus_circle_filled", "note": "中间发布按钮，通常用 FAB 或特殊样式" },
+        { "label": "消息", "icon": "message", "kuril": "kuril-message", "active_token": "text/3", "inactive_token": "icon/disabled" },
+        { "label": "我的", "icon": "profile", "kuril": "kuril-me_account", "active_token": "text/3", "inactive_token": "icon/disabled" }
+      ],
+      "preview_html": "<div style=\"width:375px;height:48px;display:flex;align-items:center;background:var(--bg-1,#fff);border-top:1px solid var(--border-1,rgba(0,0,0,.08));flex-shrink:0\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:1\"><i class=\"KurilIcons kuril-discover\" style=\"font-size:22px;color:var(--primary-solid-bg,#7c66ff)\"></i><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--primary-solid-bg,#7c66ff)\">岛</span></div><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:1\"><i class=\"KurilIcons kuril-all\" style=\"font-size:22px;color:var(--icon-3,#918b9f)\"></i><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--icon-3,#918b9f)\">发现</span></div><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:1\"><i class=\"KurilIcons kuril-plus_circle_filled\" style=\"font-size:22px;color:var(--icon-3,#918b9f)\"></i><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--icon-3,#918b9f)\">发布</span></div><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:1\"><i class=\"KurilIcons kuril-message\" style=\"font-size:22px;color:var(--icon-3,#918b9f)\"></i><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--icon-3,#918b9f)\">消息</span></div><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:1\"><i class=\"KurilIcons kuril-me_account\" style=\"font-size:22px;color:var(--icon-3,#918b9f)\"></i><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--icon-3,#918b9f)\">我的</span></div></div>"
+    }
+  }
+}

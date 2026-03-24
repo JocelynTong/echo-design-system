@@ -1,0 +1,8 @@
+#!/bin/zsh
+# 截图 — 批量抓取 Figma 组件预览图
+# 用法：
+#   ./截图           # 补全缺失的 preview_html
+#   ./截图 --force   # 强制刷新所有
+
+cd "$(dirname "$0")"
+python3 generate.py 截图 "$@"

@@ -10,7 +10,6 @@
   "description": "按钮组件，覆盖全局所有可交互按钮场景。主按钮支持多色系、四种形态和五种尺寸；辅助子类型覆盖图标按钮、FAB、浮动购物车等特殊场景。",
   "usage_rules": [
     "00.08_Button 为主按钮，支持 8 种颜色 × 4 种形态 × 5 种尺寸，优先使用",
-    "QH（起号）仅限单品牌色场景，无 Color 属性，用于品牌强调",
     "MH（多彩）支持 Primary/Secondary 两色，历史沿用，新场景建议改用 00.08_Button",
     "FAB 固定 56×56px，用于页面全局主浮动操作",
     "Icon 仅包含图标无文字，用于工具栏、操作列表的图标入口",
@@ -148,8 +147,8 @@
       },
       "tokens_used": {
         "solid_bg": {
-          "Primary": "var(--primary-bt-solidBg, #7C66FF)",
-          "Secondary": "var(--secondary-bt-solidBg, #2B263B)",
+          "Primary": "var(--primary-bt-solid-bg, #7C66FF)",
+          "Secondary": "var(--secondary-bt-solid-bg, #2B263B)",
           "Success": "var(--success-bt-solidBg, #379E45)",
           "Warning": "var(--warning-bt-solidBg, #FC7E22)",
           "Error": "var(--error-bt-solidBg, #D94A4E)",
@@ -206,37 +205,8 @@
           "White": "var(--white-bt-disabledtempBorder, rgba(255, 255, 255, 0.40))"
         },
         "disabled_bg": "var(--primary-bt-disabledBg, #F7F7F9)"
-      }
-    },
-    "QH": {
-      "figma_name": "💙 00.05_Button / QH",
-      "desc": "单品牌色按钮，无 Color 属性，适用于品牌强调的单一色调场景",
-      "props": {
-        "Type": {
-          "options": [
-            "Solid",
-            "Soft",
-            "Outline",
-            "Text"
-          ]
-        },
-        "Size": {
-          "options": [
-            "Large(40)",
-            "Medium(36)",
-            "Normal(32)",
-            "Small(28)",
-            "Mini(24)"
-          ]
-        },
-        "Disable": {
-          "options": [
-            "False",
-            "Disable Temp",
-            "Disable"
-          ]
-        }
-      }
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;gap:16px;padding:4px\"><div style=\"display:flex;flex-direction:column;gap:4px\"><span style=\"font-size:11px;color:rgba(0,0,0,0.4)\">Icon Slots &amp; States</span><div style=\"position:relative;display:inline-flex;align-items:center;gap:6px;height:40px;padding:8px 16px;border-radius:8px;background:#7C66FF;color:white;font-size:14px;font-weight:500;overflow:hidden\"><i data-bool=\"Icon Leading\" class=\"KurilIcons kuril-time\" style=\"font-size:16px;color:rgba(255,255,255,0.9)\"></i><span>按钮</span><i data-bool=\"Icon Trailing\" class=\"KurilIcons kuril-time\" style=\"font-size:16px;color:rgba(255,255,255,0.9)\"></i><i data-bool=\"Right Arrow\" class=\"KurilIcons kuril-arrow_right\" style=\"font-size:16px;color:rgba(255,255,255,0.9)\"></i><div data-bool=\"Press\" style=\"position:absolute;inset:0;background:rgba(0,0,0,0.08);pointer-events:none\"></div></div></div><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:center\"><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#7C66FF;color:white;\">Primary</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#2B263B;color:white;\">Secondary</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#379E45;color:white;\">Success</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#FC7E22;color:white;\">Warning</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#D94A4E;color:white;\">Error</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#F96464;color:white;\">Trade</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:rgba(0,0,0,0.40);color:white;\">Default</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#FFF;color:#2B263B;box-shadow:0 0 0 1px rgba(0,0,0,0.08);\">White</button></div><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:center\"><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#7C66FF;color:white;\">Solid</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:#F2F0FF;color:#7C66FF;\">Soft</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:transparent;color:#7C66FF;border:1px solid #7C66FF;\">Outline</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;white-space:nowrap;border:none;cursor:pointer;gap:6px;background:transparent;color:#7C66FF;padding:8px 0;\">Text</button></div><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end\"><button style=\"display:inline-flex;align-items:center;justify-content:center;height:40px;padding:8px 16px;border-radius:8px;font-size:14px;background:#7C66FF;color:white;font-weight:500;white-space:nowrap;border:none;cursor:pointer\">Large·40</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:36px;padding:7px 14px;border-radius:6px;font-size:13px;background:#7C66FF;color:white;font-weight:500;white-space:nowrap;border:none;cursor:pointer\">Medium·36</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:32px;padding:5px 12px;border-radius:4px;font-size:13px;background:#7C66FF;color:white;font-weight:500;white-space:nowrap;border:none;cursor:pointer\">Normal·32</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:28px;padding:5px 10px;border-radius:4px;font-size:12px;background:#7C66FF;color:white;font-weight:500;white-space:nowrap;border:none;cursor:pointer\">Small·28</button><button style=\"display:inline-flex;align-items:center;justify-content:center;height:24px;padding:3px 8px;border-radius:4px;font-size:11px;background:#7C66FF;color:white;font-weight:500;white-space:nowrap;border:none;cursor:pointer\">Mini·24</button></div></div>"
     },
     "MH": {
       "figma_name": "💙 00.05_Button / MH",
@@ -278,7 +248,7 @@
       "figma_name": "💙 00.05_Button / Icon",
       "figma_key": "2ea3337263b21b7ef6f500fe05b83ddcfb354aac",
       "desc": "纯图标按钮，可选图标下方辅助文字（Text bool），用于工具栏、操作列表、导航栏图标入口",
-      "preview_html": "<div style=\"display:flex;align-items:flex-end;gap:8px;padding:4px\"><div style=\"display:flex;flex-direction:column;width:44px;height:44px;justify-content:center;align-items:center;gap:var(--Spacing-Mini,2px);border-radius:6px;background:var(--bg-card2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:24px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;font-size:11px;font-weight:500;line-height:13px;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;white-space:nowrap\">图标</span></div><div style=\"display:flex;flex-direction:column;width:40px;height:40px;justify-content:center;align-items:center;gap:var(--Spacing-Mini,2px);border-radius:6px;background:var(--bg-card2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:20px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;font-size:10px;font-weight:500;line-height:11px;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;white-space:nowrap\">图标</span></div><div style=\"display:flex;flex-direction:column;width:36px;height:36px;justify-content:center;align-items:center;gap:var(--Spacing-Small,4px);border-radius:4px;background:var(--bg-card2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:16px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;font-size:10px;font-weight:500;line-height:11px;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;white-space:nowrap\">图标</span></div><div style=\"display:flex;flex-direction:column;width:32px;height:32px;justify-content:center;align-items:center;gap:var(--Spacing-Small,4px);border-radius:4px;background:var(--bg-card2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:14px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;font-size:10px;font-weight:500;line-height:11px;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;white-space:nowrap\">图标</span></div><div style=\"display:flex;flex-direction:column;width:28px;height:28px;justify-content:center;align-items:center;gap:var(--Spacing-Mini,2px);border-radius:4px;background:var(--bg-card2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:12px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;font-size:10px;font-weight:500;line-height:11px;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;white-space:nowrap\">图标</span></div></div>",
+      "preview_html": "<div style=\"display:flex;align-items:flex-end;gap:8px;padding:4px\"><div style=\"display:flex;flex-direction:column;width:44px;height:44px;justify-content:center;align-items:center;gap:var(--Spacing-Mini,2px);border-radius:6px;background:var(--bg-2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:24px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;align-self:stretch;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;font-family:PingFang SC;font-weight:500;font-size:11px;line-height:13px\">图标</span></div><div style=\"display:flex;flex-direction:column;width:40px;height:40px;justify-content:center;align-items:center;gap:var(--Spacing-Mini,2px);border-radius:6px;background:var(--bg-2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:20px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;align-self:stretch;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;font-family:PingFang SC;font-weight:500;font-size:10px;line-height:11px\">图标</span></div><div style=\"display:flex;flex-direction:column;width:36px;height:36px;justify-content:center;align-items:center;gap:var(--Spacing-Small,4px);border-radius:4px;background:var(--bg-2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:16px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;align-self:stretch;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;font-family:PingFang SC;font-weight:500;font-size:10px;line-height:11px\">图标</span></div><div style=\"display:flex;flex-direction:column;width:32px;height:32px;justify-content:center;align-items:center;gap:var(--Spacing-Small,4px);border-radius:4px;background:var(--bg-2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:14px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;align-self:stretch;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;font-family:PingFang SC;font-weight:500;font-size:10px;line-height:11px\">图标</span></div><div style=\"display:flex;flex-direction:column;width:28px;height:28px;justify-content:center;align-items:center;gap:var(--Spacing-Mini,2px);border-radius:4px;background:var(--bg-2,#f7f7f9)\"><i class=\"KurilIcons kuril-time\" style=\"font-size:12px;color:var(--text-1,#2B263B)\"></i><span data-bool=\"Text\" style=\"display:none;align-self:stretch;color:var(--text-2,rgba(0,0,0,0.64));text-align:center;font-family:PingFang SC;font-weight:500;font-size:10px;line-height:11px\">图标</span></div></div>",
       "props": {
         "Size": {
           "options": [
@@ -388,7 +358,8 @@
             "Back2Top": "回到顶部，56×56px"
           }
         }
-      }
+      },
+      "preview_html": "<div style=\"display:flex;gap:16px;align-items:center;padding:4px;flex-wrap:wrap\"><div style=\"display:flex;gap:4px;height:48px;padding:12px 10px;align-items:center;justify-content:center;border-radius:40px;background:var(--primary-bt-solid-bg,#7C66FF);box-shadow:0 4px 4px rgba(83,54,254,0.4)\"><i class=\"KurilIcons kuril-plus_heavy\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:1\">发布</span></div><div style=\"display:flex;width:48px;height:48px;align-items:center;justify-content:center;border-radius:40px;background:var(--primary-bt-solid-bg,#7C66FF);box-shadow:0 4px 4px rgba(83,54,254,0.4)\"><i class=\"KurilIcons kuril-plus_heavy\" style=\"font-size:16px;color:white;font-style:normal\"></i></div><div style=\"display:flex;width:48px;height:48px;align-items:center;justify-content:center;border-radius:40px;background:white;box-shadow:0 2px 6px rgba(0,0,0,0.2)\"><i class=\"KurilIcons kuril-back_to_top\" style=\"font-size:24px;color:var(--text-1,#2B263B);font-style:normal\"></i></div></div>"
     },
     "FloatCart": {
       "figma_name": "💙 00.05_Button / FloatCart",
@@ -412,6 +383,15 @@
             "article post": "文章发布，深色底 icon/1，圆形"
           }
         }
+      },
+      "preview_html": "<div style=\"display:flex;gap:10px;align-items:center;padding:4px;flex-wrap:wrap\"><div style=\"display:inline-flex;padding:9px;border-radius:40px;background:white;box-shadow:0 1px 10px rgba(0,0,0,0.08)\"><i class=\"KurilIcons kuril-back_to_top\" style=\"font-size:22px;color:var(--text-1,#2B263B);font-style:normal\"></i></div><div style=\"width:40px;height:40px;border-radius:40px;background:var(--primary-bt-solid-bg,#7C66FF);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 10px rgba(0,0,0,0.08)\"><i class=\"KurilIcons kuril-plus_heavy\" style=\"font-size:16px;color:white;font-style:normal\"></i></div><div style=\"display:inline-flex;padding:9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08)\"><i class=\"KurilIcons kuril-floatbutton_c2c\" style=\"font-size:16px;color:white;font-style:normal\"></i></div><div style=\"display:inline-flex;gap:4px;padding:9px 12px 9px 9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08);align-items:center\"><i class=\"KurilIcons kuril-floatbutton_c2c\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:22px\">我要转卖</span></div><div style=\"display:inline-flex;gap:4px;padding:9px 12px 9px 9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08);align-items:center\"><i class=\"KurilIcons kuril-topic\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:22px\">去讨论</span></div><div style=\"display:inline-flex;gap:4px;padding:9px 12px 9px 9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08);align-items:center\"><i class=\"KurilIcons kuril-add_picture\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:22px\">去晒图</span></div></div>",
+      "scene_html": {
+        "back to top": "<div style=\"display:inline-flex;padding:9px;border-radius:40px;background:white;box-shadow:0 1px 10px rgba(0,0,0,0.08)\"><i class=\"KurilIcons kuril-back_to_top\" style=\"font-size:22px;color:var(--text-1,#2B263B);font-style:normal\"></i></div>",
+        "home published": "<div style=\"width:40px;height:40px;border-radius:40px;background:var(--primary-bt-solid-bg,#7C66FF);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 10px rgba(0,0,0,0.08)\"><i class=\"KurilIcons kuril-plus_heavy\" style=\"font-size:16px;color:white;font-style:normal\"></i></div>",
+        "discovery published": "<div style=\"display:inline-flex;padding:9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08)\"><i class=\"KurilIcons kuril-floatbutton_c2c\" style=\"font-size:16px;color:white;font-style:normal\"></i></div>",
+        "discovery unfolded": "<div style=\"display:inline-flex;gap:4px;padding:9px 12px 9px 9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08);align-items:center\"><i class=\"KurilIcons kuril-floatbutton_c2c\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:22px\">我要转卖</span></div>",
+        "wenda post": "<div style=\"display:inline-flex;gap:4px;padding:9px 12px 9px 9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08);align-items:center\"><i class=\"KurilIcons kuril-topic\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:22px\">去讨论</span></div>",
+        "article post": "<div style=\"display:inline-flex;gap:4px;padding:9px 12px 9px 9px;border-radius:40px;background:var(--secondary-bt-solid-bg,#2B263B);box-shadow:0 1px 10px rgba(0,0,0,0.08);align-items:center\"><i class=\"KurilIcons kuril-add_picture\" style=\"font-size:16px;color:white;font-style:normal\"></i><span style=\"font-size:14px;font-weight:500;color:white;white-space:nowrap;line-height:22px\">去晒图</span></div>"
       }
     }
   }

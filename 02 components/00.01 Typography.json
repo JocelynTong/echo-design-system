@@ -1,5 +1,6 @@
 {
   "component": "Typography",
+  "figma_page": "00.01 Typography",
   "figma_node": "50457:86103",
   "figma_file": "HjpmfUPwU7HGMRj9X80TAY",
   "description": "千岛设计系统文字规范。基于 375×667px 一倍图设计。中文优先使用各平台系统字体（iOS: PingFang SC，Android: Noto Sans SC，HarmonyOS: HarmonyOS Sans SC，MIUI: MiSans），数字/英文强制使用 Roboto。",

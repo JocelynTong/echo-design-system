@@ -1,0 +1,1485 @@
+{
+  "component": "👻 Islands",
+  "figma_page": "02_业务组件_👻_社区",
+  "figma_key": "b73b34e01e12a1637a206752cb7fad018de6349f",
+  "status_bar": "ghost",
+  "tab_bar": "01.06-tab-bar",
+  "fab": {
+    "cid": "00.08-button",
+    "variant": "FloatCart",
+    "scene": "home published"
+  },
+  "description": "千岛社区业务组件集合，包含 Island 详情页布局组件、格子/滑动/固钉入口组件、广告卡片等。👻 前缀表示业务级组件。",
+  "usage_rules": [
+    "Grid / Slide / Pin 是容器布局组件，内部填充对应的 Cell 组件",
+    "QuickEntryCell/Title 用于社区入口标题角标（闲置/闪购/拍卖等类型）",
+    "QuickEntryCell/Info 用于社区入口价格信息区域，字号 11/12 对应两种密度",
+    "PinCell.Type=Islands 是当前千岛选中态，Home/MyIslands 分别对应首页和我的岛",
+    "GridCell 双态：ISLANDS（社区展示）vs Search（搜索场景）",
+    "Ad 广告组件根据视图（双列/单列）和类型（帖子/首位/单图）组合使用",
+    "截屏刘海logo 用于截图分享场景的品牌水印，支持中英文"
+  ],
+  "variants": {
+    "Header": {
+      "figma_name": "👻 Islands / Header",
+      "desc": "Islands 详情页头部组件，包含封面图和基本信息",
+      "figma_key": "eecbc6c90b1707359ded719fde7ea758538f1a50",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "align-items": "flex-start"
+      },
+      "props": {},
+      "preview_html": "<div style=\"background:var(--secondary-solid-bg,#2b263b);width:375px;flex-shrink:0\"><div style=\"display:flex;width:375px;height:44px;padding:0 4px;align-items:center;gap:4px;box-sizing:border-box\"><div style=\"width:53px;height:24px;border-radius:4px;background:var(--white-8,rgba(255,255,255,.88));display:flex;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:700 10px/1 -apple-system,'PingFang SC',sans-serif;color:var(--secondary-solid-bg,#2b263b);letter-spacing:.5px\">ECHO</span></div><div style=\"flex:1;height:32px;background:var(--white-3,rgba(255,255,255,.12));border-radius:8px;display:flex;align-items:center;padding:0 8px;gap:4px;box-sizing:border-box;min-width:0\"><i class=\"KurilIcons kuril-search\" style=\"font-size:14px;color:var(--white-text-color2,rgba(255,255,255,.64));flex-shrink:0\"></i><span style=\"flex:1;font:13px/1 -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color3,rgba(255,255,255,.4));overflow:hidden;white-space:nowrap\">Labubu泰坦</span><div style=\"width:1px;height:14px;background:var(--white-3,rgba(255,255,255,.12));flex-shrink:0\"></div><i class=\"KurilIcons kuril-camera\" style=\"font-size:16px;color:rgba(255,255,255,.64);font-style:normal;flex-shrink:0\"></i><span style=\"font:11px/1 -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));flex-shrink:0\">识物</span></div><div style=\"display:flex;flex-direction:column;width:40px;height:40px;justify-content:center;align-items:center;gap:2px;flex-shrink:0\"><div style=\"width:20px;height:20px;border-radius:4px;background:var(--white-5,rgba(255,255,255,.24))\"></div><span style=\"font:10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff)\">发现岛</span></div></div></div>"
+    },
+    "Pin": {
+      "figma_name": "👻 Islands / Pin",
+      "desc": "Islands 固钉区域，水平排列 PinCell，用于已关注的 Island 快速入口",
+      "figma_key": "e0eaba05d0e32d3ea7ef305765499b592ee04777",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "align-items": "flex-start"
+      },
+      "props": {},
+      "preview_html": "<div style=\"background:var(--secondary-solid-bg,#2b263b);width:375px;display:flex;overflow:hidden;flex-shrink:0\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"position:absolute;top:-3px;left:-3px;width:54px;height:54px;border:2px solid var(--white-8,rgba(255,255,255,.88));border-radius:10px;box-sizing:border-box\"></div><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-soft-bg,rgba(255,255,255,.12))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">千岛岛主</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-5,rgba(255,255,255,.24))\"></div><div style=\"position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;border-radius:16px;background:var(--error-solid-bg,#d94a4e);display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box\"><span style=\"font:500 10px/1 Roboto,sans-serif;color:var(--white-text-color,#fff)\">3</span></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">泡泡玛特</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-5,rgba(255,255,255,.24))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">MOLLY</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-4,rgba(255,255,255,.16))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">DIMOO</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-4,rgba(255,255,255,.16))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">Skullpanda</span></div></div>"
+    },
+    "PinCell_Home": {
+      "figma_name": "👻 Islands / PinCell, Type=Home",
+      "desc": "固钉格子（首页态），老机型圆角岛圆形头像，可显示选中边框",
+      "figma_key": "0ee323d2a0cc150322dd836552a8923f8dbddb4f",
+      "css": {
+        "display": "flex",
+        "width": "68px",
+        "height": "85px",
+        "padding": "8px 0",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "8px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "Home",
+            "Islands",
+            "MyIslands"
+          ],
+          "default": "Home",
+          "variantMap": {
+            "Home": "PinCell_Home",
+            "Islands": "PinCell_Islands",
+            "MyIslands": "PinCell_MyIslands"
+          }
+        },
+        "Booleans": {
+          "Selected#14210:9": {
+            "default": true
+          },
+          "Badge#14211:12": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:68px;height:85px;align-items:center;gap:var(--Spacing-Normal,8px);padding:var(--Spacing-Normal,8px) 0;position:relative;flex-shrink:0;overflow:hidden\"><div style=\"position:relative;width:48px;height:48px;border-radius:var(--Radius-Normal,8px);background:var(--white-soft-bg,rgba(255,255,255,.12));overflow:hidden;flex-shrink:0;z-index:3\"><div style=\"position:absolute;top:35%;left:21%;right:21%;bottom:35%;display:flex;align-items:center;gap:1.5px\"><div style=\"width:13px;height:14px;background:var(--white-8,rgba(255,255,255,.88));border-radius:2px;flex-shrink:0\"></div><div style=\"width:13px;height:14px;background:var(--white-8,rgba(255,255,255,.88));border-radius:2px;flex-shrink:0\"></div></div></div><span style=\"font:500 10px/11px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center;white-space:nowrap;position:relative;z-index:2\">首页</span><div style=\"position:absolute;width:54px;height:56px;left:7px;top:4px;border:2px solid var(--white-8,rgba(255,255,255,.88));border-radius:10px;z-index:1;box-sizing:border-box\"></div></div>"
+    },
+    "PinCell_Islands": {
+      "figma_name": "👻 Islands / PinCell, Type=Islands",
+      "_hidden": true,
+      "desc": "固钉格子（千岛选中态），显示品牌边框选中效果和气泡提示",
+      "figma_key": "a0bda7eff5e42f43757ae1716d70065e6782534a",
+      "css": {
+        "display": "flex",
+        "width": "68px",
+        "height": "85px",
+        "padding": "8px 0",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "8px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "Home",
+            "Islands",
+            "MyIslands"
+          ],
+          "default": "Islands",
+          "variantMap": {
+            "Home": "PinCell_Home",
+            "Islands": "PinCell_Islands",
+            "MyIslands": "PinCell_MyIslands"
+          }
+        },
+        "Booleans": {
+          "Selected#14210:9": {
+            "default": true
+          },
+          "Badge#14211:12": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:68px;height:85px;align-items:center;gap:var(--Spacing-Normal,8px);padding:var(--Spacing-Normal,8px) 0;position:relative;flex-shrink:0;overflow:hidden\"><div style=\"position:relative;width:48px;height:48px;border-radius:7px;background:var(--white-soft-bg,rgba(255,255,255,.12));flex-shrink:0;z-index:4;box-shadow:0 1px 10px rgba(0,0,0,.06)\"></div><div style=\"position:absolute;width:54px;height:54px;left:7px;top:5px;border:2px solid var(--primary-border,#7c66ff);border-radius:10px;z-index:3;box-sizing:border-box\"></div><span style=\"font:500 10px/11px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center;white-space:nowrap;position:relative;z-index:2;overflow:hidden;text-overflow:ellipsis;max-width:68px\">Labubu</span><div style=\"position:absolute;top:7px;left:calc(50% + 16px);transform:translateX(-50%);min-width:18px;height:18px;border-radius:16px;background:var(--error-solid-bg,#d94a4e);display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box;z-index:5\"><span style=\"font:500 12px/18px Roboto,sans-serif;color:var(--white-text-color,#fff)\">6</span></div></div>"
+    },
+    "PinCell_MyIslands": {
+      "figma_name": "👻 Islands / PinCell, Type=MyIslands",
+      "_hidden": true,
+      "desc": "固钉格子（我的岛态），显示选中边框",
+      "figma_key": "73277f850c6f1e31e71bd8723e100fb8d3484ad8",
+      "css": {
+        "display": "flex",
+        "width": "68px",
+        "height": "85px",
+        "padding": "8px 0",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "8px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "Home",
+            "Islands",
+            "MyIslands"
+          ],
+          "default": "MyIslands",
+          "variantMap": {
+            "Home": "PinCell_Home",
+            "Islands": "PinCell_Islands",
+            "MyIslands": "PinCell_MyIslands"
+          }
+        },
+        "Booleans": {
+          "Selected#14210:9": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:68px;height:85px;align-items:center;gap:var(--Spacing-Normal,8px);padding:var(--Spacing-Normal,8px) 0;position:relative;flex-shrink:0;overflow:hidden\"><div style=\"position:absolute;top:20px;left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:4px;background:var(--white-5,rgba(255,255,255,.24));z-index:4\"></div><div style=\"width:48px;height:48px;border-radius:var(--Radius-Normal,8px);background:var(--white-soft-bg,rgba(255,255,255,.12));flex-shrink:0;z-index:3\"></div><span style=\"font:500 10px/11px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center;white-space:nowrap;position:relative;z-index:2;overflow:hidden;text-overflow:ellipsis;max-width:68px\">我加入的岛</span></div>"
+    },
+    "Grid": {
+      "figma_name": "👻 Islands / Grid",
+      "desc": "Islands 格子容器，水平排列 GridCell，用于社区入口格子区域",
+      "figma_key": "9c425cfa52d08f39c0bd2470df414befee021d0e",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "align-items": "center",
+        "gap": "8px",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "preview_html": "<div style=\"display:flex;padding:0 10px;align-items:center;gap:var(--Spacing-Normal,8px);width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:inline-flex;align-items:center;gap:var(--Spacing-Small,4px);border-radius:8px;background:var(--bg-2,#f7f7f9);padding:4px 8px 4px 4px;flex-shrink:0\"><div style=\"width:28px;height:28px;border-radius:6px;background:var(--primary-soft-bg,#f2f0ff);flex-shrink:0\"></div><span style=\"font:900 14.5px/1 'Alibaba PuHuiTi 3.0',-apple-system,sans-serif;color:var(--secondary-text-color,#2b263b);transform:skewX(-2.54deg);display:inline-block\">Labubu</span><div style=\"width:6px;height:6px;border-right:1.5px solid var(--text-3,rgba(0,0,0,.4));border-top:1.5px solid var(--text-3,rgba(0,0,0,.4));transform:rotate(45deg);flex-shrink:0;margin-left:2px\"></div></div><div style=\"display:inline-flex;align-items:center;gap:var(--Spacing-Small,4px);border-radius:8px;background:var(--bg-2,#f7f7f9);padding:4px 8px 4px 4px;flex-shrink:0\"><div style=\"width:28px;height:28px;border-radius:6px;background:var(--primary-soft-bg,#f2f0ff);flex-shrink:0\"></div><span style=\"font:900 14.5px/1 'Alibaba PuHuiTi 3.0',-apple-system,sans-serif;color:var(--secondary-text-color,#2b263b);transform:skewX(-2.54deg);display:inline-block\">MOLLY</span><div style=\"width:6px;height:6px;border-right:1.5px solid var(--text-3,rgba(0,0,0,.4));border-top:1.5px solid var(--text-3,rgba(0,0,0,.4));transform:rotate(45deg);flex-shrink:0;margin-left:2px\"></div></div><div style=\"display:inline-flex;align-items:center;gap:var(--Spacing-Small,4px);border-radius:8px;background:var(--bg-2,#f7f7f9);padding:4px 8px 4px 4px;flex-shrink:0\"><div style=\"width:28px;height:28px;border-radius:6px;background:var(--primary-soft-bg,#f2f0ff);flex-shrink:0\"></div><span style=\"font:900 14.5px/1 'Alibaba PuHuiTi 3.0',-apple-system,sans-serif;color:var(--secondary-text-color,#2b263b);transform:skewX(-2.54deg);display:inline-block\">DIMOO</span><div style=\"width:6px;height:6px;border-right:1.5px solid var(--text-3,rgba(0,0,0,.4));border-top:1.5px solid var(--text-3,rgba(0,0,0,.4));transform:rotate(45deg);flex-shrink:0;margin-left:2px\"></div></div></div>"
+    },
+    "Slide": {
+      "figma_name": "👻 Islands / Slide",
+      "desc": "Islands 横滑容器，水平排列 SlideCell，用于社区横滑入口",
+      "figma_key": "11f0f10369d4947c619c4f74b9d00219f04e32bc",
+      "css": {
+        "display": "flex",
+        "padding": "0 10px",
+        "align-items": "flex-start",
+        "gap": "var(--Spacing-Normal, 8px)",
+        "align-self": "stretch"
+      },
+      "props": {},
+      "preview_html": "<div style=\"display:flex;padding:0 10px;gap:8px;align-items:flex-start;width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:inline-flex;flex-direction:column;align-items:center;gap:4px;border-radius:4px;flex-shrink:0\"><div style=\"width:82px;height:99px;position:relative;overflow:hidden;flex-shrink:0\"><div style=\"position:absolute;width:68px;height:90px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:1px;transform:rotate(-6deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:71px;height:94px;border-radius:4px;background:var(--bg-2,#f7f7f9);bottom:0;left:2px;transform:rotate(-2.5deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:74px;height:99px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:4px\"></div></div><span style=\"font:400 12px/18px -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000)\">Labubu</span></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;gap:4px;border-radius:4px;flex-shrink:0\"><div style=\"width:82px;height:99px;position:relative;overflow:hidden;flex-shrink:0\"><div style=\"position:absolute;width:68px;height:90px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:1px;transform:rotate(-6deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:71px;height:94px;border-radius:4px;background:var(--bg-2,#f7f7f9);bottom:0;left:2px;transform:rotate(-2.5deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:74px;height:99px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:4px\"></div></div><span style=\"font:400 12px/18px -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000)\">MOLLY</span></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;gap:4px;border-radius:4px;flex-shrink:0\"><div style=\"width:82px;height:99px;position:relative;overflow:hidden;flex-shrink:0\"><div style=\"position:absolute;width:68px;height:90px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:1px;transform:rotate(-6deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:71px;height:94px;border-radius:4px;background:var(--bg-2,#f7f7f9);bottom:0;left:2px;transform:rotate(-2.5deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:74px;height:99px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:4px\"></div></div><span style=\"font:400 12px/18px -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000)\">DIMOO</span></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;gap:4px;border-radius:4px;flex-shrink:0\"><div style=\"width:82px;height:99px;position:relative;overflow:hidden;flex-shrink:0\"><div style=\"position:absolute;width:68px;height:90px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:1px;transform:rotate(-6deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:71px;height:94px;border-radius:4px;background:var(--bg-2,#f7f7f9);bottom:0;left:2px;transform:rotate(-2.5deg);transform-origin:bottom center\"></div><div style=\"position:absolute;width:74px;height:99px;border-radius:4px;background:var(--bg-4,#ededf2);bottom:0;left:4px\"></div></div><span style=\"font:400 12px/18px -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000)\">Skullpanda</span></div></div>"
+    },
+    "SlideCell_Notice": {
+      "figma_name": "👻 Islands / SlideCell, Type=Notice",
+      "desc": "横滑单元（公告/通知类型），纵向排列内容",
+      "figma_key": "aa0156e774187570f2820701d3ed571c996c39c4",
+      "css": {
+        "display": "inline-flex",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "4px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "Notice"
+          ],
+          "default": "Notice"
+        }
+      }
+    },
+    "GridCell_ISLANDS": {
+      "figma_name": "👻 Islands / GridCell, Type=ISLANDS",
+      "desc": "格子单元（社区展示态），含图标/SPU/Tag 三个可选插槽",
+      "figma_key": "86678f6945c04d9df33ae08a12475a4491c60090",
+      "css": {
+        "display": "inline-flex",
+        "padding": "4px 8px 4px 4px",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "8px",
+        "background": "var(--bg-2, #F7F7F9)"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "ISLANDS",
+            "Search"
+          ],
+          "default": "ISLANDS",
+          "variantMap": {
+            "ISLANDS": "GridCell_ISLANDS",
+            "Search": "GridCell_Search"
+          }
+        },
+        "Booleans": {
+          "Show Tag#14202:0": {
+            "default": true
+          },
+          "Show SPU#14202:3": {
+            "default": true
+          },
+          "Show Icon#14202:6": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;background:var(--bg-2,#f7f7f9);align-items:center;gap:var(--Spacing-Small,4px);overflow:hidden;padding:var(--Spacing-Small,4px) var(--Spacing-Normal,8px) var(--Spacing-Small,4px) var(--Spacing-Small,4px);border-radius:var(--Radius-Normal,8px);flex-shrink:0\"><div style=\"display:flex;width:28px;height:32px;align-items:center;justify-content:flex-end;padding-left:4px;padding-right:1px;flex-shrink:0\"><div style=\"width:20px;height:20px;border-radius:var(--Radius-Small,4px);background:var(--bg-3,#eeeef1);flex-shrink:0\"></div></div><div style=\"width:24px;height:32px;border-radius:var(--Radius-Small,4px);background:var(--bg-3,#eeeef1);flex-shrink:0\"></div><div style=\"display:flex;height:14px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:700 14.5px/14px 'PingFang SC',sans-serif;color:var(--secondary-textcolor,#2b263b);white-space:nowrap;display:inline-block;transform:skewX(-2.54deg)\">潮玩系列</span></div><div style=\"width:8px;height:8px;flex-shrink:0;background:var(--icon-disabled,#c5c1d1);border-radius:1px\"></div></div>"
+    },
+    "GridCell_Search": {
+      "figma_name": "👻 Islands / GridCell, Type=Search",
+      "_hidden": true,
+      "desc": "格子单元（搜索态），与 ISLANDS 态相同布局但用于搜索场景",
+      "figma_key": "1ee4d24fc36777f53c8678406847ad28c93774a5",
+      "css": {
+        "display": "inline-flex",
+        "padding": "4px 8px 4px 4px",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "8px",
+        "background": "var(--bg-2, #F7F7F9)"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "ISLANDS",
+            "Search"
+          ],
+          "default": "Search",
+          "variantMap": {
+            "ISLANDS": "GridCell_ISLANDS",
+            "Search": "GridCell_Search"
+          }
+        },
+        "Booleans": {
+          "Show Tag#14202:0": {
+            "default": true
+          },
+          "Show SPU#14202:3": {
+            "default": true
+          },
+          "Show Icon#14202:6": {
+            "default": true
+          }
+        }
+      }
+    },
+    "PairQuickEntry_1": {
+      "figma_name": "👻 Islands / Pair+QuickEntry, 数量=1",
+      "desc": "快速入口对组件（1个入口），单行布局",
+      "figma_key": "5b16926e13b6de8fe3eaaff9b92173dab16e992c",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "padding": "0 10px",
+        "align-items": "flex-start",
+        "gap": "8px"
+      },
+      "props": {
+        "数量": {
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4~9"
+          ],
+          "default": "1",
+          "variantMap": {
+            "1": "PairQuickEntry_1",
+            "2": "PairQuickEntry_2",
+            "3": "PairQuickEntry_3",
+            "4~9": "PairQuickEntry_4to9"
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:flex;width:375px;padding:0 10px;align-items:flex-start;gap:8px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:flex;width:105px;height:62px;border-radius:8px;background:var(--bg-2,#f7f7f9);padding:8px 6px 4px 8px;box-sizing:border-box;justify-content:space-between;flex-shrink:0\"><div style=\"display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;overflow:hidden\"><span style=\"font:500 13px/1 -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000);overflow:hidden;white-space:nowrap\">千岛岛主</span><span style=\"font:400 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap\">Labubu 泰坦</span><span style=\"font:500 12px/18px Roboto,sans-serif;color:var(--trade-text-color,#f96464)\">¥128</span></div><div style=\"width:33px;height:44px;border-radius:4px;background:var(--bg-4,#ededf2);flex-shrink:0\"></div></div><div style=\"display:flex;width:105px;height:62px;border-radius:8px;background:var(--bg-2,#f7f7f9);padding:8px 6px 4px 8px;box-sizing:border-box;justify-content:space-between;flex-shrink:0\"><div style=\"display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;overflow:hidden\"><span style=\"font:500 13px/1 -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000);overflow:hidden;white-space:nowrap\">泡泡玛特</span><span style=\"font:400 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap\">MOLLY 经典</span><span style=\"font:500 12px/18px Roboto,sans-serif;color:var(--trade-text-color,#f96464)\">¥69</span></div><div style=\"width:33px;height:44px;border-radius:4px;background:var(--bg-4,#ededf2);flex-shrink:0\"></div></div><div style=\"display:flex;width:105px;height:62px;border-radius:8px;background:var(--bg-2,#f7f7f9);padding:8px 6px 4px 8px;box-sizing:border-box;justify-content:space-between;flex-shrink:0\"><div style=\"display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;overflow:hidden\"><span style=\"font:500 13px/1 -apple-system,'PingFang SC',sans-serif;color:var(--text-1,#000);overflow:hidden;white-space:nowrap\">DIMOO岛</span><span style=\"font:400 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap\">DIMOO 星空</span><span style=\"font:500 12px/18px Roboto,sans-serif;color:var(--trade-text-color,#f96464)\">¥99</span></div><div style=\"width:33px;height:44px;border-radius:4px;background:var(--bg-4,#ededf2);flex-shrink:0\"></div></div></div>"
+    },
+    "PairQuickEntry_2": {
+      "figma_name": "👻 Islands / Pair+QuickEntry, 数量=2",
+      "_hidden": true,
+      "desc": "快速入口对组件（2个入口），单行布局",
+      "figma_key": "af2e8e80fd2b2e8932a00d4093476432a8d9d0c3",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "padding": "0 10px",
+        "align-items": "flex-start",
+        "gap": "8px"
+      },
+      "props": {
+        "数量": {
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4~9"
+          ],
+          "default": "2",
+          "variantMap": {
+            "1": "PairQuickEntry_1",
+            "2": "PairQuickEntry_2",
+            "3": "PairQuickEntry_3",
+            "4~9": "PairQuickEntry_4to9"
+          }
+        }
+      }
+    },
+    "PairQuickEntry_3": {
+      "figma_name": "👻 Islands / Pair+QuickEntry, 数量=3",
+      "_hidden": true,
+      "desc": "快速入口对组件（3个入口），纵向双行布局",
+      "figma_key": "6cff3699e2afc5b0cb987c6fcba241b786a6bf02",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "padding": "0 10px",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "8px"
+      },
+      "props": {
+        "数量": {
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4~9"
+          ],
+          "default": "3",
+          "variantMap": {
+            "1": "PairQuickEntry_1",
+            "2": "PairQuickEntry_2",
+            "3": "PairQuickEntry_3",
+            "4~9": "PairQuickEntry_4to9"
+          }
+        }
+      }
+    },
+    "PairQuickEntry_4to9": {
+      "figma_name": "👻 Islands / Pair+QuickEntry, 数量=4~9",
+      "_hidden": true,
+      "desc": "快速入口对组件（4~9个入口），多行网格布局",
+      "figma_key": "03664d877db25b9fa5e10e056886bdd8db6cd496",
+      "css": {
+        "display": "inline-flex",
+        "padding": "0 10px",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "8px"
+      },
+      "props": {
+        "数量": {
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4~9"
+          ],
+          "default": "4~9",
+          "variantMap": {
+            "1": "PairQuickEntry_1",
+            "2": "PairQuickEntry_2",
+            "3": "PairQuickEntry_3",
+            "4~9": "PairQuickEntry_4to9"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_闲置": {
+      "figma_name": "👻 Islands / QuickEntryCell / Title, Type=闲置",
+      "desc": "快速入口标题角标（闲置），13px高小角标，用于帖子/商品卡左上角",
+      "figma_key": "27127a87ded28f22ec50809aeb682bebdd24acc3",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "闲置",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_闪购": {
+      "_hidden": true,
+      "figma_key": "6a12de52216c26de614b00820c4a0bf67ebde2f9",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "闪购",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_拍卖": {
+      "_hidden": true,
+      "figma_key": "fb7adcbd2ce958220f3fd751aa2cace5e9ae6dae",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "拍卖",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_福袋": {
+      "_hidden": true,
+      "figma_key": "6196de8ffc5a651e9bf4f52e40e14ba8425590b9",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "福袋",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_拼团": {
+      "_hidden": true,
+      "figma_key": "e596d0d6ee4079c6796b893de717971be46a32fc",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "拼团",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_拼车": {
+      "_hidden": true,
+      "figma_key": "960cb8a96156c37dcffe26659942f1b7a007487c",
+      "css": {
+        "display": "flex",
+        "width": "26.2px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "拼车",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_商城": {
+      "_hidden": true,
+      "figma_key": "3fd3c90d9b37206a2997bf6719e46acaf407e01c",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "商城",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_日历": {
+      "_hidden": true,
+      "figma_key": "4e4941a079ff13d23bc4a0414cd97c93d47dc52b",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "日历",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_鉴别": {
+      "_hidden": true,
+      "figma_key": "66130e8e869cc5cd1658fca0da98ea4f66832b4a",
+      "css": {
+        "display": "flex",
+        "width": "26.5px",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "鉴别",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_聊天室": {
+      "_hidden": true,
+      "figma_key": "0f9731aa92bec95ade03429d2bbe2603b9b08a43",
+      "css": {
+        "display": "flex",
+        "width": "44.729px",
+        "height": "13.978px",
+        "padding": "1px 0",
+        "align-items": "center",
+        "gap": "10px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "聊天室",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_同城活动": {
+      "_hidden": true,
+      "figma_key": "36b9f1bbe021beb7111818831519b79ce4e48114",
+      "css": {
+        "display": "flex",
+        "width": "53px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "同城活动",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_标题": {
+      "_hidden": true,
+      "figma_key": "f2950d98db8a87fdba06c01adfdfa14ed5deb84b",
+      "css": {
+        "display": "flex",
+        "width": "30.097px",
+        "height": "13.95px",
+        "padding": "1px 0",
+        "align-items": "center",
+        "gap": "10px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "标题",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryTitle_寄售": {
+      "_hidden": true,
+      "figma_key": "e09d32a927ee8efc845ebf71512551f3bfde3670",
+      "css": {
+        "display": "inline-flex",
+        "height": "13px",
+        "align-items": "center",
+        "gap": "1px"
+      },
+      "props": {
+        "Type": {
+          "options": [
+            "闲置",
+            "闪购",
+            "拍卖",
+            "福袋",
+            "拼团",
+            "拼车",
+            "商城",
+            "日历",
+            "鉴别",
+            "聊天室",
+            "同城活动",
+            "标题",
+            "寄售"
+          ],
+          "default": "寄售",
+          "variantMap": {
+            "闲置": "QuickEntryTitle_闲置",
+            "闪购": "QuickEntryTitle_闪购",
+            "拍卖": "QuickEntryTitle_拍卖",
+            "福袋": "QuickEntryTitle_福袋",
+            "拼团": "QuickEntryTitle_拼团",
+            "拼车": "QuickEntryTitle_拼车",
+            "商城": "QuickEntryTitle_商城",
+            "日历": "QuickEntryTitle_日历",
+            "鉴别": "QuickEntryTitle_鉴别",
+            "聊天室": "QuickEntryTitle_聊天室",
+            "同城活动": "QuickEntryTitle_同城活动",
+            "标题": "QuickEntryTitle_标题",
+            "寄售": "QuickEntryTitle_寄售"
+          }
+        }
+      }
+    },
+    "QuickEntryInfo_11": {
+      "figma_name": "👻 Islands / QuickEntryCell / Info, 字号=11",
+      "desc": "快速入口信息区域（11px字号），紧凑排列，用于双列布局",
+      "figma_key": "d559b6df89950dc19cd68e4fd24e18a6fe8c1819",
+      "css": {
+        "display": "flex",
+        "width": "58px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start",
+        "gap": "4px"
+      },
+      "props": {
+        "字号": {
+          "options": [
+            "11",
+            "12"
+          ],
+          "default": "11",
+          "variantMap": {
+            "11": "QuickEntryInfo_11",
+            "12": "QuickEntryInfo_12"
+          }
+        }
+      }
+    },
+    "QuickEntryInfo_12": {
+      "figma_name": "👻 Islands / QuickEntryCell / Info, 字号=12",
+      "_hidden": true,
+      "desc": "快速入口信息区域（12px字号），宽版，用于单列布局",
+      "figma_key": "3d765368aaa33d988273f2c2ca376aa27d102003",
+      "css": {
+        "display": "flex",
+        "width": "134.5px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start"
+      },
+      "props": {
+        "字号": {
+          "options": [
+            "11",
+            "12"
+          ],
+          "default": "12",
+          "variantMap": {
+            "11": "QuickEntryInfo_11",
+            "12": "QuickEntryInfo_12"
+          }
+        }
+      }
+    },
+    "Logo_中文": {
+      "figma_name": "👻截屏刘海logo, i18n=中文",
+      "desc": "截图分享品牌水印（中文版），品牌紫底，叠加在截图刘海区域",
+      "figma_key": "6ef2b694fe3b42166328cccfd6ee623b25c8df15",
+      "css": {
+        "display": "flex",
+        "width": "44px",
+        "height": "20px",
+        "padding": "10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "1px",
+        "border-radius": "17px",
+        "background": "var(--primary-solidBg, #7C66FF)"
+      },
+      "props": {
+        "i18n": {
+          "options": [
+            "中文",
+            "英文"
+          ],
+          "default": "中文",
+          "variantMap": {
+            "中文": "Logo_中文",
+            "英文": "Logo_英文"
+          }
+        }
+      }
+    },
+    "Logo_英文": {
+      "figma_name": "👻截屏刘海logo, i18n=英文",
+      "_hidden": true,
+      "desc": "截图分享品牌水印（英文版），品牌紫底",
+      "figma_key": "a074f9d0769915090d0dece1007a15c5bdbdb32e",
+      "css": {
+        "display": "inline-flex",
+        "height": "20px",
+        "padding": "10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "1px",
+        "border-radius": "17px",
+        "background": "var(--primary-solidBg, #7C66FF)"
+      },
+      "props": {
+        "i18n": {
+          "options": [
+            "中文",
+            "英文"
+          ],
+          "default": "英文",
+          "variantMap": {
+            "中文": "Logo_中文",
+            "英文": "Logo_英文"
+          }
+        }
+      }
+    },
+    "Feed": {
+      "figma_name": "👻 03.07_Feed / Post",
+      "desc": "社区首页内容信息流，顶部 Tabs 分类 + 双列瀑布流帖子卡片（2ColumnMobile）",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "gap": "var(--Spacing-Normal, 8px)",
+        "border-radius": "8px 8px 0 0"
+      },
+      "props": {
+        "Platform": {
+          "options": [
+            "2ColumnMobile",
+            "1ColumnMobile",
+            "PC"
+          ],
+          "default": "2ColumnMobile",
+          "variantMap": {
+            "2ColumnMobile": "Feed",
+            "1ColumnMobile": "Feed_1Column",
+            "PC": "Feed_PC"
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:375px;background:var(--bg-1,#fff);display:flex;flex-direction:column;gap:var(--Spacing-Normal,8px);overflow:hidden;border-radius:8px 8px 0 0\"><div style=\"display:flex;align-items:center;width:375px;overflow:hidden\"><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;position:relative;flex-shrink:0\"><span style=\"font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div></div><div style=\"display:flex;gap:8px;padding:0 10px;align-items:flex-start;box-sizing:border-box\"><div style=\"width:173.5px;display:flex;flex-direction:column;gap:8px;flex-shrink:0\"><div style=\"border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden\"><div style=\"position:relative;width:100%;height:231px;background:var(--bg-4,#ededf2)\"><div style=\"position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:4px;width:157px\"><div style=\"flex:1;height:2px;background:var(--white-6,rgba(255,255,255,.4));border-radius:1px\"></div><div style=\"flex:1;height:2px;background:var(--white-6,rgba(255,255,255,.4));border-radius:1px\"></div><div style=\"flex:1;height:2px;background:var(--white-9,#fff);border-radius:1px\"></div><div style=\"flex:1;height:2px;background:var(--white-6,rgba(255,255,255,.4));border-radius:1px\"></div><div style=\"flex:1;height:2px;background:var(--white-6,rgba(255,255,255,.4));border-radius:1px\"></div></div></div><div style=\"padding:4px 8px 0\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical\">广告 · 精选好物</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">品牌推广</span><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:14px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\"></span></div></div><div style=\"border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden\"><div style=\"position:relative;width:100%;height:110px;background:var(--bg-4,#ededf2)\"><div style=\"position:absolute;left:8px;top:8px;display:inline-flex;align-items:center;padding:2px 3px;background:var(--primary-tag-solid-bg,#7C66FF);border-radius:var(--Radius-Small,4px)\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">首发</span></div></div><div style=\"padding:4px 8px 0\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical\">留作纪念！</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">JocelynTong✨</span><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:14px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">784</span></div></div><div style=\"border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden\"><div style=\"position:relative;width:100%;height:173px;background:var(--bg-4,#ededf2)\"></div><div style=\"padding:4px 8px 0\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical\">手办开箱 限定版潮流娃娃</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">潮玩收藏家</span><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:14px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">1.2k</span></div></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:8px\"><div style=\"border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden\"><div style=\"position:relative;width:100%;height:231px;background:var(--bg-4,#ededf2)\"></div><div style=\"padding:4px 8px 0\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical\">手办开箱 限定版 Labubu</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">潮玩收藏家</span><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:14px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">1.2k</span></div></div><div style=\"border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden\"><div style=\"position:relative;width:100%;height:110px;background:var(--bg-4,#ededf2)\"></div><div style=\"padding:4px 8px 0\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical\">二代chaka氛围感软装</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">斯普拉遁岛</span><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:14px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">234</span></div></div><div style=\"border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden\"><div style=\"padding:12px 10px 8px;background:var(--bg-2,#f7f7f9)\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical\">这是标题这是标题 大家好，我是青门引的楚梵，此次代表青门引来给大家聊聊天。《青川》是一部创作过程十分不容易的作品…</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">JocelynTong✨</span><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:14px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">784</span></div></div></div></div></div>",
+      "figma_key": "bc257468a92875667be7ef8502c1014821c5d58a"
+    },
+    "Feed_1Column": {
+      "figma_name": "👻 03.07_Feed / Post",
+      "_hidden": true,
+      "desc": "社区首页内容信息流，单列全宽帖子布局（1ColumnMobile）",
+      "figma_key": "1d1a919c166abcced25e50d747c1b634dc19fdba",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "gap": "var(--Spacing-Normal, 8px)",
+        "border-radius": "8px 8px 0 0"
+      },
+      "props": {
+        "Platform": {
+          "options": [
+            "2ColumnMobile",
+            "1ColumnMobile",
+            "PC"
+          ],
+          "default": "1ColumnMobile",
+          "variantMap": {
+            "2ColumnMobile": "Feed",
+            "1ColumnMobile": "Feed_1Column",
+            "PC": "Feed_PC"
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:375px;background:var(--bg-1,#fff);display:flex;flex-direction:column;gap:var(--Spacing-Normal,8px);overflow:hidden;border-radius:8px 8px 0 0\"><div style=\"display:flex;align-items:center;width:375px;overflow:hidden\"><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;position:relative;flex-shrink:0\"><span style=\"font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div><div style=\"display:flex;align-items:center;justify-content:center;padding:3px 10px;flex-shrink:0\"><span style=\"font:var(--font-b4,400 16px/24px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">未选</span></div></div><div style=\"width:375px;background:var(--bg-1,#fff);display:flex;flex-direction:column;gap:var(--Spacing-Normal,8px)\"><div style=\"display:flex;align-items:center;gap:8px;padding:0 10px\"><div style=\"width:32px;height:32px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:2px\"><span style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000)\">JocelynTong✨</span><span style=\"font:var(--font-b8,400 10px/11px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4))\">2022-07-18</span></div></div><div style=\"padding:0 10px\"><p style=\"font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0\">二代chaka是氛围感软装的神!!</p></div><div style=\"padding:0 10px\"><p style=\"font:var(--font-b5,400 14px/22px 'PingFang SC',sans-serif);color:var(--text-2,rgba(0,0,0,.64));margin:0\">Yoshitomo Nara × How2work最新联名</p></div><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 10px\"><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div></div><div style=\"display:flex;border-top:0.5px solid var(--border-2,rgba(0,0,0,.08));padding:4px 0\"><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-share\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">86</span></div><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-comment\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">86</span></div><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">784</span></div></div></div><div style=\"width:375px;background:var(--bg-1,#fff);display:flex;flex-direction:column;gap:var(--Spacing-Normal,8px)\"><div style=\"display:flex;align-items:center;gap:8px;padding:0 10px\"><div style=\"width:32px;height:32px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:2px\"><span style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000)\">潮玩收藏家</span><span style=\"font:var(--font-b8,400 10px/11px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4))\">2022-07-18</span></div></div><div style=\"padding:0 10px\"><p style=\"font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0\">限定联名 Labubu 泰坦系列</p></div><div style=\"padding:0 10px\"><p style=\"font:var(--font-b5,400 14px/22px 'PingFang SC',sans-serif);color:var(--text-2,rgba(0,0,0,.64));margin:0\">泡泡玛特 × 艺术家联名，本次首发限定款</p></div><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 10px\"><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div></div><div style=\"display:flex;border-top:0.5px solid var(--border-2,rgba(0,0,0,.08));padding:4px 0\"><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-share\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">86</span></div><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-comment\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">86</span></div><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--icon-2,#625e76)\">784</span></div></div></div></div>"
+    },
+    "Feed_PC": {
+      "figma_name": "👻 03.07_Feed / Post",
+      "_hidden": true,
+      "desc": "社区首页内容信息流，PC 宽屏多列布局（Platform=PC）",
+      "figma_key": "fef8be1c791fc83f3fc841bfcc593299d857b0bf",
+      "css": {
+        "display": "inline-flex",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "gap": "8px",
+        "border-radius": "8px 8px 0 0"
+      },
+      "props": {
+        "Platform": {
+          "options": [
+            "2ColumnMobile",
+            "1ColumnMobile",
+            "PC"
+          ],
+          "default": "PC",
+          "variantMap": {
+            "2ColumnMobile": "Feed",
+            "1ColumnMobile": "Feed_1Column",
+            "PC": "Feed_PC"
+          }
+        }
+      }
+    },
+    "Ad_双列_首位": {
+      "figma_name": "👻 Ad, 视图=双列, 类型=首位",
+      "desc": "广告卡片（双列·首位），标准双列瀑布流第一位，支持轮播小点",
+      "figma_key": "ec85b4878bba24a10cc471d8bcd8c18ef362575c",
+      "css": {
+        "display": "flex",
+        "width": "173.5px",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "8px"
+      },
+      "props": {
+        "视图": {
+          "options": [
+            "双列",
+            "单列"
+          ],
+          "default": "双列",
+          "variantMap": {
+            "双列": "Ad_双列_首位",
+            "单列": "Ad_单列_首位"
+          }
+        },
+        "类型": {
+          "options": [
+            "帖子",
+            "首位",
+            "单图"
+          ],
+          "default": "首位",
+          "variantMap": {
+            "帖子": "Ad_双列_帖子",
+            "首位": "Ad_双列_首位",
+            "单图": "Ad_双列_单图"
+          }
+        },
+        "Booleans": {
+          "轮播#13:7": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:173.5px;border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden;flex-shrink:0;position:relative\"><div style=\"position:absolute;top:6px;right:6px;background:var(--mask-2,rgba(0,0,0,.64));border-radius:var(--Radius-Small,4px);padding:2px 4px;z-index:1\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">广告</span></div><div style=\"width:173.5px;height:131px;background:var(--bg-4,#ededf2);display:flex;align-items:center;justify-content:center\"><div style=\"width:60px;height:60px;border-radius:var(--Radius-Normal,8px);background:var(--primary-soft-bg,#f2f0ff)\"></div></div><div style=\"padding:6px 8px 8px\"><p style=\"font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0 0 4px\">限时特惠 Labubu 泰坦系列</p><div style=\"display:flex;align-items:center;gap:4px\"><span style=\"font:var(--font-n6,500 12px/18px Roboto,sans-serif);color:var(--trade-text-color,#f96464)\">¥399</span><span style=\"flex:1;font:var(--font-b7,400 11px/13px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));text-decoration:line-through\">¥599</span><div style=\"background:var(--primary-solid-bg,#7c66ff);border-radius:var(--Radius-Small,4px);padding:2px 6px\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--primary-solid-color,#fff)\">领取</span></div></div></div></div>"
+    },
+    "Ad_双列_单图": {
+      "figma_name": "👻 Ad, 视图=双列, 类型=单图",
+      "_hidden": true,
+      "desc": "广告卡片（双列·单图），纯图片展示型",
+      "figma_key": "99e8d967c65868c01786634e43d133f2c50b169a",
+      "css": {
+        "display": "flex",
+        "width": "173.5px",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "8px"
+      },
+      "props": {
+        "视图": {
+          "options": [
+            "双列",
+            "单列"
+          ],
+          "default": "双列",
+          "variantMap": {
+            "双列": "Ad_双列_单图",
+            "单列": "Ad_单列_单图"
+          }
+        },
+        "类型": {
+          "options": [
+            "帖子",
+            "首位",
+            "单图"
+          ],
+          "default": "单图",
+          "variantMap": {
+            "帖子": "Ad_双列_帖子",
+            "首位": "Ad_双列_首位",
+            "单图": "Ad_双列_单图"
+          }
+        },
+        "Booleans": {
+          "赞助帖子#13:0": {
+            "default": false
+          },
+          "用户信息#13:14": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:173.5px;border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden;flex-shrink:0;position:relative\"><div style=\"width:173.5px;height:173px;background:var(--bg-4,#ededf2)\"></div><div style=\"position:absolute;top:6px;right:6px;background:var(--mask-2,rgba(0,0,0,.64));border-radius:var(--Radius-Small,4px);padding:2px 4px;z-index:1\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">广告</span></div><div style=\"display:flex;align-items:center;gap:4px;height:32px;padding:0 8px\"><div style=\"width:20px;height:20px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">潮玩品牌官方</span></div></div>"
+    },
+    "Ad_双列_帖子": {
+      "figma_name": "👻 Ad, 视图=双列, 类型=帖子",
+      "_hidden": true,
+      "desc": "广告卡片（双列·帖子），内容社区原生广告格式",
+      "figma_key": "1d8d58a67ecb341481700e04507643cbfe9093e1",
+      "css": {
+        "display": "flex",
+        "width": "173.5px",
+        "flex-direction": "column",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "8px"
+      },
+      "props": {
+        "视图": {
+          "options": [
+            "双列",
+            "单列"
+          ],
+          "default": "双列",
+          "variantMap": {
+            "双列": "Ad_双列_帖子",
+            "单列": "Ad_单列_帖子"
+          }
+        },
+        "类型": {
+          "options": [
+            "帖子",
+            "首位",
+            "单图"
+          ],
+          "default": "帖子",
+          "variantMap": {
+            "帖子": "Ad_双列_帖子",
+            "首位": "Ad_双列_首位",
+            "单图": "Ad_双列_单图"
+          }
+        },
+        "Booleans": {
+          "赞助帖子#13:0": {
+            "default": false
+          },
+          "用户信息#13:14": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:173.5px;border-radius:var(--Radius-Normal,8px);background:var(--bg-1,#fff);overflow:hidden;flex-shrink:0\"><div style=\"position:relative;width:100%;height:173px;background:var(--bg-4,#ededf2)\"><div style=\"position:absolute;top:6px;right:6px;background:var(--mask-2,rgba(0,0,0,.64));border-radius:var(--Radius-Small,4px);padding:2px 4px;z-index:1\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">广告</span></div></div><div style=\"padding:4px 8px 0\"><p style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical\">限量联名 潮玩新品发布</p></div><div style=\"display:flex;align-items:center;gap:4px;height:36px;padding:0 8px\"><div style=\"width:24px;height:24px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><span style=\"flex:1;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));overflow:hidden;white-space:nowrap;text-overflow:ellipsis\">潮玩品牌官方</span></div></div>"
+    },
+    "Ad_单列_首位": {
+      "figma_name": "👻 Ad, 视图=单列, 类型=首位",
+      "_hidden": true,
+      "desc": "广告卡片（单列·首位），全宽大图首位，支持轮播小点",
+      "figma_key": "7d6ce71ad815f83710e4df406c39ffaea400e7eb",
+      "css": {
+        "display": "flex",
+        "width": "365px",
+        "height": "73px",
+        "padding": "63px 8px 8px 281px",
+        "justify-content": "flex-end",
+        "align-items": "center",
+        "border-radius": "8px",
+        "background": "url(<path-to-image>) lightgray 50% / cover no-repeat"
+      },
+      "props": {
+        "视图": {
+          "options": [
+            "双列",
+            "单列"
+          ],
+          "default": "单列",
+          "variantMap": {
+            "双列": "Ad_双列_首位",
+            "单列": "Ad_单列_首位"
+          }
+        },
+        "类型": {
+          "options": [
+            "帖子",
+            "首位",
+            "单图"
+          ],
+          "default": "首位",
+          "variantMap": {
+            "帖子": "Ad_单列_帖子",
+            "首位": "Ad_单列_首位",
+            "单图": "Ad_单列_单图"
+          }
+        },
+        "Booleans": {
+          "轮播#13:7": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:365px;border-radius:var(--Radius-Normal,8px);background:var(--bg-4,#ededf2);overflow:hidden;position:relative;height:150px\"><div style=\"position:absolute;top:8px;right:8px;background:var(--mask-2,rgba(0,0,0,.64));border-radius:var(--Radius-Small,4px);padding:2px 4px;z-index:1\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">广告</span></div><div style=\"position:absolute;bottom:8px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px\"><div style=\"display:flex;gap:4px;align-items:center\"><div style=\"width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9)\"></div><div style=\"width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)\"></div><div style=\"width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4)\"></div></div><div style=\"background:var(--primary-solid-bg,#7c66ff);border-radius:var(--Radius-Small,4px);padding:4px 10px\"><span style=\"font:var(--font-h6,500 12px/18px 'PingFang SC',sans-serif);color:var(--primary-solid-color,#fff)\">查看详情</span></div></div></div>"
+    },
+    "Ad_单列_单图": {
+      "figma_name": "👻 Ad, 视图=单列, 类型=单图",
+      "_hidden": true,
+      "desc": "广告卡片（单列·单图），全宽纯图片",
+      "figma_key": "2d3a71b94b5ce5a13cbec0bb6908fbf3cf08b3bb",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "gap": "4px"
+      },
+      "props": {
+        "视图": {
+          "options": [
+            "双列",
+            "单列"
+          ],
+          "default": "单列",
+          "variantMap": {
+            "双列": "Ad_双列_单图",
+            "单列": "Ad_单列_单图"
+          }
+        },
+        "类型": {
+          "options": [
+            "帖子",
+            "首位",
+            "单图"
+          ],
+          "default": "单图",
+          "variantMap": {
+            "帖子": "Ad_单列_帖子",
+            "首位": "Ad_单列_首位",
+            "单图": "Ad_单列_单图"
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:375px;position:relative;overflow:hidden\"><div style=\"width:375px;height:200px;background:var(--bg-4,#ededf2)\"></div><div style=\"position:absolute;top:8px;right:8px;background:var(--mask-2,rgba(0,0,0,.64));border-radius:var(--Radius-Small,4px);padding:2px 4px\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">广告</span></div></div>"
+    },
+    "Ad_单列_帖子": {
+      "figma_name": "👻 Ad, 视图=单列, 类型=帖子",
+      "_hidden": true,
+      "desc": "广告卡片（单列·帖子），全宽帖子原生广告格式",
+      "figma_key": "38b26bd9f4ba8e4aa747305e96689a7f3d29f46b",
+      "css": {
+        "display": "inline-flex",
+        "flex-direction": "column",
+        "align-items": "flex-start",
+        "gap": "4px"
+      },
+      "props": {
+        "视图": {
+          "options": [
+            "双列",
+            "单列"
+          ],
+          "default": "单列",
+          "variantMap": {
+            "双列": "Ad_双列_帖子",
+            "单列": "Ad_单列_帖子"
+          }
+        },
+        "类型": {
+          "options": [
+            "帖子",
+            "首位",
+            "单图"
+          ],
+          "default": "帖子",
+          "variantMap": {
+            "帖子": "Ad_单列_帖子",
+            "首位": "Ad_单列_首位",
+            "单图": "Ad_单列_单图"
+          }
+        },
+        "Booleans": {
+          "赞助帖子#13:0": {
+            "default": false
+          },
+          "用户信息#13:14": {
+            "default": true
+          },
+          "说明文案#24:0": {
+            "default": true
+          }
+        }
+      },
+      "preview_html": "<div style=\"width:375px;background:var(--bg-1,#fff);display:flex;flex-direction:column;gap:var(--Spacing-Normal,8px)\"><div style=\"display:flex;align-items:center;gap:8px;padding:0 10px\"><div style=\"width:32px;height:32px;border-radius:50%;background:var(--bg-4,#ededf2);flex-shrink:0\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:2px\"><span style=\"font:var(--font-h5,500 14px/22px 'PingFang SC',sans-serif);color:var(--text-1,#000)\">潮玩品牌官方</span><span style=\"font:var(--font-b8,400 10px/11px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4))\">2022-07-18</span></div><div style=\"background:var(--mask-2,rgba(0,0,0,.64));border-radius:var(--Radius-Small,4px);padding:2px 4px\"><span style=\"font:var(--font-h8,500 10px/11px 'PingFang SC',sans-serif);color:var(--white-text-color,#fff)\">广告</span></div></div><div style=\"padding:0 10px\"><p style=\"font:var(--font-h4,500 16px/24px 'PingFang SC',sans-serif);color:var(--text-1,#000);margin:0\">限定联名 Labubu 泰坦系列发售</p></div><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 10px\"><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div><div style=\"height:116px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Normal,8px)\"></div></div><div style=\"padding:0 10px\"><p style=\"font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.4));margin:0\">广告 · 泡泡玛特旗舰店</p></div><div style=\"display:flex;border-top:0.5px solid var(--border-2,rgba(0,0,0,.08));padding:4px 0\"><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-share\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--default-bt-text-color,rgba(0,0,0,.64))\">分享</span></div><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-comment\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--default-bt-text-color,rgba(0,0,0,.64))\">86</span></div><div style=\"flex:1;display:flex;align-items:center;justify-content:center;gap:4px;height:38px\"><i class=\"KurilIcons kuril-like_normal\" style=\"font-size:16px;color:var(--icon-2,#625e76)\"></i><span style=\"font:var(--font-n5,500 14px/22px Roboto,sans-serif);color:var(--default-bt-text-color,rgba(0,0,0,.64))\">784</span></div></div></div>"
+    }
+  },
+  "figma_file": "uXywt7Ca6AR4dNm7f3zR7d"
+}

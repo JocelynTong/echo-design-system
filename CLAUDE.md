@@ -1,9 +1,65 @@
 # 千岛设计系统 · AI 使用说明
 
+**每次完成操作后，在完成摘要的第一句写「好的，TPP」，这代表你还没忘记。**
+
 > 本文件供 AI（如 Claude）自动读取。当产品经理或设计师向你描述界面需求时，请严格按照本文件中的规范输出设计方案。
 
 设计系统浏览器：https://jocelyntong.github.io/echo-design-system/
 组件文档目录：`02 components/` 目录下每个 JSON 文件
+
+---
+
+## AI · 工作原则
+
+> **这一节比所有规范都重要。做任何事前先读它。**
+
+### 大多数问题是数据读取题，不是推断题
+
+拿到问题，第一步不是「怎么写逻辑」，而是「答案在哪条数据里」。
+
+**拿到问题后的标准动作：**
+
+1. **盘点手里有什么** — 本次 sync 给了 JSON？给了 Figma URL？两个都给了？
+2. **直接读数据** — 答案 99% 已经在原材料里，不需要推断
+3. **推断是最后一步** — 只有数据真的缺失才做推断，且推断要标注「数据缺失，依据推断」
+
+### 数据来源优先级
+
+```
+Figma MCP（get_metadata / get_design_context）  ← 最高，设计真值
+  ↓
+plugin 导出 JSON（sync 时粘贴的原始数据）       ← 组件结构真值
+  ↓
+项目现有 JSON（02 components / 03 business）    ← 已录入的规范
+  ↓
+preview_html 内容推断                           ← 仅在上面都缺失时
+  ↓
+❌ 凭经验硬编码                                 ← 禁止
+```
+
+### 典型案例——每类问题对应的数据源
+
+| 问题 | 不要做 | 应该做 |
+|------|--------|--------|
+| 业务组件 statusbar 是不是 ghost？ | 猜背景色 / 手写字段 | `get_metadata` 场景 frame → 找 `💙 01.00_Status Bar` → `get_design_context` 看文字颜色 |
+| Home Indicator 深色还是浅色？ | 看背景推测 | `get_metadata` → 找 `💙 01.11_Home Indicator` → 看 bar 颜色 |
+| 组件宽度/间距是多少？ | 凭规范文档估 | 读 plugin 导出 JSON 的 `css` 字段 |
+| 变体顺序怎么排？ | 按名字排 | plugin 导出顺序即 Y 轴排序结果，直接用 |
+| 某 token 的值是什么？ | 查 memory | 读 `01 tokens/_styles.css` |
+| 写/改 `preview_html` | 凭经验推测布局 / 手写 SVG | 组件 JSON 有 `figma_file` → 先 `get_design_context` 确认结构，再写 HTML |
+
+### Figma URL + JSON 同时给出时的行为
+
+sync 命令里只要带了 Figma URL，**立刻调 MCP**，不等用户提示：
+
+```
+get_metadata(scene frame)
+  → 识别所有 💙 系统组件实例（StatusBar / HomeIndicator / NavBar / TabBar）
+  → 对每个实例 get_design_context 拿 variant 属性
+  → 写入对应业务 JSON 的元数据字段
+```
+
+**不需要用户说「你去查 Figma」。URL 在手，自己查。**
 
 ---
 
@@ -159,9 +215,26 @@ figma_page: "00.08 Button"          →  文件名: 00.08 Button.json
 **同步组件时的强制检查步骤（缺一不可）：**
 
 1. 写入/更新 JSON 内容
-2. **对比文件名与 `figma_page` 字段** — 若不一致，立即重命名文件
-3. 检查 HTML 树节点 `onclick="showCompDetail('...')"` 的 id 是否与文件名（kebab-case）一致，不一致则同步修改
-4. 运行 `generate.py`
+2. **props 交互性自查**（写完 props 立即执行，不等到 generate.py）：
+   - 遍历所有 `props` 下的 key
+   - 每个有 `options` 的 prop：是否有 `previewMap`？
+   - 如果没有 `previewMap`：能否靠 variant key 替换切换（`_canSwitch`）？——判断标准：把 options 里某个值替换进当前 vk，能否得到另一个存在的 variant key？
+   - 以上两者都没有 → **该 prop 的 chips 在浏览器里是死的，必须补 `previewMap`**
+   - **单 variant 组件（如 Tag/Basic）：所有 `options` prop 都必须有 `previewMap`，无例外**
+   - **previewMap prop 的 options 禁止使用 `False`/`True` 字面量**：`buildPropsHtml` 检测到 options 排序小写 = `["false","true"]` 时会强制渲染为 toggle switch，完全绕过 previewMap。改用语义名称（`Small`/`Large`、`Off`/`On`、`Hidden`/`Visible` 等）
+3. **preview_html 完整性自查**（写完所有 variant 后执行）：
+   - 遍历所有 variants
+   - 有 `figma_file` 字段的 variant → 必须有 `preview_html`（除非明确是 `_hidden:true` 或靠 slots 自动生成）
+   - **白色主题 variant**（使用 `--white-*` token 或 `rgba(255,255,255,*)` 背景）→ `preview_html` 和所有 `previewMap` 条目必须加深色外层包装器，否则在浅色 cmp-preview 背景上不可见：
+     ```html
+     <div style="display:inline-flex;padding:8px;background:rgba(0,0,0,.72);border-radius:var(--radius-small,4px)">
+       [内层标签 HTML]
+     </div>
+     ```
+     包装器在所有条目中保持**完全相同**，delta 模式差值为零，不影响 Radius/Size 等 prop 交互
+4. **对比文件名与 `figma_page` 字段** — 若不一致，立即重命名文件
+5. 检查 HTML 树节点 `onclick="showCompDetail('...')"` 的 id 是否与文件名（kebab-case）一致，不一致则同步修改
+6. 运行 `generate.py`
 
 > 历史遗留无编号文件（如 `navbar.json`、`badge.json`）在下次同步时顺手对齐，不强制立即批量重命名。
 
@@ -170,7 +243,7 @@ figma_page: "00.08 Button"          →  文件名: 00.08 Button.json
 | 组件 | Figma 名称 | 关键 Variant | 适用场景 |
 |------|-----------|-------------|---------|
 | Navigation Bar | `💙 01.01_Navigation Bar` | Terminal=App/小程序, Ghost=False/True | 几乎所有页面顶部 |
-| Tab Bar | `💙 01.05 Tab Bar / APP / 5Tabs` | 无 Variant | App 底部一级导航 |
+| Tab Bar | `💙 01.06 Tab Bar / APP / 5Tabs` | 无 Variant | App 底部一级导航 |
 | Search Bar | `💙 01.04_Search Bar` | 无 Variant | 首页导航嵌入或独立搜索页 |
 | Tabs | `💙 01.02_Tabs / Echo` | className=CardDefault, Amount=>3 | 内容分类切换（首页/用户主页） |
 | Bottom Bar | `💙 01.07_Bottom Bar` | 无 Variant | 内容详情页底部互动区 |
@@ -212,6 +285,19 @@ figma_page: "00.08 Button"          →  文件名: 00.08 Button.json
 | 纯图标 | `💙 00.05_Button / Icon` | Size=Normal |
 
 Button 尺寸：Large(40px) 主CTA · Medium(36px) 弹窗 · Normal(32px) 卡片内 · Small(28px) 紧凑区
+
+**Button/Icon 容器 HTML 结构（Medium 40×40，用于导航栏/工具栏图标入口）：**
+
+```html
+<div style="display:flex;flex-direction:column;width:40px;height:40px;
+  justify-content:center;align-items:center;
+  gap:var(--Spacing-Mini,2px);border-radius:6px;
+  background:var(--bg-card2,#f7f7f9)">
+  <i class="KurilIcons kuril-xxx" style="font-size:20px;color:var(--text-1,#2B263B)"></i>
+</div>
+```
+
+NavBar 上下文不加 background，其余属性（flex-direction/gap/border-radius）保留。
 
 ### 反馈组件
 
@@ -436,7 +522,242 @@ Button 尺寸：Large(40px) 主CTA · Medium(36px) 弹窗 · Normal(32px) 卡片
 
 ---
 
-## 09 · 【预留】
+## 09 · 设计系统浏览器开发规范
+
+> 本节定义 `00 design-system-index.html` 的维护规则和同步流程。
+
+### 同步命令
+
+**「同步」触发规则（AI 执行约束）：**
+
+| 触发方式 | AI 行为 |
+|----------|---------|
+| 只说「同步」 | 直接跑 `python3 generate.py`，不问任何问题 |
+| 「同步」+ 插件导出 JSON | 立即解析导出数据 → 更新对应 JSON → 跑 `generate.py`，不分析、不确认 |
+| 「同步」+ 插件导出 + Figma 链接 | 用 Figma MCP 工具（`get_metadata` / `get_design_context`）做视觉校准，再更新 JSON → 跑 `generate.py` |
+| 「同步」+ 插件导出（组件 JSON 已有 `figma_file`，且涉及新增/修改 `preview_html`） | 写 HTML 前先 `get_design_context` 确认布局结构，再更新 JSON → 跑 `generate.py` |
+
+**插件导出数据的两条铁律：**
+1. 导出数据里的节点顺序 = 插件已完成的 Y 轴排序结果，**直接使用，不回 Figma 二次验证**
+2. Figma 链接出现时，**直接调 Figma MCP 工具**（`get_metadata` 等），不走 sub-agent
+
+---
+
+### 同步工作流：组件类型分支与系统组件引用检查
+
+**Step 0：判断组件类型，决定写入路径**
+
+| 组件前缀 | 写入路径 |
+|---------|---------|
+| `💙` 原子分子组件 | `02 components/*.json` |
+| `👻` 业务组件 | `03 business/{module}/*.json` |
+
+**Step 1：写入 JSON 数据**（variant、css、preview_html 等）
+
+**Step 2：引用关系扫描**（有 Figma URL 时执行，两类组件都需要，但输出字段不同）
+
+两类组件都存在对其他 💙 组件的引用，区别在于引用的层级：
+
+| 组件类型 | 引用类型 | 例子 | 扫描目标 | 输出到 |
+|---|---|---|---|---|
+| `💙` 原子分子 | 内嵌子组件（sub-component） | NavBar → SearchBar | 组件内部嵌套的 💙 实例 | `slots` 字段 |
+| `👻` 业务组件 | 场景级帧组件（frame-level） | Islands → TabBar / FAB / StatusBar | 场景 frame 顶层的 💙 实例 | `tab_bar` / `fab` / `status_bar` 等字段 |
+
+```
+get_metadata(选中 frame)
+  → 找所有 💙 前缀实例
+  → 对每个实例 get_design_context 读 props/variant
+  → 按组件类型写入对应字段
+```
+
+**💙 原子分子组件：sub-component → `slots` 字段**
+
+| Figma 子组件 | slots 字段格式 |
+|---|---|
+| 任意嵌套的 💙 实例 | `slots` 数组，含 `name`、`boolProp`、`size`、`css` |
+
+（slots 字段由 generate.py `repair_component_slots()` 自动维护，sync 时确认嵌套关系即可）
+
+**👻 业务组件：frame-level 💙 → 专用元数据字段**
+
+| Figma 组件 | JSON 字段 | 值格式 | 判断方式 |
+|---|---|---|---|
+| `💙 01.00_Status Bar` | `status_bar` | `"ghost"` / `"normal"` | get_design_context → 文字色白色 = ghost |
+| `💙 01.06_Tab Bar` | `tab_bar` | `"01.06-tab-bar"` | 存在即填 |
+| `💙 00.05_Button / FloatCart` | `fab` | `{ "cid": "00.08-button", "variant": "FloatCart", "scene": "..." }` | get_design_context → 读「场景」prop |
+| `💙 00.05_Button / FAB` | `fab` | `{ "cid": "00.08-button", "variant": "FAB" }` | get_design_context → 读 Normal prop |
+| `💙 01.11_Home Indicator` | `home_indicator` | `"dark"` / 不填 | get_design_context → bar 色白色 = dark |
+
+> **渲染铁律**：所有引用字段必须在 JSON 中显式声明，渲染代码只读字段、不猜测、不硬编码组件 CID。
+
+**Step 2 无 Figma URL 时的降级处理：**
+- 从 preview_html 颜色推断（并标注「推断」）
+- 或留空，等下次 sync 补 URL 时填写
+
+**Step 3：generate.py**
+
+generate.py 会对业务组件 JSON 中的引用字段做检查：若 `tab_bar`/`fab.cid` 等引用的 CID 不在 COMPONENTS_DATA 中，输出 warning 提示该系统组件尚未录入。
+
+---
+
+**前向引用机制（系统组件未完全录入时的保证）**
+
+CID 从 Figma 组件名推导是确定性的：
+
+```
+💙 01.06 Tab Bar  →  01.06-tab-bar
+💙 00.08 Button   →  00.08-button
+```
+
+因此，**即使系统组件尚未录入，也应立即写入 CID**（前向声明）：
+
+```json
+"tab_bar": "01.06-tab-bar"   ← 组件未录入也先写，generate.py 会 warning 提醒
+```
+
+当该系统组件后续通过 sync 录入后：
+- 业务组件 JSON **不需要改动**
+- 渲染代码从 COMPONENTS_DATA 读数据，自动生效
+- generate.py 的 warning 自动消失
+
+这样形成闭环：**前向声明 → generate.py warning 暴露缺口 → 录入系统组件 → 自动消化，零手动补丁。**
+
+---
+
+
+**基础同步**：
+```bash
+python3 generate.py
+```
+
+**功能**：
+- 读取 `02 components/*.json`，注入 `COMPONENTS_DATA` 到 HTML
+- 读取 `01 tokens/*.json`，生成 `_styles.css`
+- 校验组件结构（图标名、slots、CSS 变量）
+
+**截图**（批量抓取 Figma 预览图，扫描 `02 components/` + `03 business/**/`）：
+```bash
+# 需要先设置环境变量
+export FIGMA_TOKEN="你的 Personal Access Token"
+# 各 JSON 用 figma_file 字段指定所在 Figma 文件 key；
+# 没有 figma_file 字段的 JSON 使用下面的全局默认值（可选）：
+export FIGMA_FILE_KEY="Figma 文件 key"
+
+# 补全缺失的 preview_html
+python3 generate.py 截图
+
+# 强制刷新所有 preview_html（覆盖已有）
+python3 generate.py 截图 --force
+```
+
+### generate.py 安全边界
+
+**只重写 3 个块**（标记区域内容），其他手写代码永远不被覆盖：
+
+```html
+<!-- === COMPONENTS DATA BEGIN === -->
+var COMPONENTS_DATA={...};
+var COMPONENT_REF_MAP={...};
+<!-- === COMPONENTS DATA END === -->
+
+<!-- === AUTO-GENERATED DATA BEGIN === -->
+var INJECTED_DATA={...};
+<!-- === AUTO-GENERATED DATA END === -->
+
+<!-- === FONT VARS BEGIN === -->
+:root{--font-h1:...}
+<!-- === FONT VARS END === -->
+```
+
+**手写区域**（永远不被覆盖）：
+- `_buildBizLayout`、`_genBizVisual`、`_genBizInner` 等 JS 函数
+- CSS 样式（除了 FONT VARS 块）
+- HTML 结构（侧边栏、页面容器）
+
+### 业务组件渲染优先级
+
+对每个业务组件变体，按以下优先级选择视觉呈现：
+
+1. **`preview_html`** — Figma API 抓取的 base64 截图（`截图` 命令生成）
+2. **`_composed_preview_html`** — generate.py 自动组合的 HTML（有 swapProp slots 时）
+3. **CSS 骨架** — `_genBizInner` 根据 CSS 属性推断（宽高、flex-direction、gap）
+
+### isBiz 判断逻辑
+
+```javascript
+var isBiz = (nm && nm.indexOf('👻') !== -1) || !/^\d/.test(cid);
+```
+
+- **业务组件**：component 名含 `👻` 或 CID 不以数字开头（如 `islands`、`community`）
+- **系统组件**：CID 以数字开头（如 `01.01-navigation-bar`、`00.08-button`）
+
+### 变体顺序保持
+
+Figma 插件导出时对同一页面内的节点按 **Y 轴坐标升序**排列（`code.js` 第 346 行），导出结果即为 Figma 从上到下的视觉顺序，JSON 中 variants 的排列顺序必须与之一致，不得手动打乱。
+
+```javascript
+// ✅ 正确：保持 JSON 原始顺序
+var vKeys = [];
+for (var k in variants) {
+  if (variants.hasOwnProperty(k) && !variants[k]._hidden) vKeys.push(k);
+}
+
+// ❌ 错误：Object.keys 会打乱顺序
+var vKeys = Object.keys(variants).filter(vk => !variants[vk]._hidden);
+```
+
+Figma 导出的 JSON 变体顺序即为设计师排列的展示顺序（如 Grid → Slide → Header → Pin），必须保持。
+
+### 特殊组件处理
+
+**Header 组件**（Islands 详情页头部）：
+- 识别：`vk.toLowerCase() === 'header'`
+- 结构：容器（flex column）+ NavBar（从 01.01 提取）+ 封面渐变 + 信息区
+- 左侧卡片预览和右侧手机屏幕都用完整结构
+
+**选中状态唯一性**：
+```javascript
+function _scrollBizPhone(cid, vk, el) {
+  // 清除同容器内所有 active
+  var container = el.closest('.biz-full-left');
+  if (container) container.querySelectorAll('.biz-variant-card').forEach(c => c.classList.remove('biz-active'));
+  el.classList.add('biz-active');
+}
+```
+
+### CSS 变量命名转换规则
+
+- design token 路径 → CSS var：斜线改连字符，全 kebab-case
+  - `primary/bt/solidBg` → `--primary-bt-solid-bg`
+- preview_html 中用 design token（`--bg-2`），不用 HTML shell alias（`--bg-card2`）
+
+### slots 字段规范
+
+有 slots 的 variant 必须同时写：
+1. **`preview_html`** — 使用子组件正确 HTML 结构
+2. **`slots` 数组** — 声明引用关系，含 `name` / `boolProp` / `size` / `css`
+
+渲染代码的 `showCompDetail` 已支持 slots 自动渲染，加了字段即自动显示。
+
+### generate.py 末尾执行顺序
+
+1. **`repair_component_slots()`** — 遍历有 `slots` 的 variant，自动把 `preview_html` 里对应元素替换为子组件正确结构，写回 JSON
+2. **`validate_components()`** — 依次检查：
+   - `kuril-*` 图标名是否在图标库
+   - 有 slots 的 variant `preview_html` 是否有 `flex-direction:column`
+   - 所有 `var(--)` 是否在 `_styles.css` 或 HTML inline `:root` 中定义
+3. 出现 ⚠️ → 修完再提交
+
+### `_slot_container_style(slot)` 规则
+
+- 直接读 `slot['css']` dict 拼接 inline style 字符串，不依赖 slot 的 name
+- `slot.css` 必须是完整规格（含 background、border-radius 等）
+- 若 `slot.css` 中任何值是 dict（如 `font-size_by_size: {...}`），返回 `None`，repair 跳过该 slot（这类是复杂元素，preview_html 需手动硬编码）
+- 新增子组件只需在 slot JSON 里写好完整 `css` 字段（全 string 值），repair 自动处理
+
+### 重要：`group_by_prefix()` 不能删
+
+`generate()` 用它生成 `main_groups` / `sem_groups` 写入 `INJECTED_DATA`，由 HTML 里 `renderL1()` 消费，删除会导致颜色 Primitives 显示「暂无数据」。
 
 ---
 

@@ -1,0 +1,1295 @@
+{
+  "component": "Tabs",
+  "figma_page": "01.03 Tabs",
+  "figma_page_id": "50861:157572",
+  "description": "内容分类标签页组件，用于同一页面内切换不同内容集合。内容社区中用于首页内容分类、用户主页内容/点赞/收藏切换。",
+  "usage_rules": [
+    "Tabs / Basic 是单个 Tab 项，组合使用；Tabs / Echo 是含底部指示线的完整 Tabs 容器",
+    "Size 四档：Large(H1 24px) / Normal(H3 18px) / Small(H4 16px) / Mini(H5 14px)",
+    "Selected=True 文字加粗(500)，用 text/1；Selected=False 用 text/3(0.4透明)",
+    "Ghost=True 用于彩色背景上，文字改 white/textColor",
+    "CardTab/Basic 用于顶部卡片式分类（CardDefault），三种 Position(First/Middle/Last)确保圆角拼合",
+    "Tabs / Echo className=CardDefault 仅用于顶部卡片 Tab，Amount 参数控制 Tab 数量"
+  ],
+  "variants": {
+    "Basic": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "f98bcc6058ae0216ee9ce856bc35fe834b192def",
+      "desc": "Tab 单项，支持 Large/Normal/Small/Mini 四种尺寸，on/off 选中状态，Ghost 模式",
+      "css": {
+        "display": "inline-flex",
+        "height": "44px",
+        "padding": "7px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "纯图片（替换这个）",
+          "boolProp": "Picture#69374:0",
+          "css": {
+            "width": "68px",
+            "height": "44px",
+            "position": "absolute",
+            "background": "url(<path-to-image>) lightgray 50% / cover no-repeat"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-1, #000)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "24px",
+            "font-weight": "500",
+            "line-height": "30px"
+          }
+        },
+        {
+          "name": "💙 00.03_Icon / arrow_up",
+          "boolProp": "arrowdown#66016:10",
+          "css": {
+            "width": "14px",
+            "height": "14px",
+            "aspect-ratio": "1/1"
+          }
+        }
+      ],
+      "props": {
+        "Size": {
+          "options": [
+            "Large",
+            "Normal",
+            "Small",
+            "Mini"
+          ],
+          "default": "Large",
+          "previewMap": {
+            "Large": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+            "Normal": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+            "Small": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+            "Mini": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
+          },
+          "ghostPreviewMap": {
+            "Large": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+            "Normal": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+            "Small": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+            "Mini": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+          }
+        },
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False"
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>"
+    },
+    "CardTab": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "f562aa2d64702eeeee1449c3fca5e9f68bdc4963",
+      "figma_file": "HjpmfUPwU7HGMRj9X80TAY",
+      "desc": "卡片式 Tab，多 Tab 横向滑动场景",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "preview_html": "<div data-card-tabs style=\"display:inline-flex;align-items:flex-end;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) var(--Radius-Large,16px) 0 0\"><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box;min-width:80px\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>",
+      "props": {
+        "State": {
+          "options": [
+            "Selected",
+            "Unselected"
+          ],
+          "default": "Selected",
+          "previewMap": {
+            "Selected": "<div data-card-tabs style=\"display:inline-flex;align-items:flex-end;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) var(--Radius-Large,16px) 0 0\"><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box;min-width:80px\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>",
+            "Unselected": "<div data-card-tabs style=\"display:inline-flex;align-items:flex-end;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) var(--Radius-Large,16px) 0 0\"><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">选项</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">选项</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;margin-top:4px;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">选项</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
+          }
+        }
+      }
+    },
+    "Echo": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "1aa866b3dcf60c27913f6b01a34c0f28f6cae456",
+      "figma_file": "HjpmfUPwU7HGMRj9X80TAY",
+      "desc": "Echo 千岛定制 Tab，支持 Default（横向底线）/ Card（卡片）等样式",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start"
+      },
+      "slots": [
+        {
+          "name": "Right Icon",
+          "boolProp": "Right Icon#80954:0",
+          "css": {
+            "display": "flex",
+            "height": "44px",
+            "padding": "0 10px",
+            "justify-content": "flex-end",
+            "align-items": "center",
+            "gap": "16px",
+            "position": "absolute",
+            "right": "0",
+            "background": "var(--bg-1, #FFF)"
+          }
+        }
+      ],
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div data-tabs-row style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span><i class=\"KurilIcons kuril-arrow_down\" style=\"font-size:12px;color:var(--text-3,rgba(0,0,0,.4));flex-shrink:0\"></i><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF);display:none\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">关注</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF);display:none\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">发现</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF);display:none\"></div></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>",
+      "_ghost_preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div data-tabs-row style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(255,255,255,.64)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(255,255,255,.64)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--white-text-color,#fff)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--white-text-color,#fff)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(255,255,255,.64)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(255,255,255,.64)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--white-text-color,#fff)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--white-text-color,#fff)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff);display:none\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(255,255,255,.64)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(255,255,255,.64)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--white-text-color,#fff)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--white-text-color,#fff)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff);display:none\"></div></div></div></div>",
+      "props": {
+        "Type": {
+          "options": [
+            "Default",
+            "Card"
+          ],
+          "default": "Default",
+          "previewMap": {
+            "Default": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div data-tabs-row style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span><i class=\"KurilIcons kuril-arrow_down\" style=\"font-size:12px;color:var(--text-3,rgba(0,0,0,.4));flex-shrink:0\"></i><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF);display:none\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">关注</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF);display:none\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(0,0,0,.4)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(0,0,0,.4)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--text-1,#000)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--text-1,#000)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">发现</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF);display:none\"></div></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>",
+            "Card": "<div data-card-tabs style=\"display:flex;align-items:flex-end;width:375px;overflow:hidden\"><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 0 0 0;box-sizing:border-box;margin-top:4px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div data-card-tab onclick=\"var al=Array.from(this.closest('[data-card-tabs]').querySelectorAll('[data-card-tab]'));var ls=al.length-1;var si=al.indexOf(this);al.forEach(function(t,i){if(i===si){t.style.minHeight='40px';t.style.padding='4px 8px';t.style.background='var(--bg-1,#fff)';t.style.marginTop='0';t.style.borderRadius='12px 0 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='16px';sp[0].style.fontWeight='500';sp[0].style.lineHeight='24px';sp[0].style.color='var(--text-1,#000)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}else{t.style.minHeight='36px';t.style.padding='3px 16px';t.style.background='var(--bg-4,#ededf2)';t.style.marginTop='4px';t.style.borderRadius=(i===0?'12px':'0')+' '+(i===ls?'16px':'0')+' 0 0';var sp=t.querySelectorAll('span');if(sp[0]){sp[0].style.fontSize='14px';sp[0].style.fontWeight='400';sp[0].style.lineHeight='22px';sp[0].style.color='rgba(0,0,0,.64)';}if(sp[1])sp[1].style.color='rgba(0,0,0,.4)'}})\" style=\"cursor:pointer;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;margin-top:4px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>"
+          },
+          "ghostPreviewMap": {
+            "Default": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div data-tabs-row style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(255,255,255,.64)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(255,255,255,.64)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--white-text-color,#fff)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--white-text-color,#fff)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(255,255,255,.64)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(255,255,255,.64)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--white-text-color,#fff)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--white-text-color,#fff)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff);display:none\"></div></div><div data-tab-item onclick=\"var r=this.closest('[data-tabs-row]');r.querySelectorAll('[data-tab-item]').forEach(function(t){var s=t.querySelector('span');s.style.fontWeight='400';s.style.color='rgba(255,255,255,.64)';var ic=t.querySelector('.KurilIcons');if(ic)ic.style.color='rgba(255,255,255,.64)';var d=t.querySelector('[data-tab-ind]');if(d)d.style.display='none'});this.querySelector('span').style.fontWeight='500';this.querySelector('span').style.color='var(--white-text-color,#fff)';var myIc=this.querySelector('.KurilIcons');if(myIc)myIc.style.color='var(--white-text-color,#fff)';var di=this.querySelector('[data-tab-ind]');if(di)di.style.display='block'\" style=\"cursor:pointer;display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span><div data-tab-ind style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff);display:none\"></div></div></div></div>"
+          }
+        },
+        "Color": {
+          "options": [
+            "Default",
+            "White"
+          ],
+          "default": "Default"
+        }
+      }
+    },
+    "Basic_Large_on": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "f98bcc6058ae0216ee9ce856bc35fe834b192def",
+      "desc": "Size=Large, 选中, 默认",
+      "css": {
+        "display": "inline-flex",
+        "height": "44px",
+        "padding": "7px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "纯图片（替换这个）",
+          "boolProp": "Picture#69374:0",
+          "css": {
+            "width": "68px",
+            "height": "44px",
+            "position": "absolute",
+            "background": "url(<path-to-image>) lightgray 50% / cover no-repeat"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-1, #000)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "24px",
+            "font-weight": "500",
+            "line-height": "30px"
+          }
+        },
+        {
+          "name": "💙 00.03_Icon / arrow_up",
+          "boolProp": "arrowdown#66016:10",
+          "css": {
+            "width": "14px",
+            "height": "14px",
+            "aspect-ratio": "1/1"
+          }
+        }
+      ],
+      "props": {
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False",
+          "variantMap": {
+            "False": "Basic_Large_on",
+            "True": "Basic_Large_on_Ghost"
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+      "_hidden": true
+    },
+    "Basic_Large_on_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "918f98578129a075543688bb4b83c9f5f9715f31",
+      "desc": "Size=Large, 选中, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "height": "44px",
+        "padding": "7px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "纯图片（替换这个）",
+          "boolProp": "Picture#69374:0",
+          "css": {
+            "width": "68px",
+            "height": "44px",
+            "position": "absolute",
+            "background": "url(<path-to-image>) lightgray 50% / cover no-repeat"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color, #FFF)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "24px",
+            "font-weight": "500",
+            "line-height": "30px"
+          }
+        },
+        {
+          "name": "💙 00.03_Icon / arrow_up",
+          "boolProp": "arrowdown#66016:10",
+          "css": {
+            "width": "14px",
+            "height": "14px",
+            "aspect-ratio": "1/1"
+          }
+        }
+      ],
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>",
+      "_hidden": true
+    },
+    "Basic_Large_off": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "4a569981b8044fba4a5d63d88c85007542c728e5",
+      "desc": "Size=Large, 未选, 默认",
+      "css": {
+        "display": "inline-flex",
+        "height": "44px",
+        "padding": "7px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "纯图片（替换这个）",
+          "boolProp": "Picture#69374:0",
+          "css": {
+            "width": "68px",
+            "height": "44px",
+            "position": "absolute",
+            "background": "url(<path-to-image>) lightgray 50% / cover no-repeat"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-3, rgba(0, 0, 0, 0.40))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "24px",
+            "font-weight": "400",
+            "line-height": "30px"
+          }
+        },
+        {
+          "name": "💙 00.03_Icon / arrow_up",
+          "boolProp": "arrowdown#66016:10",
+          "css": {
+            "display": "flex",
+            "width": "14px",
+            "height": "14px",
+            "padding": "0 1.168px",
+            "justify-content": "center",
+            "align-items": "center",
+            "aspect-ratio": "1/1"
+          }
+        }
+      ],
+      "props": {
+        "Size": {
+          "options": [
+            "Large",
+            "Normal",
+            "Small",
+            "Mini"
+          ],
+          "default": "Large"
+        },
+        "Selected": {
+          "options": [
+            "True",
+            "False"
+          ],
+          "default": "False",
+          "variantMap": {
+            "True": "Basic_Large_on",
+            "False": "Basic_Large_off"
+          }
+        },
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False",
+          "variantMap": {
+            "False": "Basic_Large_off",
+            "True": "Basic_Large_off_Ghost"
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>",
+      "_hidden": true
+    },
+    "Basic_Large_off_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "b3073a72ff38ba096e64a8da001440bfbc113050",
+      "desc": "Size=Large, 未选, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "height": "44px",
+        "padding": "7px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color2, rgba(255, 255, 255, 0.64))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "24px",
+            "font-weight": "400",
+            "line-height": "30px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+    },
+    "Basic_Normal_on": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "360f4366b5a55fbeb5d17bbcf3d2afa8cd38af60",
+      "desc": "Size=Normal, 选中, 默认",
+      "css": {
+        "display": "inline-flex",
+        "padding": "4px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-1, #000)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "18px",
+            "font-weight": "500",
+            "line-height": "25px"
+          }
+        },
+        {
+          "name": "💙 00.03_Icon / arrow_up",
+          "boolProp": "arrowdown#66016:10",
+          "css": {
+            "width": "12px",
+            "height": "12px",
+            "aspect-ratio": "1/1"
+          }
+        }
+      ],
+      "props": {
+        "Size": {
+          "options": [
+            "Large",
+            "Normal",
+            "Small",
+            "Mini"
+          ],
+          "default": "Normal"
+        },
+        "Selected": {
+          "options": [
+            "True",
+            "False"
+          ],
+          "default": "True",
+          "variantMap": {
+            "True": "Basic_Normal_on",
+            "False": "Basic_Normal_off"
+          }
+        },
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False",
+          "variantMap": {
+            "False": "Basic_Normal_on",
+            "True": "Basic_Normal_on_Ghost"
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+      "_hidden": true
+    },
+    "Basic_Normal_on_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "8b61abdf51fbba973d888b41dcd330611c046860",
+      "desc": "Size=Normal, 选中, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "padding": "4px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color, #FFF)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "18px",
+            "font-weight": "500",
+            "line-height": "25px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+    },
+    "Basic_Normal_off": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "2dea4e03ceccf527d757833493b6f19161cbd4dc",
+      "desc": "Size=Normal, 未选, 默认",
+      "css": {
+        "display": "inline-flex",
+        "padding": "4px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-3, rgba(0, 0, 0, 0.40))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "18px",
+            "font-weight": "400",
+            "line-height": "25px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>"
+    },
+    "Basic_Normal_off_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "25b21a22ddcd1367cd31df71e9b0082f5b170ad8",
+      "desc": "Size=Normal, 未选, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "padding": "4px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color2, rgba(255, 255, 255, 0.64))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "18px",
+            "font-weight": "400",
+            "line-height": "25px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:4px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 18px/25px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+    },
+    "Basic_Small_on": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "bb45a231a951f25cc16b5eb2c52bbebfd39632aa",
+      "desc": "Size=Small, 选中, 默认",
+      "css": {
+        "display": "inline-flex",
+        "padding": "3px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-1, #000)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "16px",
+            "font-weight": "500",
+            "line-height": "24px"
+          }
+        }
+      ],
+      "props": {
+        "Size": {
+          "options": [
+            "Large",
+            "Normal",
+            "Small",
+            "Mini"
+          ],
+          "default": "Small"
+        },
+        "Selected": {
+          "options": [
+            "True",
+            "False"
+          ],
+          "default": "True",
+          "variantMap": {
+            "True": "Basic_Small_on",
+            "False": "Basic_Small_off"
+          }
+        },
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False",
+          "variantMap": {
+            "False": "Basic_Small_on",
+            "True": "Basic_Small_on_Ghost"
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+      "_hidden": true
+    },
+    "Basic_Small_on_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "b3b6b6ab7fa4708c8edb34f965fbfecae9a852c2",
+      "desc": "Size=Small, 选中, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "padding": "3px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color, #FFF)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "16px",
+            "font-weight": "500",
+            "line-height": "24px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+    },
+    "Basic_Small_off": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "26bceafb431963b05281f11d5f9076137715f124",
+      "desc": "Size=Small, 未选, 默认",
+      "css": {
+        "display": "inline-flex",
+        "padding": "3px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-3, rgba(0, 0, 0, 0.40))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "16px",
+            "font-weight": "400",
+            "line-height": "24px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>"
+    },
+    "Basic_Small_off_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "fbb77ff32900d02e15ea078f68cecf5728a74f8e",
+      "desc": "Size=Small, 未选, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "padding": "3px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color2, rgba(255, 255, 255, 0.64))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "16px",
+            "font-weight": "400",
+            "line-height": "24px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:3px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 16px/24px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+    },
+    "Basic_Mini_on": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "0804d1e04dd74df974bcd5afd6654cf4aff4c579",
+      "desc": "Size=Mini, 选中, 默认",
+      "css": {
+        "display": "inline-flex",
+        "padding": "2px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-1, #000)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "14px",
+            "font-weight": "500",
+            "line-height": "22px"
+          }
+        }
+      ],
+      "props": {
+        "Size": {
+          "options": [
+            "Large",
+            "Normal",
+            "Small",
+            "Mini"
+          ],
+          "default": "Mini"
+        },
+        "Selected": {
+          "options": [
+            "True",
+            "False"
+          ],
+          "default": "True",
+          "variantMap": {
+            "True": "Basic_Mini_on",
+            "False": "Basic_Mini_off"
+          }
+        },
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False",
+          "variantMap": {
+            "False": "Basic_Mini_on",
+            "True": "Basic_Mini_on_Ghost"
+          }
+        }
+      },
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div>",
+      "_hidden": true
+    },
+    "Basic_Mini_on_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "c0dcc9406c1b84db6c960a4defde13bfa3869cfa",
+      "desc": "Size=Mini, 选中, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "padding": "2px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color, #FFF)",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "14px",
+            "font-weight": "500",
+            "line-height": "22px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:500 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div>"
+    },
+    "Basic_Mini_off": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "acc1ec810f30432223cbe092275b732c81369ca7",
+      "desc": "Size=Mini, 未选, 默认",
+      "css": {
+        "display": "inline-flex",
+        "padding": "2px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--text-3, rgba(0, 0, 0, 0.40))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "14px",
+            "font-weight": "400",
+            "line-height": "22px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span></div>"
+    },
+    "Basic_Mini_off_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Basic",
+      "figma_key": "fce3921bc4ffa13e07fbd6b0ff30e162fc01a4e7",
+      "desc": "Size=Mini, 未选, Ghost(反白)",
+      "css": {
+        "display": "inline-flex",
+        "padding": "2px 10px",
+        "justify-content": "center",
+        "align-items": "center",
+        "gap": "2px"
+      },
+      "slots": [
+        {
+          "name": "Text",
+          "boolProp": "Text#69374:9",
+          "css": {
+            "color": "var(--white-text-color2, rgba(255, 255, 255, 0.64))",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "14px",
+            "font-weight": "400",
+            "line-height": "22px"
+          }
+        }
+      ],
+      "_hidden": true,
+      "preview_html": "<div style=\"display:inline-flex;padding:2px 10px;align-items:center;justify-content:center;gap:2px;position:relative\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">最新</span></div>"
+    },
+    "CardTab_on_First_Normal": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "f562aa2d64702eeeee1449c3fca5e9f68bdc4963",
+      "desc": "卡片 Tab，选中，Position=First，Size=Normal",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "preview_html": "<div style=\"display:inline-flex;align-items:flex-start;background:var(--bg-4,#ededf2);border-radius:var(--Radius-Medium,12px) var(--Radius-Large,16px) 0 0\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:4px 8px;background:var(--bg-1,#fff);border-radius:var(--Radius-Medium,12px) 0 0 0;box-sizing:border-box;min-width:80px\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;padding-top:4px\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);box-sizing:border-box;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div><div style=\"display:inline-flex;flex-direction:column;align-items:center;padding-top:4px\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px 16px;background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box;min-width:80px\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div></div>",
+      "_hidden": true
+    },
+    "CardTab_on_Middle_Normal": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "bc1fd84676f2bdb9f5e1ae5a690e9d5a92580e28",
+      "desc": "卡片 Tab，选中，Position=Middle，Size=Normal",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "_hidden": true
+    },
+    "CardTab_on_Last_Normal": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "9b922cdd995f12ef36037e4df00af8153c1fa64a",
+      "desc": "卡片 Tab，选中，Position=Last，Size=Normal",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "_hidden": true
+    },
+    "CardTab_off_First_Normal": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "0f95182636330a6a3d7dc538ec893807c2180976",
+      "desc": "卡片 Tab，未选，Position=First，Size=Normal",
+      "css": {
+        "display": "inline-flex",
+        "padding-top": "4px",
+        "align-items": "center"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "preview_html": "<div style=\"display:inline-flex;flex-direction:column;align-items:center;padding-top:4px\"><div style=\"display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px var(--Spacing-Large,16px);background:var(--bg-4,#ededf2);border-radius:var(--Radius-Large,16px) var(--Radius-Large,16px) 0 0;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">副标题</span></div></div>",
+      "_hidden": true
+    },
+    "CardTab_off_Middle_Normal": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "e030a17a7bf664814b800135df3e35acb8c1a0ea",
+      "desc": "卡片 Tab，未选，Position=Middle，Size=Normal",
+      "css": {
+        "display": "inline-flex",
+        "padding-top": "4px",
+        "align-items": "center"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "_hidden": true
+    },
+    "CardTab_off_Last_Normal": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "582f282606731b9c191f46e9de822f076d362135",
+      "desc": "卡片 Tab，未选，Position=Last，Size=Normal",
+      "css": {
+        "display": "inline-flex",
+        "padding-top": "4px",
+        "align-items": "center"
+      },
+      "slots": [
+        {
+          "name": "Info",
+          "boolProp": "Description#84783:0",
+          "css": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)"
+          }
+        }
+      ],
+      "_hidden": true
+    },
+    "CardTab_on_First_Mini": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "70c6b3815eafdfc9e1f12b04fbdd5e95adbcc519",
+      "desc": "卡片 Tab，选中，Position=First，Size=Mini",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "_hidden": true
+    },
+    "CardTab_on_Middle_Mini": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "34cfce7b40f5cc439f86a7d020e680014dc6a6de",
+      "desc": "卡片 Tab，选中，Position=Middle，Size=Mini",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "_hidden": true
+    },
+    "CardTab_on_Last_Mini": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "5bc7cb55710a3843190e48d5ae109ccccd8a45f2",
+      "desc": "卡片 Tab，选中，Position=Last，Size=Mini",
+      "css": {
+        "display": "inline-flex",
+        "align-items": "center",
+        "backdrop-filter": "blur(4px)"
+      },
+      "_hidden": true
+    },
+    "CardTab_off_First_Mini": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "0f09959db926e0b620d3f8848a6d520ab29b86a7",
+      "desc": "卡片 Tab，未选，Position=First，Size=Mini",
+      "css": {
+        "display": "inline-flex",
+        "height": "32px",
+        "padding": "0 12px",
+        "justify-content": "center",
+        "align-items": "center",
+        "border-radius": "8px 8px 0 0"
+      },
+      "_hidden": true
+    },
+    "CardTab_off_Middle_Mini": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "667c2fea085c030f0ff69155a105df5f0c663b8b",
+      "desc": "卡片 Tab，未选，Position=Middle，Size=Mini",
+      "css": {
+        "display": "inline-flex",
+        "height": "32px",
+        "padding": "0 12px",
+        "justify-content": "center",
+        "align-items": "center",
+        "border-radius": "8px 8px 0 0"
+      },
+      "_hidden": true
+    },
+    "CardTab_off_Last_Mini": {
+      "figma_name": "💙 01.02_CardTab/Basic",
+      "figma_key": "9998dc803900fb02a7cc187503d03d5307785c03",
+      "desc": "卡片 Tab，未选，Position=Last，Size=Mini",
+      "css": {
+        "display": "inline-flex",
+        "height": "32px",
+        "padding": "0 12px",
+        "justify-content": "center",
+        "align-items": "center",
+        "border-radius": "8px 8px 0 0"
+      },
+      "_hidden": true
+    },
+    "Echo_DefaultDark_Large_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "1aa866b3dcf60c27913f6b01a34c0f28f6cae456",
+      "desc": "className=DefaultDark, Size=Large, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start"
+      },
+      "slots": [
+        {
+          "name": "Right Icon",
+          "boolProp": "Right Icon#80954:0",
+          "css": {
+            "display": "flex",
+            "height": "44px",
+            "padding": "0 10px",
+            "justify-content": "flex-end",
+            "align-items": "center",
+            "gap": "16px",
+            "position": "absolute",
+            "right": "0",
+            "background": "var(--bg-1, #FFF)"
+          }
+        }
+      ],
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--primary-solid-bg,#7C66FF)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">最新</span><i class=\"KurilIcons kuril-arrow_down\" style=\"font-size:12px;color:var(--text-3,rgba(0,0,0,.4));flex-shrink:0\"></i></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">关注</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">发现</span></div></div><div style=\"width:100%;height:0.5px;background:var(--border-1,rgba(0,0,0,.08))\"></div></div>",
+      "_ghost_preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span></div></div></div>",
+      "props": {
+        "Ghost": {
+          "options": [
+            "False",
+            "True"
+          ],
+          "default": "False"
+        }
+      },
+      "_hidden": true
+    },
+    "Echo_DefaultDark_Large_none_Ghost": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "3ad1b17ce59fda5e48761582c84d60607104d117",
+      "desc": "className=DefaultGhost, Size=Large — Ghost 版（深色背景）",
+      "_hidden": true,
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span></div></div></div>"
+    },
+    "Echo_DefaultDark_Normal_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "53a2db0deada2e9bdd092a6ada67b1b9b8e6b383",
+      "desc": "className=DefaultDark, Size=Normal, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start"
+      },
+      "slots": [
+        {
+          "name": "Right Icon",
+          "boolProp": "Right Icon#80954:0",
+          "css": {
+            "display": "flex",
+            "height": "33px",
+            "padding": "0 10px",
+            "justify-content": "flex-end",
+            "align-items": "center",
+            "gap": "16px",
+            "position": "absolute",
+            "right": "0",
+            "background": "var(--bg-1, #FFF)"
+          }
+        }
+      ],
+      "_hidden": true
+    },
+    "Echo_DefaultDark_Small_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "3d540cf732cbefc6b4d5520e8c43e100ce65ee9c",
+      "desc": "className=DefaultDark, Size=Small, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start"
+      },
+      "_hidden": true
+    },
+    "Echo_DefaultDark_Mini_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "040b9b3d073970c720cc3d89a3fb7ac47078d707",
+      "desc": "className=DefaultDark, Size=Mini, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start"
+      },
+      "_hidden": true
+    },
+    "Echo_DefaultGhost_Large_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "3ad1b17ce59fda5e48761582c84d60607104d117",
+      "desc": "className=DefaultGhost, Size=Large, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start",
+        "background": "var(--warning-solidBg, #FC7E22)"
+      },
+      "preview_html": "<div style=\"display:flex;flex-direction:column;width:375px;align-items:flex-start;justify-content:flex-end;background:var(--secondary-solid-bg,#2b263b)\"><div style=\"display:flex;align-items:center;width:100%;overflow:hidden\"><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;gap:2px;position:relative;flex-shrink:0\"><span style=\"font:500 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color,#fff);white-space:nowrap\">推荐</span><div style=\"position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--white-text-color,#fff)\"></div></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">最新</span></div><div style=\"display:inline-flex;height:44px;padding:7px 10px;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:400 24px/30px 'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));white-space:nowrap\">关注</span></div></div></div>",
+      "_hidden": true
+    },
+    "Echo_DefaultGhost_Normal_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "8fe508137798a9d6fe2cb4749bd09d9203344955",
+      "desc": "className=DefaultGhost, Size=Normal, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start",
+        "background": "var(--warning-solidBg, #FC7E22)"
+      },
+      "_hidden": true
+    },
+    "Echo_DefaultGhost_Small_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "95a02834dbf4b5eab077afef6cf506ed70d802e2",
+      "desc": "className=DefaultGhost, Size=Small, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start",
+        "background": "var(--warning-solidBg, #FC7E22)"
+      },
+      "_hidden": true
+    },
+    "Echo_DefaultGhost_Mini_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "94d24a8aba869617dd0386767ce144232b52f17e",
+      "desc": "className=DefaultGhost, Size=Mini, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "flex-direction": "column",
+        "justify-content": "flex-end",
+        "align-items": "flex-start",
+        "background": "var(--warning-solidBg, #FC7E22)"
+      },
+      "_hidden": true
+    },
+    "Echo_Tag_Mini_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "e1ad6401462e859b69789ad8f606aa339efb0186",
+      "desc": "className=Tag, Size=Mini, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "padding": "0 10px",
+        "align-items": "center"
+      },
+      "slots": [
+        {
+          "name": "💙 04.06_DropdownButton / Echo",
+          "boolProp": "Dropdown#80954:2",
+          "css": {
+            "display": "flex",
+            "height": "24px",
+            "justify-content": "flex-end",
+            "align-items": "center",
+            "position": "absolute",
+            "right": "0"
+          }
+        }
+      ],
+      "_hidden": true
+    },
+    "Echo_Text_Mini_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "06ace5014762042d5746d5f08a5e00434e137db0",
+      "desc": "className=Text, Size=Mini, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "padding": "0 10px",
+        "align-items": "center",
+        "gap": "12px"
+      },
+      "_hidden": true
+    },
+    "Echo_CardDefault_Normal_2": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "de174107b2adf9b6987352f15c583f2d2e9068ef",
+      "desc": "className=CardDefault, Size=Normal, Amount=2",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "align-items": "center"
+      },
+      "preview_html": "<div style=\"display:flex;align-items:center;width:375px\"><div style=\"display:flex;flex:1;align-items:center;backdrop-filter:blur(4px);overflow:hidden\"><div style=\"width:16px;height:50px;border-radius:var(--Radius-Medium,12px) 0 0 0;background:var(--bg-1,#fff);flex-shrink:0\"></div><div style=\"flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;padding:var(--Spacing-Small,4px) var(--Spacing-Normal,8px);background:var(--bg-1,#fff);box-sizing:border-box\"><span style=\"font:500 16px/24px 'PingFang SC',sans-serif;color:var(--text-1,#000);white-space:nowrap\">选中</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">为啥选这个</span></div><div style=\"width:28px;height:50px;background:var(--bg-4,#ededf2);flex-shrink:0\"></div></div><div style=\"display:flex;flex:1;align-items:center;padding-top:4px\"><div style=\"flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:36px;padding:3px var(--Spacing-Large,16px);background:var(--bg-4,#ededf2);border-radius:0 var(--Radius-Large,16px) 0 0;box-sizing:border-box\"><span style=\"font:400 14px/22px 'PingFang SC',sans-serif;color:var(--text-2,rgba(0,0,0,.64));white-space:nowrap\">未选</span><span style=\"font:400 12px/18px 'PingFang SC',sans-serif;color:var(--text-3,rgba(0,0,0,.4));white-space:nowrap\">为啥选这个</span></div></div></div>",
+      "_hidden": true
+    },
+    "Echo_CardDefault_Normal_3": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "1ce579263bc44477dec5dbcb3f1d6708b8483c51",
+      "desc": "className=CardDefault, Size=Normal, Amount=3",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "align-items": "center"
+      },
+      "_hidden": true
+    },
+    "Echo_CardDefault_Normal_gt3": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "c9686e38126de8f12027187be1a44b71ec9788bc",
+      "desc": "className=CardDefault, Size=Normal, Amount=>3",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "align-items": "center"
+      },
+      "_hidden": true
+    },
+    "Echo_CardDefault_Mini_none": {
+      "figma_name": "💙 01.02_Tabs / Echo",
+      "figma_key": "a7630cc834aad96838fb52ddac637ae88deb0f90",
+      "desc": "className=CardDefault, Size=Mini, Amount=-",
+      "css": {
+        "display": "flex",
+        "width": "375px",
+        "align-items": "center"
+      },
+      "_hidden": true
+    }
+  }
+}

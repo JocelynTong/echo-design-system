@@ -1,0 +1,162 @@
+{
+  "component": "💙 02.12_Rate",
+  "figma_page": "02.12 Rate",
+  "figma_file": "HjpmfUPwU7HGMRj9X80TAY",
+  "description": "评分组件。基础星星（Size×Selected，10 个变体，_hidden）+ 展示型复合组件（NormalSize/SmallSize/MiniSize，含 Dark 变体）+ 交互选星（LargeSize / 02.13 MediumSize）。图标 kuril-rate_filled，选中态 --warning-text-color，未选中态 rgba(0,0,0,.12)。",
+  "variants": {
+    "Large_True": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "ff54269c3964b645f48258c0502b26cb19914170",
+      "desc": "Size=Large, Selected=True，32px 橙色星",
+      "css": {"display":"flex","width":"32px","height":"32px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i>"
+    },
+    "Large_False": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "861ac6c4465589488ad7e7c2dc9f32ed1428f22a",
+      "desc": "Size=Large, Selected=False，32px 灰色星",
+      "css": {"display":"flex","width":"32px","height":"32px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:rgba(0,0,0,.12)\"></i>"
+    },
+    "Medium_True": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "3d687d8b3bac4e875c3036a31f7d82821b59237b",
+      "desc": "Size=Medium, Selected=True，24px 橙色星",
+      "css": {"display":"flex","width":"24px","height":"24px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:var(--warning-text-color,#FC7E22)\"></i>"
+    },
+    "Medium_False": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "f9913abae570be218a5ff07a0406c11d028e04cb",
+      "desc": "Size=Medium, Selected=False，24px 灰色星",
+      "css": {"display":"flex","width":"24px","height":"24px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:rgba(0,0,0,.12)\"></i>"
+    },
+    "Normal_True": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "35be75d98c6dbbb3a12fdfa1cb8b2cf2268481d4",
+      "desc": "Size=Normal, Selected=True，12px 橙色星",
+      "css": {"display":"flex","width":"12px","height":"12px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i>"
+    },
+    "Normal_False": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "9516ea6f160f3a29f2429c5466febf855a320ad6",
+      "desc": "Size=Normal, Selected=False，12px 灰色星",
+      "css": {"display":"flex","width":"12px","height":"12px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:rgba(0,0,0,.12)\"></i>"
+    },
+    "Small_True": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "5589c72d8e4e5bddcb88221ae611730e705e82d8",
+      "desc": "Size=Small, Selected=True，8px 橙色星",
+      "css": {"display":"flex","width":"8px","height":"8px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i>"
+    },
+    "Small_False": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "ada0377eafd94ca93fb14f0ce98e7b07f4063e07",
+      "desc": "Size=Small, Selected=False，8px 灰色星",
+      "css": {"display":"flex","width":"8px","height":"8px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:rgba(0,0,0,.12)\"></i>"
+    },
+    "Mini_True": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "b438deedf5665fd083b3dfa0813d5be92f18ca5c",
+      "desc": "Size=Mini, Selected=True，5px 橙色星",
+      "css": {"display":"flex","width":"5px","height":"5px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i>"
+    },
+    "Mini_False": {
+      "_hidden": true,
+      "figma_name": "💙 02.12_Rate",
+      "figma_key": "23e2e8f3249b7d4469c6b4d4c9276ed4be369bbc",
+      "desc": "Size=Mini, Selected=False，5px 灰色星",
+      "css": {"display":"flex","width":"5px","height":"5px","justify-content":"center","align-items":"center"},
+      "props": {},
+      "embed_html": "<i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:rgba(0,0,0,.12)\"></i>"
+    },
+    "LargeSize": {
+      "figma_name": "💙 02.12_Rate / Large Size",
+      "figma_key": "be41a0d016b9594075ac71de296d771de92a845e",
+      "desc": "交互选星，32px，含「轻点评分：」提示文本与五星分级标签（避雷/差/一般/推荐/力荐）",
+      "css": {"display":"inline-flex","align-items":"center","gap":"8px"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"font:var(--font-b5,400 14px/22px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40));white-space:nowrap;flex-shrink:0\">轻点评分：</span><div style=\"display:flex;flex-direction:column;align-items:center;gap:var(--Spacing-Mini,2px)\"><div style=\"display:flex;align-items:flex-start;gap:8px\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:32px;color:var(--warning-text-color,#FC7E22)\"></i></div><div style=\"display:flex;align-items:flex-start;gap:var(--Spacing-Small,4px)\"><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">避雷</span><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">差</span><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">一般</span><span style=\"width:36px;text-align:center;font:var(--font-b6,400 12px/18px 'PingFang SC',sans-serif);color:var(--text-3,rgba(0,0,0,.40))\">推荐</span><span style=\"width:36px;text-align:center;font:var(--font-h6,500 12px/18px 'PingFang SC',sans-serif);color:var(--warning-text-color,#FC7E22)\">力荐</span></div></div></div>"
+    },
+    "MediumSize": {
+      "figma_name": "💙 02.13_Rate / Medium Size",
+      "figma_key": "7e6cba9e6e364cc21d6c55b01d5eeaa852dfe679",
+      "desc": "交互选星，24px，gap:9px，展示 1 选中 + 4 未选中初始状态",
+      "css": {"display":"flex","align-items":"center","gap":"9px"},
+      "props": {},
+      "preview_html": "<div style=\"display:flex;align-items:center;gap:9px\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:rgba(0,0,0,.12)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:rgba(0,0,0,.12)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:rgba(0,0,0,.12)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:24px;color:rgba(0,0,0,.12)\"></i></div>"
+    },
+    "NormalSize": {
+      "figma_name": "💙 02.12_Rate / Normal Size",
+      "figma_key": "fd8c1596d10754277b9b76005224aea6cc5e223f",
+      "desc": "展示型评分，12px 星，4 选中 + 1 未选中，含评分数字 8.6，浅色背景",
+      "css": {"display":"inline-flex","height":"18px","align-items":"center","gap":"2px"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;height:18px;align-items:center;gap:2px\"><div style=\"display:flex;align-items:center\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:rgba(0,0,0,.12)\"></i></div><span style=\"font:var(--font-n6,500 12px/18px Roboto,sans-serif);color:var(--warning-text-color,#FC7E22)\">8.6</span></div>"
+    },
+    "NormalSizeDark": {
+      "figma_name": "💙 02.12_Rate / Normal Size Dark",
+      "figma_key": "9069489acfa847cfbe42c49cfc149b0fe5ec41d3",
+      "desc": "展示型评分，12px 星，4 选中 + 1 未选中，含评分数字 8.6，深色背景",
+      "css": {"display":"inline-flex","align-items":"center","gap":"2px"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;padding:8px;background:rgba(0,0,0,.72);border-radius:var(--radius-small,4px)\"><div style=\"display:inline-flex;height:18px;align-items:center;gap:2px\"><div style=\"display:flex;align-items:center\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:12px;color:rgba(255,255,255,.24)\"></i></div><span style=\"font:var(--font-n6,500 12px/18px Roboto,sans-serif);color:var(--white-text-color,#fff)\">8.6</span></div></div>"
+    },
+    "SmallSize": {
+      "figma_name": "💙 02.12_Rate / Small Size",
+      "figma_key": "78a76b7373aa59d6fbc0a6d8bf2fac7c60acb097",
+      "desc": "展示型评分，8px 星，4 选中 + 1 未选中，含评分数字 8.6，浅色背景",
+      "css": {"display":"inline-flex","height":"18px","align-items":"center","gap":"2px"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;height:18px;align-items:center;gap:2px\"><div style=\"display:flex;align-items:center\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:rgba(0,0,0,.12)\"></i></div><span style=\"font:var(--font-n6,500 12px/18px Roboto,sans-serif);color:var(--warning-text-color,#FC7E22)\">8.6</span></div>"
+    },
+    "SmallSizeDark": {
+      "figma_name": "💙 02.12_Rate / Small Size Dark",
+      "figma_key": "425405a49e3f39414a14f116c14e503adf7875c7",
+      "desc": "展示型评分，8px 星，4 选中 + 1 未选中，含评分数字 8.6，深色背景",
+      "css": {"display":"inline-flex","align-items":"center","gap":"2px"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;padding:8px;background:rgba(0,0,0,.72);border-radius:var(--radius-small,4px)\"><div style=\"display:inline-flex;height:18px;align-items:center;gap:2px\"><div style=\"display:flex;align-items:center\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:8px;color:rgba(255,255,255,.24)\"></i></div><span style=\"font:var(--font-n6,500 12px/18px Roboto,sans-serif);color:var(--white-text-color,#fff)\">8.6</span></div></div>"
+    },
+    "MiniSize": {
+      "figma_name": "💙 02.12_Rate / Mini Size",
+      "figma_key": "291118386658ec25f1a82e7e1f2783d978fcc24c",
+      "desc": "展示型评分，5px 星，4 选中 + 1 未选中，无文字，浅色背景",
+      "css": {"display":"inline-flex","align-items":"center"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;align-items:center\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:rgba(0,0,0,.12)\"></i></div>"
+    },
+    "MiniSizeDark": {
+      "figma_name": "💙 02.12_Rate / Mini Size Dark",
+      "figma_key": "26eaa488b7457a92eb40126a975e50ca20d7f8d3",
+      "desc": "展示型评分，5px 星，4 选中 + 1 未选中，无文字，深色背景",
+      "css": {"display":"inline-flex","align-items":"center"},
+      "props": {},
+      "preview_html": "<div style=\"display:inline-flex;padding:8px;background:rgba(0,0,0,.72);border-radius:var(--radius-small,4px)\"><div style=\"display:inline-flex;align-items:center\"><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:var(--warning-text-color,#FC7E22)\"></i><i class=\"KurilIcons kuril-rate_filled\" style=\"font-size:5px;color:rgba(255,255,255,.24)\"></i></div></div>"
+    }
+  }
+}

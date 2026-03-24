@@ -1,0 +1,9 @@
+#!/bin/zsh
+# 同步 — 重新生成设计系统浏览器数据
+# 用法：
+#   ./同步           # 生成所有 APP
+#   ./同步 qiandao   # 只生成千岛
+#   ./同步 linjie    # 只生成临界
+
+cd "$(dirname "$0")"
+python3 generate.py "$@"

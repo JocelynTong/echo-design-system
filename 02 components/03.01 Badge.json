@@ -10,12 +10,15 @@
     "角标不能单独使用，必须叠加在其他组件上"
   ],
   "variants": {
-    "BadgeShopNormal": {
+    "Badge": {
       "figma_name": "💙  03.01_Badge/Shop/Normal",
       "desc": "商城/店铺场景角标，标准数字角标",
       "props": {},
       "tokens_used": {
-        "color": ["error/solidBg", "white/textColor"],
+        "color": [
+          "error/solidBg",
+          "white/textColor"
+        ],
         "spacing": [],
         "radius": []
       }

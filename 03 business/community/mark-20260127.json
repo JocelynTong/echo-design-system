@@ -1,0 +1,1003 @@
+{
+  "component": "👻 Mark 20260127",
+  "figma_page": "02_业务组件_👻_社区",
+  "figma_file": "uXywt7Ca6AR4dNm7f3zR7d",
+  "figma_key": "f7237a1690352d70ab75b96d3268cb2a07006488",
+  "status_bar": "normal",
+  "description": "Mark 展示组件（发布侧），展示 SPU 标记信息行，含评分、数量、重量、价格、渠道等结构化属性及编辑入口",
+  "usage_rules": [
+    "Type=SingleMark：单个 SPU 标记，横向排列各属性字段",
+    "Type=MultipleMarks：多个 SPU 缩图列表（不超过3个），超出显示省略"
+  ],
+  "variants": {
+    "SingleMark": {
+      "figma_name": "👻 Mark 20260127",
+      "desc": "单个 SPU 标记行：SPU 缩图 + 名称 + 评分/数量/重量/价格/渠道等属性 + 编辑按钮",
+      "figma_key": "23b5c7b8dd644848722be90c5355b61a2f3a4e54",
+      "css": {
+        "display": "flex",
+        "width": "361px",
+        "padding": "var(--Spacing-Normal, 8px)",
+        "align-items": "center",
+        "gap": "4px",
+        "border-radius": "var(--Radius-Normal, 8px)",
+        "background": "var(--bg-2, #F7F7F9)"
+      },
+      "props": {},
+      "slots": [
+        {
+          "name": "Rating",
+          "boolProp": "Ratable#16294:3",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Quantity#16294:6",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Weight#16294:9",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Price#16294:12",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Channel#16294:15",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Spoiler#16294:18",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Character#16294:21",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "HorrorLevel#16294:33",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "Actor#16294:24",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "StartTime#16294:27",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "Statistic",
+          "boolProp": "ReminderTime#16294:30",
+          "css": {
+            "display": "flex",
+            "align-items": "center",
+            "gap": "2px"
+          }
+        },
+        {
+          "name": "Text",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+            "font-feature-settings": "'liga' off, 'clig' off",
+            "font-family": "\"PingFang SC\"",
+            "font-size": "10px",
+            "font-style": "normal",
+            "font-weight": "400",
+            "line-height": "11px /* 110% */"
+          }
+        },
+        {
+          "name": "💙 00.05_Button / Icon",
+          "boolProp": "PublishSide#16294:1",
+          "css": {
+            "display": "flex",
+            "width": "28px",
+            "height": "28px",
+            "flex-direction": "column",
+            "justify-content": "center",
+            "align-items": "center",
+            "gap": "var(--Spacing-Mini, 2px)",
+            "flex-shrink": "0",
+            "background": "rgba(217, 74, 78, 0.20)"
+          }
+        }
+      ],
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "width": "361px",
+          "padding": "var(--Spacing-Normal, 8px)",
+          "align-items": "center",
+          "gap": "4px",
+          "border-radius": "var(--Radius-Normal, 8px)",
+          "background": "var(--bg-2, #F7F7F9)"
+        },
+        "children": [
+          {
+            "type": "FRAME",
+            "css": {
+              "display": "flex",
+              "align-items": "center",
+              "gap": "var(--Spacing-Small, 4px)",
+              "flex": "1 0 0"
+            },
+            "children": [
+              {
+                "type": "TEXT",
+                "css": {
+                  "color": "var(--text-1, #000)",
+                  "font-feature-settings": "'liga' off, 'clig' off",
+                  "font-family": "\"PingFang SC\"",
+                  "font-size": "12px",
+                  "font-style": "normal",
+                  "font-weight": "500",
+                  "line-height": "18px /* 150% */"
+                },
+                "text": "拥有"
+              },
+              {
+                "type": "FRAME",
+                "css": {
+                  "display": "flex",
+                  "align-items": "center",
+                  "gap": "var(--Spacing-Small, 4px)",
+                  "flex": "1 0 0"
+                },
+                "children": [
+                  {
+                    "type": "INSTANCE",
+                    "css": {
+                      "width": "24px",
+                      "height": "32px"
+                    },
+                    "ref": "💙 03.08_SPU / Basic",
+                    "key": "1fffb1a97d7e292fe055c77ba45be8c7ef6d93f0"
+                  },
+                  {
+                    "type": "FRAME",
+                    "css": {
+                      "display": "flex",
+                      "flex-direction": "column",
+                      "justify-content": "center",
+                      "align-items": "flex-start",
+                      "gap": "4px",
+                      "flex": "1 0 0"
+                    },
+                    "children": [
+                      {
+                        "type": "TEXT",
+                        "css": {
+                          "display": "-webkit-box",
+                          "-webkit-box-orient": "vertical",
+                          "-webkit-line-clamp": "1",
+                          "align-self": "stretch",
+                          "overflow": "hidden",
+                          "color": "var(--text-1, #000)",
+                          "font-feature-settings": "'liga' off, 'clig' off",
+                          "text-overflow": "ellipsis",
+                          "font-family": "\"PingFang SC\"",
+                          "font-size": "10px",
+                          "font-style": "normal",
+                          "font-weight": "500",
+                          "line-height": "11px /* 110% */"
+                        },
+                        "text": "SPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPU"
+                      },
+                      {
+                        "type": "FRAME",
+                        "css": {
+                          "display": "flex",
+                          "align-items": "center",
+                          "gap": "4px",
+                          "align-self": "stretch"
+                        },
+                        "children": [
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "INSTANCE",
+                                "css": {
+                                  "display": "flex",
+                                  "align-items": "center",
+                                  "gap": "2px"
+                                },
+                                "ref": "💙 02.13_Rate / Normal Size",
+                                "key": "fd8c1596d10754277b9b76005224aea6cc5e223f"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "数量"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "9个"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "重量"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "9斤"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "价格"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "¥9"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "渠道"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "淘宝"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "剧透"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "无剧透"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "角色"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "明日香"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "恐怖程度"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "微恐"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "演员"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "明日香"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "开启时间"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "2023-5-19"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "FRAME",
+                            "css": {
+                              "display": "flex",
+                              "align-items": "center",
+                              "gap": "2px"
+                            },
+                            "children": [
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-2, rgba(0, 0, 0, 0.64))",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "400",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "开启提醒"
+                              },
+                              {
+                                "type": "TEXT",
+                                "css": {
+                                  "color": "var(--text-1, #000)",
+                                  "font-feature-settings": "'liga' off, 'clig' off",
+                                  "font-family": "\"PingFang SC\"",
+                                  "font-size": "10px",
+                                  "font-style": "normal",
+                                  "font-weight": "500",
+                                  "line-height": "11px /* 110% */"
+                                },
+                                "text": "2023-5-19"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "width": "28px",
+              "height": "28px",
+              "flex-direction": "column",
+              "justify-content": "center",
+              "align-items": "center",
+              "gap": "var(--Spacing-Mini, 2px)",
+              "flex-shrink": "0",
+              "background": "rgba(217, 74, 78, 0.20)"
+            },
+            "ref": "💙 00.05_Button / Icon",
+            "key": "896400116600bc2f2830272f0323daaa32c4eb03"
+          }
+        ]
+      }
+    },
+    "MultipleMarks": {
+      "figma_name": "👻 Mark 20260127",
+      "desc": "多个 SPU 缩图列表行：横向展示多个 SPU 缩图（≤3），后接省略标记",
+      "figma_key": "ffeec7bae9c1a5c6402f03ef8c95bbc3e717735a",
+      "css": {
+        "display": "flex",
+        "width": "361px",
+        "padding": "var(--Spacing-Normal, 8px)",
+        "align-items": "center",
+        "gap": "var(--Spacing-Small, 4px)",
+        "border-radius": "var(--Radius-Normal, 8px)",
+        "background": "var(--bg-2, #F7F7F9)"
+      },
+      "props": {},
+      "_tree": {
+        "type": "COMPONENT",
+        "css": {
+          "display": "flex",
+          "width": "361px",
+          "padding": "var(--Spacing-Normal, 8px)",
+          "align-items": "center",
+          "gap": "var(--Spacing-Small, 4px)",
+          "border-radius": "var(--Radius-Normal, 8px)",
+          "background": "var(--bg-2, #F7F7F9)"
+        },
+        "children": [
+          {
+            "type": "TEXT",
+            "css": {
+              "color": "var(--text-1, #000)",
+              "font-feature-settings": "'liga' off, 'clig' off",
+              "font-family": "\"PingFang SC\"",
+              "font-size": "12px",
+              "font-style": "normal",
+              "font-weight": "500",
+              "line-height": "18px /* 150% */"
+            },
+            "text": "拥有"
+          },
+          {
+            "type": "FRAME",
+            "css": {
+              "display": "flex",
+              "align-items": "center",
+              "gap": "4px",
+              "flex": "1 0 0"
+            },
+            "children": [
+              {
+                "type": "FRAME",
+                "css": {
+                  "display": "flex",
+                  "align-items": "center",
+                  "gap": "var(--Spacing-Small, 4px)",
+                  "flex": "1 0 0"
+                },
+                "children": [
+                  {
+                    "type": "FRAME",
+                    "css": {
+                      "display": "flex",
+                      "align-items": "center",
+                      "gap": "4px",
+                      "flex": "1 0 0"
+                    },
+                    "children": [
+                      {
+                        "type": "INSTANCE",
+                        "css": {
+                          "width": "24px",
+                          "height": "32px"
+                        },
+                        "ref": "💙 03.08_SPU / Basic",
+                        "key": "1fffb1a97d7e292fe055c77ba45be8c7ef6d93f0"
+                      },
+                      {
+                        "type": "TEXT",
+                        "css": {
+                          "display": "-webkit-box",
+                          "-webkit-box-orient": "vertical",
+                          "-webkit-line-clamp": "1",
+                          "flex": "1 0 0",
+                          "overflow": "hidden",
+                          "color": "var(--text-1, #000)",
+                          "font-feature-settings": "'liga' off, 'clig' off",
+                          "text-overflow": "ellipsis",
+                          "font-family": "\"PingFang SC\"",
+                          "font-size": "10px",
+                          "font-style": "normal",
+                          "font-weight": "500",
+                          "line-height": "11px /* 110% */"
+                        },
+                        "text": "SPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPU"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "FRAME",
+                    "css": {
+                      "display": "flex",
+                      "align-items": "center",
+                      "gap": "4px",
+                      "flex": "1 0 0"
+                    },
+                    "children": [
+                      {
+                        "type": "INSTANCE",
+                        "css": {
+                          "width": "24px",
+                          "height": "32px"
+                        },
+                        "ref": "💙 03.08_SPU / Basic",
+                        "key": "1fffb1a97d7e292fe055c77ba45be8c7ef6d93f0"
+                      },
+                      {
+                        "type": "TEXT",
+                        "css": {
+                          "display": "-webkit-box",
+                          "-webkit-box-orient": "vertical",
+                          "-webkit-line-clamp": "1",
+                          "flex": "1 0 0",
+                          "overflow": "hidden",
+                          "color": "var(--text-1, #000)",
+                          "font-feature-settings": "'liga' off, 'clig' off",
+                          "text-overflow": "ellipsis",
+                          "font-family": "\"PingFang SC\"",
+                          "font-size": "10px",
+                          "font-style": "normal",
+                          "font-weight": "500",
+                          "line-height": "11px /* 110% */"
+                        },
+                        "text": "SPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPU"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "FRAME",
+                    "css": {
+                      "display": "flex",
+                      "align-items": "center",
+                      "gap": "4px",
+                      "flex": "1 0 0"
+                    },
+                    "children": [
+                      {
+                        "type": "INSTANCE",
+                        "css": {
+                          "width": "24px",
+                          "height": "32px"
+                        },
+                        "ref": "💙 03.08_SPU / Basic",
+                        "key": "1fffb1a97d7e292fe055c77ba45be8c7ef6d93f0"
+                      },
+                      {
+                        "type": "TEXT",
+                        "css": {
+                          "display": "-webkit-box",
+                          "-webkit-box-orient": "vertical",
+                          "-webkit-line-clamp": "1",
+                          "flex": "1 0 0",
+                          "overflow": "hidden",
+                          "color": "var(--text-1, #000)",
+                          "font-feature-settings": "'liga' off, 'clig' off",
+                          "text-overflow": "ellipsis",
+                          "font-family": "\"PingFang SC\"",
+                          "font-size": "10px",
+                          "font-style": "normal",
+                          "font-weight": "500",
+                          "line-height": "11px /* 110% */"
+                        },
+                        "text": "SPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPUSPU"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "RECTANGLE",
+                    "css": {
+                      "width": "32px",
+                      "height": "32px",
+                      "position": "absolute",
+                      "right": "0",
+                      "background": "linear-gradient(270deg, #F7F7F9 0%, rgba(247, 247, 249, 0.00) 100%)"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "FRAME",
+                "css": {
+                  "display": "flex",
+                  "height": "21px",
+                  "align-items": "center",
+                  "gap": "var(--Spacing-Small, 4px)"
+                },
+                "children": [
+                  {
+                    "type": "TEXT",
+                    "css": {
+                      "color": "var(--text-1, #000)",
+                      "font-feature-settings": "'liga' off, 'clig' off",
+                      "font-family": "\"PingFang SC\"",
+                      "font-size": "10px",
+                      "font-style": "normal",
+                      "font-weight": "500",
+                      "line-height": "11px /* 110% */"
+                    },
+                    "text": "共标记 X 款"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "INSTANCE",
+            "css": {
+              "display": "flex",
+              "width": "28px",
+              "height": "28px",
+              "flex-direction": "column",
+              "justify-content": "center",
+              "align-items": "center",
+              "gap": "var(--Spacing-Mini, 2px)",
+              "flex-shrink": "0",
+              "background": "rgba(217, 74, 78, 0.20)"
+            },
+            "ref": "💙 00.05_Button / Icon",
+            "key": "896400116600bc2f2830272f0323daaa32c4eb03"
+          }
+        ]
+      }
+    }
+  }
+}

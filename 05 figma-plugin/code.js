@@ -128,7 +128,7 @@ figma.ui.onmessage = async function(msg) {
 //  对每个节点：
 //    · COMPONENT_SET  → 组件定义：key + 各变体 key + CSS
 //    · COMPONENT      → 组件定义：key + CSS
-//    · INSTANCE(💙/👻)→ 组件实例：ref 名 + master key + variants + texts + CSS
+//    · INSTANCE(💙/👻)→ 组件实例：ref 名 + master key + variants
 //    · INSTANCE(无前缀)→ 未注册实例：同上 + 警告
 //    · 其他           → 自定义节点：CSS + 候选池警告
 // ════════════════════════════════════════════════════════════════════════
@@ -162,6 +162,41 @@ async function handleExport() {
     if (node.type === 'TEXT') result[node.name] = node.characters;
     if ('children' in node) node.children.forEach(function(c) { extractTexts(c, result); });
     return result;
+  }
+
+  // 递归导出节点树（用于 generate.py 无 MCP 自动生成 preview_html）
+  // 规则：TEXT → 记录 text 内容；INSTANCE → 记录 ref 名 + key，不深入；
+  //       其余 → 递归子节点；跳过 invisible；最大深度 8
+  async function exportNodeTree(node, depth) {
+    if (depth === undefined) depth = 0;
+    if (depth > 8) return null;
+    if (node.visible === false) return null;
+
+    var entry = { type: node.type };
+    var css = await getCss(node);
+    if (css) entry.css = css;
+
+    if (node.type === 'TEXT') {
+      entry.text = node.characters || '';
+      return entry;
+    }
+
+    if (node.type === 'INSTANCE' && node.mainComponent) {
+      entry.ref = getCanonicalName(node.mainComponent);
+      entry.key = node.mainComponent.key;
+      return entry;
+    }
+
+    if ('children' in node && node.children.length > 0) {
+      var children = [];
+      for (var ci = 0; ci < node.children.length; ci++) {
+        var child = node.children[ci];
+        var childEntry = await exportNodeTree(child, depth + 1);
+        if (childEntry) children.push(childEntry);
+      }
+      if (children.length > 0) entry.children = children;
+    }
+    return entry;
   }
 
   // 递归收集带 componentPropertyReferences 的子节点（boolean / INSTANCE_SWAP 槽位）
@@ -262,6 +297,8 @@ async function handleExport() {
         if (vc) ve.css = vc;
         var slots = await collectChildSlots(v);
         if (slots.length > 0) ve.slots = slots;
+        var tree = await exportNodeTree(v);
+        if (tree && (tree.children || tree.text)) ve._tree = tree;
         return ve;
       }));
       return entry;
@@ -276,6 +313,8 @@ async function handleExport() {
       if (propDefs) entry.propertyDefs = propDefs;
       var slots = await collectChildSlots(node);
       if (slots.length > 0) entry.slots = slots;
+      var tree = await exportNodeTree(node);
+      if (tree && (tree.children || tree.text)) entry._tree = tree;
       return entry;
     }
 
@@ -291,10 +330,6 @@ async function handleExport() {
         if (props.booleans)  entry.booleans  = props.booleans;
         if (props.swaps)     entry.swaps     = props.swaps;
       }
-      var texts = extractTexts(node);
-      if (Object.keys(texts).length > 0) entry.texts = texts;
-      var css = await getCss(node);
-      if (css) entry.css = css;
       if (!isRegisteredComponent(mc)) {
         warnings.push('⚠️ 实例「' + node.name + '」的主组件「' + refName + '」无 💙/👻 前缀，可能是未注册组件');
       }
@@ -314,7 +349,7 @@ async function handleExport() {
     var result = await processNode(target);
     var output = { pages: [{ name: target.name, nodes: [result] }] };
     if (warnings.length > 0) output.warnings = warnings;
-    figma.ui.postMessage({ type: 'exportResult', json: JSON.stringify(output, null, 2), warnings: warnings });
+    figma.ui.postMessage({ type: 'exportResult', json: JSON.stringify(output), warnings: warnings });
     return;
   }
 
@@ -353,7 +388,7 @@ async function handleExport() {
 
   figma.ui.postMessage({
     type: 'exportResult',
-    json: JSON.stringify(output, null, 2),
+    json: JSON.stringify(output),
     warnings: warnings,
   });
 }
