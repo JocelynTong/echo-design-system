@@ -215,7 +215,7 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         s = f' style="{style}"' if style else ''
         return f'<{tag}{s}>{text}</{tag}>'
 
-    # INSTANCE：1) embed_html  2) _tree 递归  3) _css_to_embed  4) 空占位
+    # INSTANCE：_tree 有 children 时优先 P2（保留 data-component 嵌套）；否则 P1 embed_html
     if t == 'INSTANCE':
         if _inline:
             css['display'] = 'inline-flex'
@@ -224,11 +224,20 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         if fkmap and tree.get('key'):
             vdata = fkmap.get(tree['key'])
             if vdata:
-                embed = (
-                    vdata.get('embed_html')
-                    or _tree_to_html(vdata.get('_tree'), cmap, fmap, depth + 1, fkmap)
-                    or _css_to_embed(vdata.get('css'))
-                )
+                sub_tree = vdata.get('_tree')
+                has_children = bool(sub_tree and sub_tree.get('children'))
+                if has_children:
+                    embed = (
+                        _tree_to_html(sub_tree, cmap, fmap, depth + 1, fkmap)
+                        or vdata.get('embed_html')
+                        or _css_to_embed(vdata.get('css'))
+                    )
+                else:
+                    embed = (
+                        vdata.get('embed_html')
+                        or _tree_to_html(sub_tree, cmap, fmap, depth + 1, fkmap)
+                        or _css_to_embed(vdata.get('css'))
+                    )
         ref = tree.get('ref', '')
         data_comp = f' data-component="{ref}"' if ref else ''
         s = f' style="{style}"' if style else ''
