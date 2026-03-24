@@ -193,8 +193,8 @@ def _map_css(css_dict, cmap, fmap):
 
 def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
     """递归把 plugin 导出的 _tree 转成 token 化 HTML。
-    TEXT → <span>；INSTANCE → embed_html（如有）或空占位；其余 → <div>。
-    fkmap: figma_key → vdata，用于查 embed_html。
+    TEXT → <span>；INSTANCE → 1)embed_html 2)_tree递归 3)_css_to_embed 4)空占位；其余 → <div>。
+    fkmap: figma_key → vdata，用于查 embed_html 或递归渲染 _tree。
     _inline: True 时把当前节点渲染成 inline-flex（父容器 ellipsis 模式下使用）。"""
     if not tree or not isinstance(tree, dict):
         return ''
@@ -215,7 +215,7 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         s = f' style="{style}"' if style else ''
         return f'<{tag}{s}>{text}</{tag}>'
 
-    # INSTANCE：优先用 embed_html，否则空占位
+    # INSTANCE：1) embed_html  2) _tree 递归  3) _css_to_embed  4) 空占位
     if t == 'INSTANCE':
         if _inline:
             css['display'] = 'inline-flex'
@@ -224,13 +224,17 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         if fkmap and tree.get('key'):
             vdata = fkmap.get(tree['key'])
             if vdata:
-                embed = vdata.get('embed_html') or _css_to_embed(vdata.get('css'))
+                embed = (
+                    vdata.get('embed_html')
+                    or _tree_to_html(vdata.get('_tree'), cmap, fmap, depth + 1, fkmap)
+                    or _css_to_embed(vdata.get('css'))
+                )
         ref = tree.get('ref', '')
+        data_comp = f' data-component="{ref}"' if ref else ''
         s = f' style="{style}"' if style else ''
         if embed:
-            return f'<div{s}>{embed}</div>'
-        title = f' title="{ref}"' if ref else ''
-        return f'<div{s}{title}></div>'
+            return f'<div{s}{data_comp}>{embed}</div>'
+        return f'<div{s}{data_comp}></div>'
 
     # FRAME / GROUP / COMPONENT 等容器
     children = tree.get('children') or []
@@ -1125,7 +1129,8 @@ def validate_components(components=None, ref_map=None):
                             warnings.append(f'  ⚠️  {fn} [{vk}]: Boolean "{bk}" default=false 但元素无 display:none（初始状态不匹配）')
 
             # 检查 SELECT prop 默认值是否为 variant key 的子串（切换机制前提）
-            all_vks = set((data.get('variants') or {}).keys())
+            # 排除 _hidden variant，避免其 key 分段干扰 is_switching 判断
+            all_vks = set(k for k, vv in (data.get('variants') or {}).items() if not vv.get('_hidden'))
             for pk, pv_def in props_data.items():
                 if pk == 'Booleans':
                     continue
