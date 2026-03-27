@@ -33,14 +33,13 @@
       "component_refs": [
         {
           "cid": "💙 01.00_Status Bar",
-          "variants": {
-            "Color": "White",
-            "Type": "iPhone14pro"
+          "props": {
+            "Color": "White"
           }
         },
         {
           "cid": "💙 01.01_Navigation Bar",
-          "variants": {
+          "props": {
             "Terminal": "App",
             "Color": "White"
           }
@@ -88,37 +87,37 @@
       "component_refs": [
         {
           "cid": "👻 Islands / Pin / Basic",
-          "variants": {
+          "props": {
             "Type": "Home"
           }
         },
         {
           "cid": "👻 Islands / Pin / Basic",
-          "variants": {
+          "props": {
             "Type": "Islands"
           }
         },
         {
           "cid": "👻 Islands / Pin / Basic",
-          "variants": {
+          "props": {
             "Type": "Islands"
           }
         },
         {
           "cid": "👻 Islands / Pin / Basic",
-          "variants": {
+          "props": {
             "Type": "Islands"
           }
         },
         {
           "cid": "👻 Islands / Pin / Basic",
-          "variants": {
+          "props": {
             "Type": "Islands"
           }
         },
         {
           "cid": "👻 Islands / Pin / Basic",
-          "variants": {
+          "props": {
             "Type": "MyIslands"
           }
         }
@@ -288,25 +287,25 @@
       "component_refs": [
         {
           "cid": "👻 Islands / Grid / Basic",
-          "variants": {
+          "props": {
             "Type": "ISLANDS"
           }
         },
         {
           "cid": "👻 Islands / Grid / Basic",
-          "variants": {
+          "props": {
             "Type": "ISLANDS"
           }
         },
         {
           "cid": "👻 Islands / Grid / Basic",
-          "variants": {
+          "props": {
             "Type": "ISLANDS"
           }
         },
         {
           "cid": "👻 Islands / Grid / Basic",
-          "variants": {
+          "props": {
             "Type": "ISLANDS"
           }
         }
@@ -326,7 +325,7 @@
       "component_refs": [
         {
           "cid": "👻 Islands / Slide / Basic",
-          "variants": {
+          "props": {
             "Type": "Notice"
           }
         },
