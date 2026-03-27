@@ -234,7 +234,9 @@ async function handleExport() {
     // 并递归子节点将 INSTANCE_SWAP key 解析为组件名
     function parseComponentProps(node) {
       var cp = node.componentProperties;
-      if (!cp || Object.keys(cp).length === 0) return null;
+      var vp = node.variantProperties;  // 旧式 variant API，返回所有变体维度完整值（含默认值）
+      if ((!cp || Object.keys(cp).length === 0) && (!vp || Object.keys(vp).length === 0)) return null;
+      cp = cp || {};
 
       // 先收集所有 INSTANCE_SWAP 的 key → propName 映射
       var swapKeyToProp = {};
@@ -262,6 +264,12 @@ async function handleExport() {
         // TEXT type 已由 extractTexts 覆盖，跳过
       });
 
+      // variantProperties 补漏：cp 里缺失的 VARIANT 维度用 vp 补上
+      if (vp) {
+        Object.keys(vp).forEach(function(pn) {
+          if (!variants[pn]) variants[pn] = vp[pn];
+        });
+      }
       var result = {};
       if (Object.keys(variants).length  > 0) result.variants  = variants;
       if (Object.keys(booleans).length  > 0) result.booleans  = booleans;
