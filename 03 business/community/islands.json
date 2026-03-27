@@ -31,8 +31,8 @@
         "background": "var(--secondary-solid-bg, #2b263b)"
       },
       "component_refs": [
-        { "cid": "01.00-status-bar", "variant_key": "StatusBar" },
-        { "cid": "01.01-navigation-bar", "variant_key": "App_Ghost" }
+        { "cid": "💙 01.00_Status Bar" },
+        { "cid": "💙 01.01_Navigation Bar", "variant_key": "App_Ghost" }
       ]
     },
     "Pin": {
@@ -47,11 +47,11 @@
         "overflow": "hidden"
       },
       "component_refs": [
-        { "cid": "islands", "variant_key": "PinCell_Islands" },
-        { "cid": "islands", "variant_key": "PinCell_Home" },
-        { "cid": "islands", "variant_key": "PinCell_Home" },
-        { "cid": "islands", "variant_key": "PinCell_Home" },
-        { "cid": "islands", "variant_key": "PinCell_Home" }
+        { "cid": "👻 Islands / PinCell, Type=Islands" },
+        { "cid": "👻 Islands / PinCell, Type=Home" },
+        { "cid": "👻 Islands / PinCell, Type=Home" },
+        { "cid": "👻 Islands / PinCell, Type=Home" },
+        { "cid": "👻 Islands / PinCell, Type=Home" }
       ]
     },
     "PinCell_Home": {
@@ -181,9 +181,9 @@
         "box-sizing": "border-box"
       },
       "component_refs": [
-        { "cid": "islands", "variant_key": "GridCell_ISLANDS" },
-        { "cid": "islands", "variant_key": "GridCell_ISLANDS" },
-        { "cid": "islands", "variant_key": "GridCell_ISLANDS" }
+        { "cid": "👻 Islands / GridCell, Type=ISLANDS" },
+        { "cid": "👻 Islands / GridCell, Type=ISLANDS" },
+        { "cid": "👻 Islands / GridCell, Type=ISLANDS" }
       ]
     },
     "Slide": {
