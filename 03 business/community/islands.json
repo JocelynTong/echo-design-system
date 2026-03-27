@@ -32,7 +32,7 @@
       },
       "component_refs": [
         { "cid": "💙 01.00_Status Bar" },
-        { "cid": "💙 01.01_Navigation Bar", "variant_key": "App_Ghost" }
+        { "cid": "💙 01.01_Navigation Bar", "variants": { "Terminal": "App", "Color": "White" } }
       ]
     },
     "Pin": {
