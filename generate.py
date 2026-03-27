@@ -323,14 +323,31 @@ def _css_to_embed(css):
     return f'<div style="{style};flex-shrink:0"></div>'
 
 
-def _check_one_ref(cref, components, cid, vk, label='component_ref'):
+def _resolve_ref_comp(ref_cid, components, ref_map):
+    """用 kebab CID / figma 原名 / 前缀三种方式查找目标组件，返回 (comp, resolved_vk)。"""
+    # 1. kebab CID 直接查
+    comp = components.get(ref_cid)
+    if comp:
+        return comp, None
+    # 2. COMPONENT_REF_MAP 精确查（figma_name → {cid, variant}）
+    mapped = ref_map.get(ref_cid)
+    if mapped:
+        return components.get(mapped['cid']), mapped.get('variant')
+    # 3. 前缀查（base 组件名，如 "💙 01.01_Navigation Bar"）
+    for mk, mv in ref_map.items():
+        if mk.startswith(ref_cid):
+            return components.get(mv['cid']), None
+    return None, None
+
+
+def _check_one_ref(cref, components, cid, vk, label='component_ref', ref_map=None):
     """校验单个 ref 对象（{ cid, variant_key } 或 { cid, props/variants }）"""
     ref_cid = cref.get('cid', '')
-    ref_comp = components.get(ref_cid)
+    ref_comp, resolved_vk = _resolve_ref_comp(ref_cid, components, ref_map or {})
     if not ref_comp:
         print(f'⚠️ [{label}] {ref_cid} 未找到（{cid}/{vk}）')
         return
-    vk_direct = cref.get('variant_key')
+    vk_direct = cref.get('variant_key') or resolved_vk
     if vk_direct:
         if vk_direct not in (ref_comp.get('variants') or {}):
             print(f'⚠️ [{label}] variant_key "{vk_direct}" 在 {ref_cid} 中不存在（{cid}/{vk}）')
@@ -345,22 +362,23 @@ def _check_one_ref(cref, components, cid, vk, label='component_ref'):
                 print(f'⚠️ [{label}] {ref_cid} 无精确匹配 variant（props={match_props}）')
 
 
-def resolve_component_refs(components):
+def resolve_component_refs(components, ref_map=None):
     """校验 component_ref / component_refs 引用是否有效，打印缺口警告。
     不复制 HTML——浏览器侧 _genBizVisual 在运行时从 COMPONENTS_DATA 直接解析。
     支持三种节点：
       Leaf       → preview_html（无需校验）
       1:1 Ref    → component_ref: { cid, variant_key | props }
-      Wrapper    → component_refs: [{ cid, variant_key | variants }, ...]"""
+      Wrapper    → component_refs: [{ cid, variant_key | variants }, ...]
+    cid 支持 kebab 格式（01.01-navigation-bar）和 figma 原名（💙 01.01_Navigation Bar）。"""
+    if ref_map is None:
+        ref_map = build_ref_map(components)
     for cid, cdata in components.items():
         for vk, vdata in (cdata.get('variants') or {}).items():
-            # 1:1 Ref
             cref = vdata.get('component_ref')
             if cref:
-                _check_one_ref(cref, components, cid, vk, 'component_ref')
-            # Wrapper
+                _check_one_ref(cref, components, cid, vk, 'component_ref', ref_map)
             for i, ref in enumerate(vdata.get('component_refs') or []):
-                _check_one_ref(ref, components, cid, vk, f'component_refs[{i}]')
+                _check_one_ref(ref, components, cid, vk, f'component_refs[{i}]', ref_map)
 
 
 def auto_generate_tree_previews(components):
@@ -534,7 +552,7 @@ def write_components_html(components=None, ref_map=None):
     # 从 _tree 自动生成 _tree_preview_html（fallback，不写 JSON）
     auto_generate_tree_previews(components)
     # 解析 component_ref 引用，从被引用组件复用 preview_html
-    resolve_component_refs(components)
+    resolve_component_refs(components, ref_map)
 
     # 合并 _Ghost 变体：将 Foo_Ghost 的预览挂载到 Foo._ghost_preview_html，并标记隐藏
     for cdata in components.values():
@@ -616,7 +634,7 @@ def write_design_system_html(all_processed, components=None, ref_map=None):
     # 从 _tree 自动生成 _tree_preview_html（fallback，不写 JSON）
     auto_generate_tree_previews(components)
     # 解析 component_ref 引用，从被引用组件复用 preview_html
-    resolve_component_refs(components)
+    resolve_component_refs(components, ref_map)
 
     for cdata in components.values():
         variants = cdata.get('variants') or {}
