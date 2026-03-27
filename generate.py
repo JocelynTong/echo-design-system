@@ -323,34 +323,44 @@ def _css_to_embed(css):
     return f'<div style="{style};flex-shrink:0"></div>'
 
 
+def _check_one_ref(cref, components, cid, vk, label='component_ref'):
+    """校验单个 ref 对象（{ cid, variant_key } 或 { cid, props/variants }）"""
+    ref_cid = cref.get('cid', '')
+    ref_comp = components.get(ref_cid)
+    if not ref_comp:
+        print(f'⚠️ [{label}] {ref_cid} 未找到（{cid}/{vk}）')
+        return
+    vk_direct = cref.get('variant_key')
+    if vk_direct:
+        if vk_direct not in (ref_comp.get('variants') or {}):
+            print(f'⚠️ [{label}] variant_key "{vk_direct}" 在 {ref_cid} 中不存在（{cid}/{vk}）')
+    else:
+        match_props = cref.get('props') or cref.get('variants') or {}
+        if match_props:
+            found = any(
+                all(f'{k}={v}' in rvk for k, v in match_props.items())
+                for rvk in (ref_comp.get('variants') or {})
+            )
+            if not found:
+                print(f'⚠️ [{label}] {ref_cid} 无精确匹配 variant（props={match_props}）')
+
+
 def resolve_component_refs(components):
-    """校验 component_ref 引用是否有效，打印缺口警告。
+    """校验 component_ref / component_refs 引用是否有效，打印缺口警告。
     不复制 HTML——浏览器侧 _genBizVisual 在运行时从 COMPONENTS_DATA 直接解析。
-    支持两种格式：
-      - variant_key: "App_Ghost"         直接指定（精确）
-      - props: {"Column": "2", ...}      k=v 子串最多匹配（模糊）"""
+    支持三种节点：
+      Leaf       → preview_html（无需校验）
+      1:1 Ref    → component_ref: { cid, variant_key | props }
+      Wrapper    → component_refs: [{ cid, variant_key | variants }, ...]"""
     for cid, cdata in components.items():
         for vk, vdata in (cdata.get('variants') or {}).items():
+            # 1:1 Ref
             cref = vdata.get('component_ref')
-            if not cref:
-                continue
-            ref_cid = cref.get('cid', '')
-            ref_comp = components.get(ref_cid)
-            if not ref_comp:
-                print(f'⚠️ [component_ref] {ref_cid} 未找到（{cid}/{vk}）')
-                continue
-            vk_direct = cref.get('variant_key')
-            if vk_direct:
-                if vk_direct not in (ref_comp.get('variants') or {}):
-                    print(f'⚠️ [component_ref] variant_key "{vk_direct}" 在 {ref_cid} 中不存在（{cid}/{vk}）')
-            elif cref.get('props'):
-                ref_props = cref['props']
-                found = any(
-                    all(f'{k}={v}' in rvk for k, v in ref_props.items())
-                    for rvk in (ref_comp.get('variants') or {})
-                )
-                if not found:
-                    print(f'⚠️ [component_ref] {ref_cid} 无精确匹配 variant（props={ref_props}）')
+            if cref:
+                _check_one_ref(cref, components, cid, vk, 'component_ref')
+            # Wrapper
+            for i, ref in enumerate(vdata.get('component_refs') or []):
+                _check_one_ref(ref, components, cid, vk, f'component_refs[{i}]')
 
 
 def auto_generate_tree_previews(components):

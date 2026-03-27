@@ -22,28 +22,37 @@
   "variants": {
     "Header": {
       "figma_name": "👻 Islands / Header",
-      "desc": "Islands 详情页头部组件，包含封面图和基本信息",
+      "desc": "Islands 详情页头部（Wrapper）：深色背景 + Status Bar + Ghost NavBar",
       "figma_key": "eecbc6c90b1707359ded719fde7ea758538f1a50",
       "css": {
         "display": "flex",
-        "width": "375px",
         "flex-direction": "column",
-        "align-items": "flex-start"
+        "width": "375px",
+        "background": "var(--secondary-solid-bg, #2b263b)"
       },
-      "props": {},
-      "preview_html": "<div style=\"background:var(--secondary-solid-bg,#2b263b);width:375px;flex-shrink:0\"><div style=\"display:flex;width:375px;height:44px;padding:0 4px;align-items:center;gap:4px;box-sizing:border-box\"><div style=\"width:53px;height:24px;border-radius:4px;background:var(--white-8,rgba(255,255,255,.88));display:flex;align-items:center;justify-content:center;flex-shrink:0\"><span style=\"font:700 10px/1 -apple-system,'PingFang SC',sans-serif;color:var(--secondary-solid-bg,#2b263b);letter-spacing:.5px\">ECHO</span></div><div style=\"flex:1;height:32px;background:var(--white-3,rgba(255,255,255,.12));border-radius:8px;display:flex;align-items:center;padding:0 8px;gap:4px;box-sizing:border-box;min-width:0\"><i class=\"KurilIcons kuril-search\" style=\"font-size:14px;color:var(--white-text-color2,rgba(255,255,255,.64));flex-shrink:0\"></i><span style=\"flex:1;font:13px/1 -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color3,rgba(255,255,255,.4));overflow:hidden;white-space:nowrap\">Labubu泰坦</span><div style=\"width:1px;height:14px;background:var(--white-3,rgba(255,255,255,.12));flex-shrink:0\"></div><i class=\"KurilIcons kuril-camera\" style=\"font-size:16px;color:rgba(255,255,255,.64);font-style:normal;flex-shrink:0\"></i><span style=\"font:11px/1 -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color2,rgba(255,255,255,.64));flex-shrink:0\">识物</span></div><div style=\"display:flex;flex-direction:column;width:40px;height:40px;justify-content:center;align-items:center;gap:2px;flex-shrink:0\"><div style=\"width:20px;height:20px;border-radius:4px;background:var(--white-5,rgba(255,255,255,.24))\"></div><span style=\"font:10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff)\">发现岛</span></div></div></div>"
+      "component_refs": [
+        { "cid": "01.00-status-bar", "variant_key": "StatusBar" },
+        { "cid": "01.01-navigation-bar", "variant_key": "App_Ghost" }
+      ]
     },
     "Pin": {
       "figma_name": "👻 Islands / Pin",
-      "desc": "Islands 固钉区域，水平排列 PinCell，用于已关注的 Island 快速入口",
+      "desc": "Islands 固钉区域（Wrapper）：深色背景 + 横排 PinCell",
       "figma_key": "e0eaba05d0e32d3ea7ef305765499b592ee04777",
       "css": {
         "display": "flex",
         "width": "375px",
-        "align-items": "flex-start"
+        "align-items": "flex-start",
+        "background": "var(--secondary-solid-bg, #2b263b)",
+        "overflow": "hidden"
       },
-      "props": {},
-      "preview_html": "<div style=\"background:var(--secondary-solid-bg,#2b263b);width:375px;display:flex;overflow:hidden;flex-shrink:0\"><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"position:absolute;top:-3px;left:-3px;width:54px;height:54px;border:2px solid var(--white-8,rgba(255,255,255,.88));border-radius:10px;box-sizing:border-box\"></div><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-soft-bg,rgba(255,255,255,.12))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">千岛岛主</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-5,rgba(255,255,255,.24))\"></div><div style=\"position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;border-radius:16px;background:var(--error-solid-bg,#d94a4e);display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box\"><span style=\"font:500 10px/1 Roboto,sans-serif;color:var(--white-text-color,#fff)\">3</span></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">泡泡玛特</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-5,rgba(255,255,255,.24))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">MOLLY</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-4,rgba(255,255,255,.16))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">DIMOO</span></div><div style=\"display:flex;flex-direction:column;align-items:center;gap:8px;width:68px;height:85px;padding:8px 0;box-sizing:border-box;flex-shrink:0\"><div style=\"position:relative;width:48px;height:48px\"><div style=\"width:48px;height:48px;border-radius:8px;background:var(--white-4,rgba(255,255,255,.16))\"></div></div><span style=\"font:500 10px/11px -apple-system,'PingFang SC',sans-serif;color:var(--white-text-color,#fff);text-align:center\">Skullpanda</span></div></div>"
+      "component_refs": [
+        { "cid": "islands", "variant_key": "PinCell_Islands" },
+        { "cid": "islands", "variant_key": "PinCell_Home" },
+        { "cid": "islands", "variant_key": "PinCell_Home" },
+        { "cid": "islands", "variant_key": "PinCell_Home" },
+        { "cid": "islands", "variant_key": "PinCell_Home" }
+      ]
     },
     "PinCell_Home": {
       "figma_name": "👻 Islands / PinCell, Type=Home",
@@ -160,17 +169,22 @@
     },
     "Grid": {
       "figma_name": "👻 Islands / Grid",
-      "desc": "Islands 格子容器，水平排列 GridCell，用于社区入口格子区域",
+      "desc": "Islands 格子容器（Wrapper）：浅色背景 + 横排 GridCell",
       "figma_key": "9c425cfa52d08f39c0bd2470df414befee021d0e",
       "css": {
         "display": "flex",
         "padding": "0 10px",
         "align-items": "center",
         "gap": "8px",
-        "align-self": "stretch"
+        "width": "375px",
+        "background": "var(--bg-1, #fff)",
+        "box-sizing": "border-box"
       },
-      "props": {},
-      "preview_html": "<div style=\"display:flex;padding:0 10px;align-items:center;gap:var(--Spacing-Normal,8px);width:375px;box-sizing:border-box;background:var(--bg-1,#fff)\"><div style=\"display:inline-flex;align-items:center;gap:var(--Spacing-Small,4px);border-radius:8px;background:var(--bg-2,#f7f7f9);padding:4px 8px 4px 4px;flex-shrink:0\"><div style=\"width:28px;height:28px;border-radius:6px;background:var(--primary-soft-bg,#f2f0ff);flex-shrink:0\"></div><span style=\"font:900 14.5px/1 'Alibaba PuHuiTi 3.0',-apple-system,sans-serif;color:var(--secondary-text-color,#2b263b);transform:skewX(-2.54deg);display:inline-block\">Labubu</span><div style=\"width:6px;height:6px;border-right:1.5px solid var(--text-3,rgba(0,0,0,.4));border-top:1.5px solid var(--text-3,rgba(0,0,0,.4));transform:rotate(45deg);flex-shrink:0;margin-left:2px\"></div></div><div style=\"display:inline-flex;align-items:center;gap:var(--Spacing-Small,4px);border-radius:8px;background:var(--bg-2,#f7f7f9);padding:4px 8px 4px 4px;flex-shrink:0\"><div style=\"width:28px;height:28px;border-radius:6px;background:var(--primary-soft-bg,#f2f0ff);flex-shrink:0\"></div><span style=\"font:900 14.5px/1 'Alibaba PuHuiTi 3.0',-apple-system,sans-serif;color:var(--secondary-text-color,#2b263b);transform:skewX(-2.54deg);display:inline-block\">MOLLY</span><div style=\"width:6px;height:6px;border-right:1.5px solid var(--text-3,rgba(0,0,0,.4));border-top:1.5px solid var(--text-3,rgba(0,0,0,.4));transform:rotate(45deg);flex-shrink:0;margin-left:2px\"></div></div><div style=\"display:inline-flex;align-items:center;gap:var(--Spacing-Small,4px);border-radius:8px;background:var(--bg-2,#f7f7f9);padding:4px 8px 4px 4px;flex-shrink:0\"><div style=\"width:28px;height:28px;border-radius:6px;background:var(--primary-soft-bg,#f2f0ff);flex-shrink:0\"></div><span style=\"font:900 14.5px/1 'Alibaba PuHuiTi 3.0',-apple-system,sans-serif;color:var(--secondary-text-color,#2b263b);transform:skewX(-2.54deg);display:inline-block\">DIMOO</span><div style=\"width:6px;height:6px;border-right:1.5px solid var(--text-3,rgba(0,0,0,.4));border-top:1.5px solid var(--text-3,rgba(0,0,0,.4));transform:rotate(45deg);flex-shrink:0;margin-left:2px\"></div></div></div>"
+      "component_refs": [
+        { "cid": "islands", "variant_key": "GridCell_ISLANDS" },
+        { "cid": "islands", "variant_key": "GridCell_ISLANDS" },
+        { "cid": "islands", "variant_key": "GridCell_ISLANDS" }
+      ]
     },
     "Slide": {
       "figma_name": "👻 Islands / Slide",
