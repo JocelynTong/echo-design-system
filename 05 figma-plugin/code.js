@@ -284,6 +284,25 @@ async function handleExport() {
       return result;
     }
 
+    // Wrapper 检测：直接子节点含 💙/👻 实例 → 输出 component_refs (Format B)
+    // Leaf：无注册实例子节点 → 输出 _tree 供 generate.py 转 preview_html
+    async function buildComponentRefs(variantNode) {
+      if (!('children' in variantNode)) return null;
+      var refs = [];
+      for (var child of Array.from(variantNode.children)) {
+        if (child.type === 'INSTANCE' && child.mainComponent && isRegisteredComponent(child.mainComponent)) {
+          var refName = getCanonicalName(child.mainComponent);
+          var props = parseComponentProps(child);
+          var ref = { cid: refName };
+          if (props && props.variants && Object.keys(props.variants).length > 0) {
+            ref.variants = props.variants;
+          }
+          refs.push(ref);
+        }
+      }
+      return refs.length > 0 ? refs : null;
+    }
+
     // COMPONENT_SET：组件定义，列出各变体 key + CSS + 属性定义
     if (node.type === 'COMPONENT_SET') {
       var entry = { type: 'component_def', name: node.name, key: node.key };
@@ -295,10 +314,15 @@ async function handleExport() {
         var ve = { name: v.name, key: v.key };
         var vc = await getCss(v);
         if (vc) ve.css = vc;
-        var slots = await collectChildSlots(v);
-        if (slots.length > 0) ve.slots = slots;
-        var tree = await exportNodeTree(v);
-        if (tree && (tree.children || tree.text)) ve._tree = tree;
+        var crefs = await buildComponentRefs(v);
+        if (crefs) {
+          ve.component_refs = crefs;
+        } else {
+          var slots = await collectChildSlots(v);
+          if (slots.length > 0) ve.slots = slots;
+          var tree = await exportNodeTree(v);
+          if (tree && (tree.children || tree.text)) ve._tree = tree;
+        }
         return ve;
       }));
       return entry;
@@ -311,10 +335,15 @@ async function handleExport() {
       if (css) entry.css = css;
       var propDefs = exportPropDefs(node);
       if (propDefs) entry.propertyDefs = propDefs;
-      var slots = await collectChildSlots(node);
-      if (slots.length > 0) entry.slots = slots;
-      var tree = await exportNodeTree(node);
-      if (tree && (tree.children || tree.text)) entry._tree = tree;
+      var crefs = await buildComponentRefs(node);
+      if (crefs) {
+        entry.component_refs = crefs;
+      } else {
+        var slots = await collectChildSlots(node);
+        if (slots.length > 0) entry.slots = slots;
+        var tree = await exportNodeTree(node);
+        if (tree && (tree.children || tree.text)) entry._tree = tree;
+      }
       return entry;
     }
 
