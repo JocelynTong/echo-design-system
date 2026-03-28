@@ -48,9 +48,11 @@
       },
       "props": {},
       "component_ref": {
-        "cid": "01.01-navigation-bar",
+        "cid": "01.01_navigation_bar",
         "variant_key": "App_Ghost",
-        "css": {"background": "var(--secondary-solidBg, #2B263B)"}
+        "css": {
+          "background": "var(--secondary-solidBg, #2B263B)"
+        }
       }
     },
     "User": {

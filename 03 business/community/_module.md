@@ -96,7 +96,7 @@
 
 | 组件名 | Figma Key | 说明 |
 |--------|-----------|------|
-| `💙 01.05 Tab Bar / APP / 5Tabs` | *(系统组件，见 `02 components/` 目录)* | 岛页面底部 TabBar，2026-03-09 新增入页面组件列表 |
+| `💙 01.05 Tab Bar / APP / 5Tabs` | *(原子分子组件，见 `02 components/` 目录)* | 岛页面底部 TabBar，2026-03-09 新增入页面组件列表 |
 | `浅色底部适配` | `aec27850bc717c09a87f743af26fe06a70e95027` | 即「Property 1=Light」，浅色主题底部适配组件，配合 TabBar 使用 |
 | `👻 Islands / Tag` | `3bdc1589cd9fb7da92e95c95d63010b3b0c334cb` | 岛内容标签组件 |
 | `👻截屏刘海logo` | `682fe5df9cb18d1e27eb870e691005f4ad8acbfa` | 截图用刘海 Logo，非页面正式组件 |

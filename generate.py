@@ -152,8 +152,8 @@ _KEEP_CSS = {
     'border-top', 'border-right', 'border-bottom', 'border-left',
     'color', 'font-size', 'font-weight', 'line-height', 'font-family',
     'letter-spacing', 'text-align', 'white-space', 'overflow', 'text-overflow',
-    'position', 'top', 'right', 'bottom', 'left', 'z-index',
-    'opacity', 'box-shadow', 'transform',
+    'position', 'top', 'right', 'bottom', 'left', 'inset', 'z-index',
+    'opacity', 'box-shadow', 'transform', 'pointer-events',
 }
 _COLOR_CSS = {'color', 'background', 'background-color', 'border-color',
               'fill', 'stroke', 'outline-color', 'text-decoration-color'}
@@ -220,8 +220,9 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         if _inline:
             css['display'] = 'inline-flex'
             css['vertical-align'] = 'middle'
-        embed = None
-        if fkmap and tree.get('key'):
+        # _embed 字段：节点自带的 embed HTML，优先于 fkmap 查找（允许在引用节点中覆盖子组件样式）
+        embed = tree.get('_embed') or None
+        if not embed and fkmap and tree.get('key'):
             vdata = fkmap.get(tree['key'])
             if vdata:
                 sub_tree = vdata.get('_tree')
@@ -240,6 +241,8 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
                     )
         ref = tree.get('ref', '')
         data_comp = f' data-component="{ref}"' if ref else ''
+        bool_prop = tree.get('_bool_prop', '')
+        data_bool = f' data-bool="{bool_prop}"' if bool_prop else ''
         if embed:
             # 使用 embed 时：外层 div 只保留布局属性（flex/尺寸/对齐），
             # 去掉视觉属性（background/border-radius/padding/color），
@@ -251,9 +254,9 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
             layout_css = {k: v for k, v in css.items() if k not in _VISUAL}
             layout_style = ';'.join(f'{k}:{v}' for k, v in layout_css.items())
             s = f' style="{layout_style}"' if layout_style else ''
-            return f'<div{s}{data_comp}>{embed}</div>'
+            return f'<div{s}{data_comp}{data_bool}>{embed}</div>'
         s = f' style="{style}"' if style else ''
-        return f'<div{s}{data_comp}></div>'
+        return f'<div{s}{data_comp}{data_bool}></div>'
 
     # FRAME / GROUP / COMPONENT 等容器
     children = tree.get('children') or []
@@ -304,8 +307,10 @@ def _tree_to_html(tree, cmap, fmap, depth=0, fkmap=None, _inline=False):
         _tree_to_html(ch, cmap, fmap, depth + 1, fkmap)
         for ch in children
     )
+    bool_prop = tree.get('_bool_prop', '')
+    data_bool = f' data-bool="{bool_prop}"' if bool_prop else ''
     s = f' style="{style}"' if style else ''
-    return f'<div{s}>{children_html}</div>'
+    return f'<div{s}{data_bool}>{children_html}</div>'
 
 
 def _css_to_embed(css):
@@ -413,6 +418,14 @@ def auto_generate_tree_previews(components):
         for vdata in (cdata.get('variants') or {}).values():
             if vdata.get('preview_html') or vdata.get('_tree_preview_html'):
                 continue
+            # 有 previewMap 的 variant 不需要 _tree_preview_html（chips 即是交互入口）
+            props = vdata.get('props') or {}
+            has_pm = any(
+                isinstance(pv, dict) and pv.get('previewMap')
+                for pv in props.values()
+            )
+            if has_pm:
+                continue
             tree = vdata.get('_tree')
             if not tree:
                 continue
@@ -516,9 +529,21 @@ def _load_components():
                 continue
             with open(os.path.join(comp_dir, fn), encoding='utf-8') as f:
                 data = json.load(f)
-            cid = fn.replace('.json', '').replace(' ', '-').lower()
+            fp = data.get('figma_page', '')
+            cid = ('💙 ' + fp) if fp else fn.replace('.json', '').replace(' ', '_').lower()
             light = {k: v for k, v in data.items() if k not in SKIP_KEYS}
             components[cid] = {'_file': fn, '_path': os.path.join(comp_dir, fn), **light}
+
+    def _vk_from_figma_name(figma_name):
+        """'Type=ISLANDS' → 'ISLANDS', '视图=单列, 类型=单图' → '单列_单图'"""
+        if not figma_name:
+            return 'Default'
+        if '=' not in figma_name:
+            return figma_name.strip().replace(' ', '_')
+        parts = [p.strip() for p in figma_name.split(',')]
+        vals = [p.split('=', 1)[1].strip() if '=' in p else p.strip() for p in parts]
+        result = '_'.join(v for v in vals if v)
+        return result or 'Default'
 
     biz_dir = os.path.join(BASE, '03 business')
     for biz_path in sorted(_glob.glob(os.path.join(biz_dir, '*', '*.json'))):
@@ -527,15 +552,66 @@ def _load_components():
             continue
         with open(biz_path, encoding='utf-8') as f:
             data = json.load(f)
-        cid = fn.replace('.json', '').replace(' ', '-').lower()
-        if cid in components:
-            continue
-        light = {k: v for k, v in data.items() if k not in SKIP_KEYS}
-        components[cid] = {'_file': fn, '_path': biz_path, **light}
+
+        if 'pages' in data:
+            # ── 新 pages 格式：每个 component_def 节点 → 独立组件 ──────────────────
+            for page in data.get('pages', []):
+                for node in page.get('nodes', []):
+                    if node.get('type') != 'component_def':
+                        continue
+                    figma_name = node.get('figma_name', '')
+                    if not figma_name:
+                        continue
+                    cid = figma_name
+                    if cid in components:
+                        continue
+                    variants_raw = node.get('variants', [])
+                    if isinstance(variants_raw, list) and variants_raw:
+                        # list of variant dicts → 转 dict，key 从 figma_name 推导
+                        variants = {}
+                        seen = set()
+                        for v in variants_raw:
+                            if not isinstance(v, dict):
+                                continue
+                            vfn = v.get('figma_name', '')
+                            vk = _vk_from_figma_name(vfn)
+                            base, i = vk, 2
+                            while vk in seen:
+                                vk = f'{base}_{i}'; i += 1
+                            seen.add(vk)
+                            variants[vk] = v
+                        comp_data = {
+                            '_file': fn, '_path': biz_path,
+                            'figma_name': figma_name,
+                            'figma_key': node.get('figma_key', ''),
+                            'css': node.get('css', {}),
+                            'variants': variants,
+                        }
+                    else:
+                        # 无子变体 → 节点本身作为单一 variant
+                        last = figma_name.split(' / ')[-1].strip()
+                        single_v = {k: v for k, v in node.items() if k not in ('type', 'figma_name')}
+                        comp_data = {
+                            '_file': fn, '_path': biz_path,
+                            'figma_name': figma_name,
+                            'figma_key': node.get('figma_key', ''),
+                            'css': node.get('css', {}),
+                            'variants': {last: single_v},
+                        }
+                    components[cid] = comp_data
+        else:
+            # ── 旧格式：单文件单组件 ───────────────────────────────────────────────
+            comp_field = data.get('component', '')
+            cid = comp_field if comp_field else fn.replace('.json', '').replace(' ', '_').lower()
+            if cid in components:
+                continue
+            light = {k: v for k, v in data.items() if k not in SKIP_KEYS}
+            components[cid] = {'_file': fn, '_path': biz_path, **light}
 
     def sort_key(item):
-        m = re.match(r'^(\d+)', item[0])
-        return (0, item[0]) if m else (1, item[0])
+        k = re.sub(r'^[^\w\d]+\s*', '', item[0])  # strip emoji prefix for sorting
+        m = re.match(r'^(\d+)', k)
+        return (0, k) if m else (1, k)
     components = dict(sorted(components.items(), key=sort_key))
 
     ref_map = build_ref_map(components)
@@ -688,6 +764,13 @@ def write_design_system_html(all_processed, components=None, ref_map=None):
                                  '/* === FONT VARS END === */',
                                  font_css)
 
+    app_css = build_app_css_overrides(all_processed)
+    if app_css:
+        content = _inject_block(content,
+                                 '/* === APP CSS BEGIN === */',
+                                 '/* === APP CSS END === */',
+                                 app_css)
+
     with open(DS_HTML, 'w', encoding='utf-8') as f:
         f.write(content)
 
@@ -696,6 +779,46 @@ def write_design_system_html(all_processed, components=None, ref_map=None):
     if font_css:
         typo_count = font_css.count(';') + 1
         print(f'✓ [Typography] HTML font vars 已注入（{typo_count} 个变量）')
+
+
+def build_app_css_overrides(all_results):
+    """为非千岛 app 生成 [data-app="xxx"] CSS 覆盖块，供组件 preview 颜色随 app 切换。"""
+    lines = []
+    for app_id, processed in all_results.items():
+        if app_id == 'qiandao':
+            continue  # 千岛是 :root 默认值，不需要覆盖
+        parts = []
+        for cat, tokens in processed.get('l2_cats', {}).items():
+            for t in tokens:
+                val = color_value(t['hex'], t['alpha'])
+                if val:
+                    parts.append(f"{token_key_to_var(t['key'])}:{val}")
+        for comp, cats in processed.get('l3_data', {}).items():
+            for cat, tokens in cats.items():
+                for t in tokens:
+                    val = color_value(t['hex'], t['alpha'])
+                    if val:
+                        parts.append(f"{token_key_to_var(t['key'])}:{val}")
+        if parts:
+            lines.append(f'[data-app="{app_id}"] {{{"; ".join(parts)}}}')
+        # dark overrides
+        dark_parts = []
+        for cat, tokens in processed.get('l2_cats', {}).items():
+            for t in tokens:
+                if t.get('darkHex') and (t['darkHex'] != t['hex'] or t['darkAlpha'] != t['alpha']):
+                    val = color_value(t['darkHex'], t['darkAlpha'])
+                    if val:
+                        dark_parts.append(f"{token_key_to_var(t['key'])}:{val}")
+        for comp, cats in processed.get('l3_data', {}).items():
+            for cat, tokens in cats.items():
+                for t in tokens:
+                    if t.get('darkHex') and (t['darkHex'] != t['hex'] or t['darkAlpha'] != t['alpha']):
+                        val = color_value(t['darkHex'], t['darkAlpha'])
+                        if val:
+                            dark_parts.append(f"{token_key_to_var(t['key'])}:{val}")
+        if dark_parts:
+            lines.append(f'[data-app="{app_id}"][data-theme="dark"] {{{"; ".join(dark_parts)}}}')
+    return '\n'.join(lines)
 
 
 def write_styles_css(processed, styles_path):
@@ -1193,7 +1316,8 @@ def validate_components(components=None, ref_map=None):
                 continue
             try:
                 d = json.loads(open(os.path.join(comp_dir, fn2), encoding='utf-8').read())
-                cid2 = fn2.replace('.json', '').replace(' ', '-').lower()
+                d_fp = d.get('figma_page', '')
+                cid2 = ('💙 ' + d_fp) if d_fp else fn2.replace('.json', '').replace(' ', '_').lower()
                 all_comps_raw[cid2] = d
             except Exception:
                 continue

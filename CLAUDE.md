@@ -29,7 +29,7 @@
 ### 数据来源优先级
 
 ```
-Figma MCP（get_metadata / get_design_context）  ← 最高，设计真值
+Figma MCP（get_metadata / mcp_design_context）  ← 最高，设计真值
   ↓
 plugin 导出 JSON（sync 时粘贴的原始数据）       ← 组件结构真值
   ↓
@@ -44,12 +44,12 @@ preview_html 内容推断                           ← 仅在上面都缺失时
 
 | 问题 | 不要做 | 应该做 |
 |------|--------|--------|
-| 业务组件 statusbar 是不是 ghost？ | 猜背景色 / 手写字段 | `get_metadata` 场景 frame → 找 `💙 01.00_Status Bar` → `get_design_context` 看文字颜色 |
+| 业务组件 statusbar 是不是 ghost？ | 猜背景色 / 手写字段 | `get_metadata` 场景 frame → 找 `💙 01.00_Status Bar` → `mcp_design_context` 看文字颜色 |
 | Home Indicator 深色还是浅色？ | 看背景推测 | `get_metadata` → 找 `💙 01.11_Home Indicator` → 看 bar 颜色 |
 | 组件宽度/间距是多少？ | 凭规范文档估 | 读 plugin 导出 JSON 的 `css` 字段 |
 | 变体顺序怎么排？ | 按名字排 | plugin 导出顺序即 Y 轴排序结果，直接用 |
 | 某 token 的值是什么？ | 查 memory | 读 `01 tokens/_styles.css` |
-| 写/改 `preview_html` | 凭经验推测布局 / 手写 SVG | 组件 JSON 有 `figma_file` → 先 `get_design_context` 确认结构，再写 HTML |
+| 写/改 `preview_html` | 凭经验推测布局 / 手写 SVG | 组件 JSON 有 `figma_file` → 先 `mcp_design_context` 确认结构，再写 HTML |
 
 ### Figma URL + JSON 同时给出时的行为
 
@@ -57,8 +57,8 @@ sync 命令里只要带了 Figma URL，**立刻调 MCP**，不等用户提示：
 
 ```
 get_metadata(scene frame)
-  → 识别所有 💙 系统组件实例（StatusBar / HomeIndicator / NavBar / TabBar）
-  → 对每个实例 get_design_context 拿 variant 属性
+  → 识别所有 💙 原子分子组件实例（StatusBar / HomeIndicator / NavBar / TabBar）
+  → 对每个实例 mcp_design_context 拿 variant 属性
   → 写入对应业务 JSON 的元数据字段
 ```
 
@@ -576,8 +576,8 @@ NavBar 上下文不加 background，其余属性（flex-direction/gap/border-rad
 |----------|---------|
 | 只说「同步」 | 直接跑 `python3 generate.py`，不问任何问题 |
 | 「同步」+ 插件导出 JSON | 立即解析导出数据 → 更新对应 JSON → 跑 `generate.py`，不分析、不确认 |
-| 「同步」+ 插件导出 + Figma 链接 | 用 Figma MCP 工具（`get_metadata` / `get_design_context`）做视觉校准，再更新 JSON → 跑 `generate.py` |
-| 「同步」+ 插件导出（组件 JSON 已有 `figma_file`，且涉及新增/修改 `preview_html`） | 写 HTML 前先 `get_design_context` 确认布局结构，再更新 JSON → 跑 `generate.py` |
+| 「同步」+ 插件导出 + Figma 链接 | 用 Figma MCP 工具（`get_metadata` / `mcp_design_context`）做视觉校准，再更新 JSON → 跑 `generate.py` |
+| 「同步」+ 插件导出（组件 JSON 已有 `figma_file`，且涉及新增/修改 `preview_html`） | 写 HTML 前先 `mcp_design_context` 确认布局结构，再更新 JSON → 跑 `generate.py` |
 
 **插件导出数据的两条铁律：**
 1. 导出数据里的节点顺序 = 插件已完成的 Y 轴排序结果，**直接使用，不回 Figma 二次验证**
@@ -585,7 +585,7 @@ NavBar 上下文不加 background，其余属性（flex-direction/gap/border-rad
 
 ---
 
-### 同步工作流：组件类型分支与系统组件引用检查
+### 同步工作流：组件类型分支与原子分子组件引用检查
 
 **Step 0：判断组件类型，决定写入路径**
 
@@ -608,7 +608,7 @@ NavBar 上下文不加 background，其余属性（flex-direction/gap/border-rad
 ```
 get_metadata(选中 frame)
   → 找所有 💙 前缀实例
-  → 对每个实例 get_design_context 读 props/variant
+  → 对每个实例 mcp_design_context 读 props/variant
   → 按组件类型写入对应字段
 ```
 
@@ -624,11 +624,11 @@ get_metadata(选中 frame)
 
 | Figma 组件 | JSON 字段 | 值格式 | 判断方式 |
 |---|---|---|---|
-| `💙 01.00_Status Bar` | `status_bar` | `"ghost"` / `"normal"` | get_design_context → 文字色白色 = ghost |
+| `💙 01.00_Status Bar` | `status_bar` | `"ghost"` / `"normal"` | mcp_design_context → 文字色白色 = ghost |
 | `💙 01.06_Tab Bar` | `tab_bar` | `"01.06-tab-bar"` | 存在即填 |
-| `💙 00.05_Button / FloatCart` | `fab` | `{ "cid": "00.08-button", "variant": "FloatCart", "scene": "..." }` | get_design_context → 读「场景」prop |
-| `💙 00.05_Button / FAB` | `fab` | `{ "cid": "00.08-button", "variant": "FAB" }` | get_design_context → 读 Normal prop |
-| `💙 01.11_Home Indicator` | `home_indicator` | `"dark"` / 不填 | get_design_context → bar 色白色 = dark |
+| `💙 00.05_Button / FloatCart` | `fab` | `{ "cid": "00.08-button", "variant": "FloatCart", "scene": "..." }` | mcp_design_context → 读「场景」prop |
+| `💙 00.05_Button / FAB` | `fab` | `{ "cid": "00.08-button", "variant": "FAB" }` | mcp_design_context → 读 Normal prop |
+| `💙 01.11_Home Indicator` | `home_indicator` | `"dark"` / 不填 | mcp_design_context → bar 色白色 = dark |
 
 > **渲染铁律**：所有引用字段必须在 JSON 中显式声明，渲染代码只读字段、不猜测、不硬编码组件 CID。
 
@@ -638,11 +638,11 @@ get_metadata(选中 frame)
 
 **Step 3：generate.py**
 
-generate.py 会对业务组件 JSON 中的引用字段做检查：若 `tab_bar`/`fab.cid` 等引用的 CID 不在 COMPONENTS_DATA 中，输出 warning 提示该系统组件尚未录入。
+generate.py 会对业务组件 JSON 中的引用字段做检查：若 `tab_bar`/`fab.cid` 等引用的 CID 不在 COMPONENTS_DATA 中，输出 warning 提示该原子分子组件尚未录入。
 
 ---
 
-**前向引用机制（系统组件未完全录入时的保证）**
+**前向引用机制（原子分子组件未完全录入时的保证）**
 
 CID 从 Figma 组件名推导是确定性的：
 
@@ -651,18 +651,18 @@ CID 从 Figma 组件名推导是确定性的：
 💙 00.08 Button   →  00.08-button
 ```
 
-因此，**即使系统组件尚未录入，也应立即写入 CID**（前向声明）：
+因此，**即使原子分子组件尚未录入，也应立即写入 CID**（前向声明）：
 
 ```json
 "tab_bar": "01.06-tab-bar"   ← 组件未录入也先写，generate.py 会 warning 提醒
 ```
 
-当该系统组件后续通过 sync 录入后：
+当该原子分子组件后续通过 sync 录入后：
 - 业务组件 JSON **不需要改动**
 - 渲染代码从 COMPONENTS_DATA 读数据，自动生效
 - generate.py 的 warning 自动消失
 
-这样形成闭环：**前向声明 → generate.py warning 暴露缺口 → 录入系统组件 → 自动消化，零手动补丁。**
+这样形成闭环：**前向声明 → generate.py warning 暴露缺口 → 录入原子分子组件 → 自动消化，零手动补丁。**
 
 ---
 
@@ -694,7 +694,7 @@ python3 generate.py 截图 --force
 
 ### generate.py 安全边界
 
-**只重写 3 个块**（标记区域内容），其他手写代码永远不被覆盖：
+**只重写 4 个块**（标记区域内容），其他手写代码永远不被覆盖：
 
 ```html
 <!-- === COMPONENTS DATA BEGIN === -->
@@ -709,12 +709,30 @@ var INJECTED_DATA={...};
 <!-- === FONT VARS BEGIN === -->
 :root{--font-h1:...}
 <!-- === FONT VARS END === -->
+
+/* === APP CSS BEGIN === */
+[data-app="linjie"]{--text-1:...;--primary-bt-solid-bg:...}
+[data-app="qihuo"]{...}
+/* === APP CSS END === */
 ```
 
 **手写区域**（永远不被覆盖）：
 - `_buildBizLayout`、`_genBizVisual`、`_genBizInner` 等 JS 函数
-- CSS 样式（除了 FONT VARS 块）
+- CSS 样式（除了 FONT VARS 块和 APP CSS 块）
 - HTML 结构（侧边栏、页面容器）
+
+### 多 App Token 切换规则（全局强制）
+
+**每新增一个 App（在 `generate.py` 的 `APPS` 字典里注册），必须同时完成，缺一不可：**
+
+1. `generate.py` 的 `APPS` 字典新增条目（`dir`、`primitives`、`light`、`dark`）
+2. `switchApp()` 的 label map 新增 `'{app_id}': '{中文名}'`
+3. HTML 顶栏新增 `<button class="app-btn" onclick="switchApp('{app_id}')">{中文名}</button>`
+4. 跑 `python3 generate.py` —— `build_app_css_overrides()` 自动为新 App 生成 `[data-app="{app_id}"]` 覆盖块，涵盖全部 l2/l3 token（text/icon/bg/border/primary/secondary/success/warning/error 等所有分类），注入 `/* === APP CSS BEGIN === */` 块
+
+**不需要手动写任何 CSS**。generate.py 负责从 processed.json 提取所有色值并生成覆盖块；`switchApp()` 设 `data-app` attribute，CSS 级联自动生效。
+
+> 规则来源：临界（`#7247DC`）、奇货（`#FC7E22`）已验证，360 个 token 全量覆盖，切换后组件 preview 颜色完整跟随 App 色板。
 
 ### 业务组件渲染优先级
 
@@ -731,7 +749,7 @@ var isBiz = (nm && nm.indexOf('👻') !== -1) || !/^\d/.test(cid);
 ```
 
 - **业务组件**：component 名含 `👻` 或 CID 不以数字开头（如 `islands`、`community`）
-- **系统组件**：CID 以数字开头（如 `01.01-navigation-bar`、`00.08-button`）
+- **原子分子组件**：CID 以数字开头（如 `01.01-navigation-bar`、`00.08-button`）
 
 ### 变体顺序保持
 
@@ -773,6 +791,47 @@ function _scrollBizPhone(cid, vk, el) {
   - `primary/bt/solidBg` → `--primary-bt-solid-bg`
 - preview_html 中用 design token（`--bg-2`），不用 HTML shell alias（`--bg-card2`）
 
+### 组件 JSON schema 节点类型（Wrapper / Leaf / 1:1 Ref）
+
+每个组件定义有且仅有以下三种形态之一：
+
+| 字段组合 | 节点类型 | 用途 |
+|---|---|---|
+| `css` + `component_refs` | **Wrapper** | 由多个子组件组合，描述自身布局 |
+| `preview_html` | **Leaf** | 不可再分，直接写 HTML |
+| `component_ref` | **1:1 Ref** | 精确指向另一个组件的某个变体 |
+
+所有节点都可携带：
+- `figma_name` — 含 emoji 前缀的 Figma 完整名称，同时作为 `cid`（COMPONENTS_DATA 的 key）
+- `figma_key` — Figma 组件 hash（截图/MCP 调用用）
+- `code_src` — 代码实现路径或包路径，用于代码生成和 Code Connect 注册（可选，逐步补齐）
+- `props` — 仅限面向浏览器的用户交互 prop（variantMap / previewMap / booleans），不用于子组件配置
+
+**`code_src` 格式约定：**
+```json
+// 💙 原子分子组件（库级）
+{ "code_src": "@echo/ui/StatusBar" }
+
+// 👻 业务组件（项目路径）
+{ "code_src": "src/business/community/islands/Header" }
+```
+
+`code_src` 将用于：
+1. 通过 `add_code_connect_map` 注册到 Figma Dev Mode，让 MCP `get_design_context` 带入规范
+2. AI 生成项目代码时的 import 来源
+
+**`component_refs` 子对象格式：**
+```json
+{ "cid": "💙 01.00 Status Bar", "variants": { "Color": "White", "Type": "iphone14" } }
+```
+
+**`component_ref` 格式（1:1 Ref）：**
+```json
+{ "cid": "💙 tab_bar", "variant_key": "Islands" }
+```
+
+---
+
 ### slots 字段规范
 
 有 slots 的 variant 必须同时写：
@@ -780,6 +839,76 @@ function _scrollBizPhone(cid, vk, el) {
 2. **`slots` 数组** — 声明引用关系，含 `name` / `boolProp` / `size` / `css`
 
 渲染代码的 `showCompDetail` 已支持 slots 自动渲染，加了字段即自动显示。
+
+### `props.IconSwaps` 实例替换规范
+
+凡是 `props.IconSwaps` 里的 swap prop，必须同时满足两条规则：
+
+**规则 A：`componentRef` — props 面板跳转芯片**
+
+在 `props.IconSwaps` 的每个条目上加 `componentRef` 字段，值为目标组件的 CID（kebab-case）：
+
+```json
+"IconSwaps": {
+  "Icon": {
+    "swapProp": "Icon",
+    "instanceKey": "xxx",
+    "componentRef": "00.03-icon",
+    "desc": "..."
+  }
+}
+```
+
+浏览器 `buildPropsHtml` 遇到 `componentRef` 时，自动渲染为可点击跳转芯片（主色描边 + cursor:pointer），点击调用 `showCompDetail(componentRef)`。
+
+**规则 B：`data-component` — preview_html 里的实例元素**
+
+`preview_html` 中对应 swapProp 的 HTML 元素，必须加 `data-component` 属性：
+
+| 场景 | preview_html 中的写法 |
+|------|----------------------|
+| 图标实例（KurilIcons） | `<i class="KurilIcons kuril-xxx" data-component="💙 00.03_Icon / xxx">` |
+| 其他组件实例 | `<div data-component="💙 XX.XX_组件名 / variant">` |
+
+- `data-component` 值格式：`"💙 {figma_name}"` —— 浏览器解析时自动剥离 emoji、提取 CID 并跳转
+- Boolean prop（`boolProp`）只控制显隐，不需要 `data-component`
+
+**规则 C：`data-component` 空占位原则（非递归渲染）**
+
+`preview_html` 里引用另一个原子分子组件时，**不得重写该组件的样式**。正确做法：只写尺寸/布局定位，内容留空。浏览器渲染时 `_resolveDataComponents()` 会自动从 COMPONENTS_DATA 拉取被引用组件的真实 preview HTML 注入进去。
+
+**props 强制规则（不能闭眼写）**：`preview_html` 里放 `data-component` 占位后，必须先找到该 INSTANCE 节点在插件导出 JSON 里的 `variants` / `booleans` / `swaps` 字段，把所有**非默认值**的 prop 写进该变体的 `props` 字段（key = `"💙 组件名"`，完整含 emoji）。
+
+> 如果当前没有导出 JSON（场景未导出过），可以用 `mcp_design_context`（Figma MCP）补：对该 instance 节点调用后，返回的 React props 签名（如 `color?: "White"`, `type?: "iPhoneX"`）就是实例当前选中的 prop 值，直接读取即可。仍然不得凭视觉推断。
+
+格式：子组件 prop 配置在变体的 `props` 字段，`preview_html` 里 `data-component` 只含组件名
+
+```json
+// ✅ 正确：props 声明子组件配置，preview_html 干净
+{
+  "props": {
+    "💙 01.00_Status Bar": { "Color": "White", "Type": "iPhoneX" }
+  },
+  "preview_html": "<div ...><div data-component=\"💙 01.00_Status Bar\" style=\"width:375px;height:44px;flex-shrink:0\"></div></div>"
+}
+```
+
+```html
+<!-- ❌ 错误1：把 props 塞进 data-component 字符串 -->
+<div data-component="💙 01.00_Status Bar, Color=White, Type=iPhoneX" style="..."></div>
+
+<!-- ❌ 错误2：用 data-* 属性传 props -->
+<div data-component="💙 01.00_Status Bar" data-color="White" data-type="iPhoneX" style="..."></div>
+
+<!-- ❌ 错误3：在 data-component 元素里手写子组件的 CSS -->
+<div data-component="💙 01.00_Status Bar" style="display:flex;padding:0 16px;...">
+  <span>11:27</span>...
+</div>
+```
+
+只有以下情况才在 `data-component` 元素内写内容：
+- 该元素的内容是**当前业务组件独有的定制**（不来自被引用的原子分子组件本身），如图标按钮上加业务标签文字
+- 被引用组件尚未录入 COMPONENTS_DATA（临时 fallback，需标注 TODO）
 
 ### generate.py 末尾执行顺序
 

@@ -923,5 +923,17 @@
       "kuril-b2c_vip",
       "kuril-official_account"
     ]
+  },
+  "variants": {
+    "time": {
+      "figma_key": "6b86b0d40c4e41a18bf906bd874502a604148f05",
+      "embed_html": "<i class=\"KurilIcons kuril-time\" style=\"font-size:20px;color:var(--icon-1,#2B263B)\"></i>",
+      "desc": "时间/计时图标，Button/Icon 的默认 INSTANCE_SWAP 占位图标"
+    },
+    "plus_heavy": {
+      "figma_key": "441a48c74e470b0873a06b217983ea31b0c6417f",
+      "embed_html": "<i class=\"KurilIcons kuril-plus_heavy\" style=\"font-size:16px;color:#FFF\"></i>",
+      "desc": "加粗加号，FAB / FloatCart 的默认图标"
+    }
   }
 }

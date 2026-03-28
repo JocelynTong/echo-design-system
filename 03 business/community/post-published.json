@@ -77,6 +77,10 @@
         "align-self": "stretch"
       },
       "props": {},
+      "component_ref": {
+        "cid": "mark-20260127",
+        "variant_key": "SingleMark"
+      },
       "_tree": {
         "type": "COMPONENT",
         "css": {
@@ -206,6 +210,10 @@
         "align-self": "stretch"
       },
       "props": {},
+      "component_ref": {
+        "cid": "02.02_input",
+        "variant_key": "InputLine"
+      },
       "_tree": {
         "type": "COMPONENT",
         "css": {

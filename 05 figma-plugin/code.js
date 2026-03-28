@@ -7,14 +7,14 @@
  *
  * ↑ 导出 Tab（合并后，一个入口通吃两种场景）
  *   在画布中选中任意 Section / Frame / COMPONENT / COMPONENT_SET，点击「导出」：
- *   · 💙/👻 组件实例  → key + variants + CSS（Claude 按 components/*.json & business/*.json 生成 HTML）
+ *   · 💙/👻 组件实例  → cid + figma_key + variants（Claude 按 components/*.json & business/*.json 生成 HTML）
  *   · COMPONENT_SET  → 组件定义 key + 各变体 key + CSS
  *   · 自定义节点      → CSS（追加候选池警告）
  */
 
 // ── Key 表（Claude 按需维护，不删已有条目）──────────────────────────────
 var KEYS = {
-  // 系统组件（UIKit 库）
+  // 原子分子组件（UIKit 库）
   StatusBarSolid:  '2f0822c67ed4a4951a09fecb453f76ce7e882cf5',
   StatusBarGhost:  'fca61ad869eda2219a414e1bd3799bfd88245da4',
   NavBar:          '360f770dbdab8921993cf27def796d9fd3d0f172',
@@ -76,7 +76,7 @@ function getCanonicalName(mc) {
     ? mc.parent.name
     : mc.name;
 }
-// 💙 = 系统 UIKit 原子；👻 = 业务分子；两者都是已注册的"已知组件"
+// 💙 = 原子分子 UIKit 组件；👻 = 业务分子组件；两者都是已注册的"已知组件"
 function isRegisteredComponent(mc) {
   var name = getCanonicalName(mc);
   return name.startsWith('💙') || name.startsWith('👻');
@@ -182,8 +182,8 @@ async function handleExport() {
     }
 
     if (node.type === 'INSTANCE' && node.mainComponent) {
-      entry.ref = getCanonicalName(node.mainComponent);
-      entry.key = node.mainComponent.key;
+      entry.cid = getCanonicalName(node.mainComponent);
+      entry.figma_key = node.mainComponent.key;
       return entry;
     }
 
@@ -304,13 +304,13 @@ async function handleExport() {
 
     // COMPONENT_SET：组件定义，列出各变体 key + CSS + 属性定义
     if (node.type === 'COMPONENT_SET') {
-      var entry = { type: 'component_def', name: node.name, key: node.key };
+      var entry = { type: 'component_def', figma_name: node.name, figma_key: node.key };
       var css = await getCss(node);
       if (css) entry.css = css;
       var propDefs = exportPropDefs(node);
       if (propDefs) entry.propertyDefs = propDefs;
       entry.variants = await Promise.all(Array.from(node.children).map(async function(v) {
-        var ve = { name: v.name, key: v.key };
+        var ve = { figma_name: v.name, figma_key: v.key };
         var vc = await getCss(v);
         if (vc) ve.css = vc;
         var crefs = await buildComponentRefs(v);
@@ -329,7 +329,7 @@ async function handleExport() {
 
     // COMPONENT：单个组件定义
     if (node.type === 'COMPONENT') {
-      var entry = { type: 'component_def', name: node.name, key: node.key };
+      var entry = { type: 'component_def', figma_name: node.name, figma_key: node.key };
       var css = await getCss(node);
       if (css) entry.css = css;
       var propDefs = exportPropDefs(node);
@@ -350,7 +350,7 @@ async function handleExport() {
     if (node.type === 'INSTANCE' && node.mainComponent) {
       var mc = node.mainComponent;
       var refName = getCanonicalName(mc);
-      var entry = { type: 'instance', ref: refName, key: mc.key };
+      var entry = { cid: refName, figma_key: mc.key };
       // 用 componentProperties 代替 variantProperties，覆盖所有属性类型
       var props = parseComponentProps(node);
       if (props) {
@@ -365,7 +365,7 @@ async function handleExport() {
     }
 
     // 其他：自定义节点
-    var entry = { type: 'custom', name: node.name };
+    var entry = { type: 'custom', figma_name: node.name };
     var css = await getCss(node);
     if (css) entry.css = css;
     warnings.push('🎨 自定义节点「' + node.name + '」已导出 CSS，建议评估是否注册为正式组件');
