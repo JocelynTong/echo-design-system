@@ -1337,7 +1337,8 @@ def validate_components(components=None, ref_map=None):
                     if not figma_name_biz or '👻' not in figma_name_biz:
                         continue
                     expected = _derive_expected_key(figma_name_biz)
-                    if expected and expected != bvk:
+                    # 只在期望 key 是合法标识符（仅含字母/数字/下划线）时才警告
+                    if expected and expected != bvk and re.match(r'^[\w]+$', expected):
                         warnings.append(f'  ⚠️  {biz_module}/{biz_fn} [{bvk}]: key 与 figma_name 不符，建议改为 "{expected}"')
 
     if warnings:
