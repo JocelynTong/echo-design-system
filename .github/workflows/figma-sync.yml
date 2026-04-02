@@ -27,6 +27,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions: write-all
 
     steps:
       - name: Checkout
@@ -34,8 +35,6 @@ jobs:
         with:
           persist-credentials: false
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
 
       - name: Sync StatusBar
         if: github.event_name == 'repository_dispatch' || github.event.inputs.component == 'StatusBar' || github.event_name == 'schedule' || github.event.inputs.component == ''
