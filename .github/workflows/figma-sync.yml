@@ -35,10 +35,7 @@ jobs:
           persist-credentials: false
           token: ${{ secrets.GITHUB_TOKEN }}
 
-     
 
-      - name: Install dependencies
-        run: npm install
 
       - name: Sync StatusBar
         if: github.event_name == 'repository_dispatch' || github.event.inputs.component == 'StatusBar' || github.event_name == 'schedule' || github.event.inputs.component == ''
